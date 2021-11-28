@@ -12,8 +12,8 @@ public:
 
     Faces front;
     Faces back;
-    Faces top;
-    Faces bottom;
+    Faces up;
+    Faces down;
     Faces left;
     Faces right;
 
@@ -22,14 +22,16 @@ void makeGrid(Faces);
 
 
 
+
 public slots:
 void updateFaces();
+void frontMove();
 
 signals:
     void sendFrontGrid(QPixmap);
     void sendBackGrid(QPixmap);
-    void sendTopGrid(QPixmap);
-    void sendBottomGrid(QPixmap);
+    void sendUpGrid(QPixmap);
+    void sendDownGrid(QPixmap);
     void sendLeftGrid(QPixmap);
     void sendRightGrid(QPixmap);
 

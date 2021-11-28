@@ -2,13 +2,18 @@
 #include <QBrush>
 
 
+//remove later
+#include <iostream>
+using namespace std;
+
+
 
 Model::Model(QObject *parent) : QObject(parent)
 {
     front = Faces(Qt::green, "front");
     back = Faces(Qt::blue, "back");
-    top = Faces(Qt::white, "top"); //QColor(255,165,0)
-    bottom = Faces(Qt::yellow, "bottom");
+    up = Faces(Qt::white, "up"); //QColor(255,165,0)
+    down = Faces(Qt::yellow, "down");
     left = Faces(QColor(255,165,0), "left");
     right = Faces(Qt::red, "right");
 }
@@ -33,16 +38,15 @@ void Model::makeGrid(Faces face ){
         painter.drawLine(0, lineIndex, pixmap.width(), lineIndex);
 
     }
-
     // send grid to view to draw
     if (face.getName() == "front"){
         emit sendFrontGrid(pixmap);
     } else if (face.getName() == "back"){
         emit sendBackGrid(pixmap);
-    } else if (face.getName() == "top"){
-        emit sendTopGrid(pixmap);
-    } else if (face.getName() == "bottom"){
-        emit sendBottomGrid(pixmap);
+    } else if (face.getName() == "up"){
+        emit sendUpGrid(pixmap);
+    } else if (face.getName() == "down"){
+        emit sendDownGrid(pixmap);
     } else if (face.getName() == "left"){
         emit sendLeftGrid(pixmap);
     } else {
@@ -53,10 +57,32 @@ void Model::makeGrid(Faces face ){
 void Model::updateFaces(){
     makeGrid(front);
     makeGrid(back);
-    makeGrid(top);
-    makeGrid(bottom);
+    makeGrid(up);
+    makeGrid(down);
     makeGrid(left);
     makeGrid(right);
+}
 
+void Model::frontMove(){
+    //up
+ //left  //right
+    //down
+
+    QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
+    cout<< "made temp" <<endl;
+
+    left.swapColumn(2, down.getRow(0)); //sets left to down col
+    cout << "moved left" <<endl;
+    down.swapRow(0, right.getCol(0)); //sets down to right col
+    cout << "moved down" << endl;
+    right.swapColumn(0, temp); //sets right to up row
+    cout << "moved right" << endl;
+
+    //rotate front 90 degrees;
+    front.rotateClockwise();
+
+    cout<< "rotated" << endl;
+
+    updateFaces();
 
 }

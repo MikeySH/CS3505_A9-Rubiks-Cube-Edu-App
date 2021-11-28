@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>600</y>
-      <width>151</width>
-      <height>91</height>
+      <y>510</y>
+      <width>211</width>
+      <height>181</height>
      </rect>
     </property>
    </widget>
@@ -72,7 +72,7 @@
      <string>Right</string>
     </property>
    </widget>
-   <widget class="QLabel" name="bottomLabel">
+   <widget class="QLabel" name="downLabel">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -85,10 +85,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>Bottom</string>
+     <string>Down</string>
     </property>
    </widget>
-   <widget class="QLabel" name="topLabel">
+   <widget class="QLabel" name="upLabel">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -101,7 +101,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>Top</string>
+     <string>Up</string>
     </property>
    </widget>
    <widget class="QLabel" name="backLabel">
@@ -143,7 +143,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>F</string>
+     <string>Front</string>
     </property>
    </widget>
    <widget class="QPushButton" name="rButton">
@@ -156,7 +156,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>R</string>
+     <string>Right</string>
     </property>
    </widget>
    <widget class="QPushButton" name="uButton">
@@ -169,7 +169,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>U</string>
+     <string>Up</string>
     </property>
    </widget>
    <widget class="QPushButton" name="bButton">
@@ -182,7 +182,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>B</string>
+     <string>Back</string>
     </property>
    </widget>
    <widget class="QPushButton" name="lButton">
@@ -195,7 +195,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>L</string>
+     <string>Left</string>
     </property>
    </widget>
    <widget class="QPushButton" name="dButton">
@@ -208,7 +208,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>D</string>
+     <string>Down</string>
     </property>
    </widget>
    <widget class="QPushButton" name="dPrimeButton">
