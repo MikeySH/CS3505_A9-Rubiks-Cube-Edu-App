@@ -100,9 +100,9 @@ void Model::rightMove(){
 //    down.swapColumn(2, temp);
 
     QVector<QColor> temp = up.getCol(2); //sets up to left row
-    QVector<QColor> temp2 = front.getRow(2); //sets up to left row
+    QVector<QColor> temp2 = front.getCol(2); //sets up to left row
     QVector<QColor> temp3 = down.getCol(2); //sets up to left row
-    QVector<QColor> temp4 = back.getRow(0); //sets up to left row
+    QVector<QColor> temp4 = back.getCol(0); //sets up to left row
 
     up.swapColumn(2, temp2);
     front.swapColumn(2, temp3);
