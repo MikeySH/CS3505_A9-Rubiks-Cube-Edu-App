@@ -3,7 +3,7 @@
 
 
 
-Model::Model()
+Model::Model(QObject *parent) : QObject(parent)
 {
     front = Faces(Qt::green, "front");
     back = Faces(Qt::blue, "back");
@@ -23,7 +23,7 @@ void Model::makeGrid(Faces face ){
     QPixmap pixmap(QPixmap::fromImage(face.getImage()).scaled(180, 180, Qt::KeepAspectRatio));
     QPainter painter(&pixmap);
     // use black as the line color
-    painter.setPen(QColor(0, 0, 0, 200));
+    painter.setPen(QColor(0, 0, 0, 255));
 
     // draw vertical and horizontal lines
     for(float lineIndex = 0; lineIndex <= pixmap.width(); lineIndex+=pixmap.width()/3){
@@ -48,4 +48,15 @@ void Model::makeGrid(Faces face ){
     } else {
         emit sendRightGrid(pixmap);
     }
+}
+
+void Model::updateFaces(){
+    makeGrid(front);
+    makeGrid(back);
+    makeGrid(top);
+    makeGrid(bottom);
+    makeGrid(left);
+    makeGrid(right);
+
+
 }

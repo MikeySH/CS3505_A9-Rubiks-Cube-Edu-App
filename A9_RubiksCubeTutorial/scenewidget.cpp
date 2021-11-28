@@ -61,10 +61,13 @@ void SceneWidget::paintEvent(QPaintEvent *) {
     float angle = body->GetAngle();
 
 //    printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+    QImage img = QImage(128, 128, QImage::Format_RGBA64);
+    QColor blank(0,0,0,0);
+    img.fill(blank);
 
-    painter.drawImage((int)(position.x*20), (int)(position.y*20), image);
-    painter.drawImage(200, 200, image);
-    qDebug() << image;
+    painter.drawImage((int)(position.x*20), (int)(position.y*20), img);
+    painter.drawImage(200, 200, img);
+   // qDebug() << image;
     painter.end();
    }
 

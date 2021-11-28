@@ -4,21 +4,26 @@
 #include <QColor>
 #include <QPainter>
 
-class Model
+class Model : public QObject
 {
+    Q_OBJECT
+public:
+    explicit Model(QObject *parent = nullptr);
+
+    Faces front;
+    Faces back;
+    Faces top;
+    Faces bottom;
+    Faces left;
+    Faces right;
 
 private:
 void makeGrid(Faces);
 
-public:
-    Model();
 
-Faces front;
-Faces back;
-Faces top;
-Faces bottom;
-Faces left;
-Faces right;
+
+public slots:
+void updateFaces();
 
 signals:
     void sendFrontGrid(QPixmap);

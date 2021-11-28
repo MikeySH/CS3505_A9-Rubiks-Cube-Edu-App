@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //ui->widget->show();
+    ui->widget->show();
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -15,10 +15,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&modelObj, &Model::sendBottomGrid, ui->bottomLabel, &QLabel::setPixmap);
     connect(&modelObj, &Model::sendLeftGrid, ui->leftLabel, &QLabel::setPixmap);
     connect(&modelObj, &Model::sendRightGrid, ui->rightLabel, &QLabel::setPixmap);
+
+    //View to model
+    connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
 
