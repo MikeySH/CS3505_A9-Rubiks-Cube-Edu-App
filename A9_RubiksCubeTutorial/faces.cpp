@@ -69,20 +69,20 @@ QVector<QColor> Faces::getCol(int colNum){
 }
 
 void Faces::rotateClockwise(){
-//    QVector<QColor> temp = swapRow(2, getCol(2));
-//    swapColumn(2, getRow(0));
-//    swapRow(0, getCol(0));
-//    swapColumn(0, temp);
+    // Traverse each cycle
+        for(int k = 0; k < 3; k ++){
+            for (int i = 0; i < 3 / 2; i++) {
+                for (int j = i; j < 3 - i - 1; j++) {
 
-    QVector<QColor> temp = getCol(0);
-    QVector<QColor> temp1 = getCol(2);
-    QVector<QColor> temp2 = getRow(0);
-    QVector<QColor> temp3 = getRow(2);
+                    // Swap elements of each cycle
+                    // in clockwise direction
+                    QColor temp = colorPicture.pixelColor(i,j);
 
-    swapColumn(2, temp3);
-    swapColumn(0, temp);
-    swapRow(2, temp2);
-    swapRow(0, temp1);
-
-
+                    colorPicture.setPixelColor(i,j, colorPicture.pixelColor(3 - 1 - j, i));
+                    colorPicture.setPixelColor(3 - 1 - j, i, colorPicture.pixelColor(3 - 1 - i,3 - 1 - j));
+                    colorPicture.setPixelColor(3 - 1 - i, 3 - 1 - j,  colorPicture.pixelColor(j, 3 - 1 - i));
+                    colorPicture.setPixelColor(j, 3 - 1 - i, temp);
+                }
+            }
+        }
 }

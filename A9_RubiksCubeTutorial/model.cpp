@@ -73,18 +73,28 @@ void Model::frontMove(){
     QVector<QColor> temp2 = down.getRow(0); //sets up to left row
     QVector<QColor> temp3 = right.getCol(0); //sets up to left row
     QVector<QColor> temp4 = up.getRow(2); //sets up to left row
+    QVector<QColor> temp5;
+    QVector<QColor> temp6;
 
+
+    for(int i =0; i < 3; i++){
+        temp5.push_front(temp3[i]);
+        temp6.push_front(temp[i]);
+    }
 //    left.swapColumn(2, down.getRow(0)); //sets left to down col
 //    down.swapRow(0, right.getCol(0)); //sets down to right col
 //    right.swapColumn(0, temp); //sets right to up row
 
-    up.swapRow(2, temp);
+    up.swapRow(2, temp6);
     left.swapColumn(2, temp2);
-    down.swapRow(0, temp3);
+    down.swapRow(0, temp5);
     right.swapColumn(0, temp4);
 
     //rotate front 90 degrees;
     front.rotateClockwise();
+
+
+
 
     updateFaces();
 }
@@ -103,11 +113,18 @@ void Model::rightMove(){
     QVector<QColor> temp2 = front.getCol(2); //sets up to left row
     QVector<QColor> temp3 = down.getCol(2); //sets up to left row
     QVector<QColor> temp4 = back.getCol(0); //sets up to left row
+    QVector<QColor> temp5;
+    QVector<QColor> temp6;
+
+    for(int i =0; i < 3; i++){
+        temp5.push_front(temp4[i]);
+        temp6.push_front(temp[i]);
+    }
 
     up.swapColumn(2, temp2);
     front.swapColumn(2, temp3);
-    down.swapColumn(2, temp4);
-    back.swapColumn(0, temp);
+    down.swapColumn(2, temp5);
+    back.swapColumn(0, temp6);
 
     //rotate front 90 degrees;
     right.rotateClockwise();
