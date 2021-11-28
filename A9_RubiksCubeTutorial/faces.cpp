@@ -1,8 +1,8 @@
 #include "faces.h"
 
-Faces::Faces(QColor thisOriginalColor)
+Faces::Faces(QColor thisOriginalColor, QString name)
 {
-
+    this->name = name;
     colorPicture = QImage(3,3, QImage::Format_RGBA64);
     colorPicture.fill(thisOriginalColor);
 }
@@ -34,4 +34,12 @@ QVector<QColor> Faces::swapCollumn(int colNumber,  QVector<QColor> col ){
     }
 
     return temp;
+}
+
+QImage Faces::getImage(){
+    return colorPicture;
+}
+
+QString Faces::getName(){
+    return name;
 }

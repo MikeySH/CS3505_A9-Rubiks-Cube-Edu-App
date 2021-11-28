@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1004</width>
+    <height>780</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,11 +17,107 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>130</y>
-      <width>411</width>
-      <height>241</height>
+      <x>30</x>
+      <y>600</y>
+      <width>151</width>
+      <height>91</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="leftLabel">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>200</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="frontLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>200</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Front</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rightLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>200</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Right</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bottomLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>380</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Bottom</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="topLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>20</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Top</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="backLabel">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>200</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Back</string>
     </property>
    </widget>
   </widget>
@@ -30,8 +126,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>24</height>
+     <width>1004</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

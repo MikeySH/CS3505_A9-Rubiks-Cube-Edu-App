@@ -8,14 +8,19 @@
 
 class Faces
 {
+private:
+    QString name;
+
 public:
     Faces() = default;
-    Faces(QColor);
+    Faces(QColor, QString);
     QImage colorPicture;
     QVector<QColor> swapRow(int,  QVector<QColor> );
     QVector<QColor> swapCollumn(int,  QVector<QColor>);
     QColor getColorCorrespondingToInt(int, int);
 
+    QImage getImage();
+    QString getName();
 
 };
 
