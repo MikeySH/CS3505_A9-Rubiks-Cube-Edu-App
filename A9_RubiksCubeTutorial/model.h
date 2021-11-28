@@ -26,6 +26,11 @@ void makeGrid(Faces);
 public slots:
 void updateFaces();
 void frontMove();
+void rightMove();
+//void upMove();
+//void backMove();
+//void leftMove();
+//void downMove();
 
 signals:
     void sendFrontGrid(QPixmap);

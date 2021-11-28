@@ -68,21 +68,49 @@ void Model::frontMove(){
  //left  //right
     //down
 
-    QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
-    cout<< "made temp" <<endl;
+   // QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
+    QVector<QColor> temp = left.getCol(2); //sets up to left row
+    QVector<QColor> temp2 = down.getRow(0); //sets up to left row
+    QVector<QColor> temp3 = right.getCol(0); //sets up to left row
+    QVector<QColor> temp4 = up.getRow(2); //sets up to left row
 
-    left.swapColumn(2, down.getRow(0)); //sets left to down col
-    cout << "moved left" <<endl;
-    down.swapRow(0, right.getCol(0)); //sets down to right col
-    cout << "moved down" << endl;
-    right.swapColumn(0, temp); //sets right to up row
-    cout << "moved right" << endl;
+//    left.swapColumn(2, down.getRow(0)); //sets left to down col
+//    down.swapRow(0, right.getCol(0)); //sets down to right col
+//    right.swapColumn(0, temp); //sets right to up row
+
+    up.swapRow(2, temp);
+    left.swapColumn(2, temp2);
+    down.swapRow(0, temp3);
+    right.swapColumn(0, temp4);
 
     //rotate front 90 degrees;
     front.rotateClockwise();
 
-    cout<< "rotated" << endl;
+    updateFaces();
+}
+
+void Model::rightMove(){
+    //up
+    //front    //back
+    //down
+
+//    QVector<QColor> temp = back.swapColumn(0, up.getCol(2));
+//    up.swapColumn(2, front.getCol(2));
+//    front.swapColumn(2, down.getCol(2));
+//    down.swapColumn(2, temp);
+
+    QVector<QColor> temp = up.getCol(2); //sets up to left row
+    QVector<QColor> temp2 = front.getRow(2); //sets up to left row
+    QVector<QColor> temp3 = down.getCol(2); //sets up to left row
+    QVector<QColor> temp4 = back.getRow(0); //sets up to left row
+
+    up.swapColumn(2, temp2);
+    front.swapColumn(2, temp3);
+    down.swapColumn(2, temp4);
+    back.swapColumn(0, temp);
+
+    //rotate front 90 degrees;
+    right.rotateClockwise();
 
     updateFaces();
-
 }

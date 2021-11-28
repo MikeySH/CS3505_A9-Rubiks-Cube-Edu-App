@@ -69,8 +69,20 @@ QVector<QColor> Faces::getCol(int colNum){
 }
 
 void Faces::rotateClockwise(){
-    QVector<QColor> temp = swapRow(2, getCol(2));
-    swapColumn(2, getRow(0));
-    swapRow(0, getCol(0));
+//    QVector<QColor> temp = swapRow(2, getCol(2));
+//    swapColumn(2, getRow(0));
+//    swapRow(0, getCol(0));
+//    swapColumn(0, temp);
+
+    QVector<QColor> temp = getCol(0);
+    QVector<QColor> temp1 = getCol(2);
+    QVector<QColor> temp2 = getRow(0);
+    QVector<QColor> temp3 = getRow(2);
+
+    swapColumn(2, temp3);
     swapColumn(0, temp);
+    swapRow(2, temp2);
+    swapRow(0, temp1);
+
+
 }

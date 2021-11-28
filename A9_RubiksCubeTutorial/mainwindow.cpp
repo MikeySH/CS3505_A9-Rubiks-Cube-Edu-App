@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
 
     connect(ui->fButton, &QPushButton::clicked, &modelObj, &Model::frontMove);
-    connect(ui->rButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
+    connect(ui->rButton, &QPushButton::clicked, &modelObj, &Model::rightMove);
     connect(ui->uButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
     connect(ui->bButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
     connect(ui->lButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
