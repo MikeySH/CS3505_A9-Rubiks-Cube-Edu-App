@@ -68,7 +68,6 @@ void Model::frontMove(){
  //left  //right
     //down
 
-   // QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
     QVector<QColor> temp = left.getCol(2); //sets up to left row
     QVector<QColor> temp2 = down.getRow(0); //sets up to left row
     QVector<QColor> temp3 = right.getCol(0); //sets up to left row
@@ -81,9 +80,6 @@ void Model::frontMove(){
         temp5.push_front(temp3[i]);
         temp6.push_front(temp[i]);
     }
-//    left.swapColumn(2, down.getRow(0)); //sets left to down col
-//    down.swapRow(0, right.getCol(0)); //sets down to right col
-//    right.swapColumn(0, temp); //sets right to up row
 
     up.swapRow(2, temp6);
     left.swapColumn(2, temp2);
@@ -93,9 +89,6 @@ void Model::frontMove(){
     //rotate front 90 degrees;
     front.rotateClockwise();
 
-
-
-
     updateFaces();
 }
 
@@ -103,11 +96,6 @@ void Model::rightMove(){
     //up
     //front    //back
     //down
-
-//    QVector<QColor> temp = back.swapColumn(0, up.getCol(2));
-//    up.swapColumn(2, front.getCol(2));
-//    front.swapColumn(2, down.getCol(2));
-//    down.swapColumn(2, temp);
 
     QVector<QColor> temp = up.getCol(2); //sets up to left row
     QVector<QColor> temp2 = front.getCol(2); //sets up to left row
@@ -131,3 +119,128 @@ void Model::rightMove(){
 
     updateFaces();
 }
+
+
+void Model::upMove(){
+//left front right back
+
+    QVector<QColor> temp = left.getRow(0);
+    QVector<QColor> temp2 = front.getRow(0);
+    QVector<QColor> temp3 = right.getRow(0);
+    QVector<QColor> temp4 = back.getRow(0);
+
+
+    left.swapRow(0, temp2);
+    front.swapRow(0, temp3);
+    right.swapRow(0, temp4);
+    back.swapRow(0, temp);
+
+    //rotate front 90 degrees;
+    up.rotateClockwise();
+
+    updateFaces();
+}
+
+void Model::backMove()
+{
+    // QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
+     QVector<QColor> temp = left.getCol(0); //sets up to left row
+     QVector<QColor> temp2 = down.getRow(2); //sets up to left row
+     QVector<QColor> temp3 = right.getCol(2); //sets up to left row
+     QVector<QColor> temp4 = up.getRow(0); //sets up to left row
+     QVector<QColor> temp5;
+     QVector<QColor> temp6;
+
+
+     for(int i =0; i < 3; i++){
+         temp5.push_front(temp4[i]);
+         temp6.push_front(temp2[i]);
+     }
+ //    left.swapColumn(2, down.getRow(0)); //sets left to down col
+ //    down.swapRow(0, right.getCol(0)); //sets down to right col
+ //    right.swapColumn(0, temp); //sets right to up row
+
+     up.swapRow(0, temp3);
+     left.swapColumn(0, temp5);
+     down.swapRow(2, temp);
+     right.swapColumn(2, temp6);
+
+     //rotate front 90 degrees;
+     back.rotateClockwise();
+
+     updateFaces();
+
+}
+
+void Model::leftMove(){
+
+    QVector<QColor> temp = up.getCol(0); //sets up to left row
+    QVector<QColor> temp2 = front.getCol(0); //sets up to left row
+    QVector<QColor> temp3 = down.getCol(0); //sets up to left row
+    QVector<QColor> temp4 = back.getCol(2); //sets up to left row
+    QVector<QColor> temp5;
+    QVector<QColor> temp6;
+
+    for(int i =0; i < 3; i++){
+        temp5.push_front(temp4[i]);
+        temp6.push_front(temp3[i]);
+    }
+
+    up.swapColumn(0, temp5);
+    front.swapColumn(0, temp);
+    down.swapColumn(0, temp2);
+    back.swapColumn(2, temp6);
+
+    //rotate front 90 degrees;
+    left.rotateClockwise();
+
+    updateFaces();
+}
+
+void Model::downMove(){
+
+    QVector<QColor> temp = back.getRow(2);
+    QVector<QColor> temp2 = front.getRow(2);
+    QVector<QColor> temp3 = left.getRow(2);
+    QVector<QColor> temp4 = right.getRow(2);
+
+    left.swapRow(2, temp);
+    front.swapRow(2, temp3);
+    right.swapRow(2, temp2);
+    back.swapRow(2, temp4);
+    //rotate front 90 degrees;
+    down.rotateClockwise();
+
+    updateFaces();
+}
+
+void Model::frontMovePrime(){
+ for(int i =0; i<3;i++)
+     frontMove();
+}
+
+void Model::rightMovePrime(){
+ for(int i =0; i<3;i++)
+     rightMove();
+}
+
+void Model::upMovePrime(){
+ for(int i =0; i<3;i++)
+     upMove();
+}
+
+void Model::backMovePrime(){
+ for(int i =0; i<3;i++)
+     backMove();
+}
+
+void Model::leftMovePrime(){
+ for(int i =0; i<3;i++)
+     leftMove();
+}
+
+void Model::downMovePrime(){
+ for(int i =0; i<3;i++)
+     downMove();
+}
+
