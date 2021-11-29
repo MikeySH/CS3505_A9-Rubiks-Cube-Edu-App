@@ -1,13 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/*!
+ * \brief MainWindow::MainWindow Method constructs MainWindow object and establishes
+ * all connections needed
+ * \param parent
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-//    ui->widget->show();
+    //    ui->widget->show();
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -17,11 +22,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&modelObj, &Model::sendLeftGrid, ui->leftLabel, &QLabel::setPixmap);
     connect(&modelObj, &Model::sendRightGrid, ui->rightLabel, &QLabel::setPixmap);
 
-    //View to model
+    //View to model -----------------
     connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::resetFaces);
-     connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
+    connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
     ui->updateFaceButton->click();
-
 
     //Regular moves
     connect(ui->fButton, &QPushButton::clicked, &modelObj, &Model::frontMove);
@@ -40,6 +44,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->dPrimeButton, &QPushButton::clicked, &modelObj, &Model::downMovePrime);
 }
 
+/*!
+ * \brief MainWindow::~MainWindow destructor
+ */
 MainWindow::~MainWindow()
 {
     delete ui;

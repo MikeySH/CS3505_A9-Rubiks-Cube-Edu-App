@@ -7,10 +7,13 @@
 using namespace std;
 
 
-
+/*!
+ * \brief Model::Model Method constructs model object and initializes paramaeters
+ * \param parent
+ */
 Model::Model(QObject *parent) : QObject(parent)
 {
-   resetFaces();
+    resetFaces();
 }
 
 
@@ -49,6 +52,9 @@ void Model::makeGrid(Faces face ){
     }
 }
 
+/*!
+ * \brief Model::updateFaces Redraw the grids and repaint faces of rubix
+ */
 void Model::updateFaces(){
     makeGrid(front);
     makeGrid(back);
@@ -58,10 +64,10 @@ void Model::updateFaces(){
     makeGrid(right);
 }
 
+/*!
+ * \brief Model::frontMove makes a single turn, (90°), clockwise, of the front face.
+ */
 void Model::frontMove(){
-    //up
- //left  //right
-    //down
 
     QVector<QColor> temp = left.getCol(2); //sets up to left row
     QVector<QColor> temp2 = down.getRow(0); //sets up to left row
@@ -87,10 +93,10 @@ void Model::frontMove(){
     updateFaces();
 }
 
+/*!
+ * \brief Model::rightMove makes a single turn, (90°), clockwise, of the right face.
+ */
 void Model::rightMove(){
-    //up
-    //front    //back
-    //down
 
     QVector<QColor> temp = up.getCol(2); //sets up to left row
     QVector<QColor> temp2 = front.getCol(2); //sets up to left row
@@ -115,9 +121,11 @@ void Model::rightMove(){
     updateFaces();
 }
 
-
+/*!
+ * \brief Model::upMove makes a single turn, (90°), clockwise, of the up face.
+ */
 void Model::upMove(){
-//left front right back
+    //left front right back
 
     QVector<QColor> temp = left.getRow(0);
     QVector<QColor> temp2 = front.getRow(0);
@@ -136,37 +144,40 @@ void Model::upMove(){
     updateFaces();
 }
 
+/*!
+ * \brief Model::backMove makes a single turn, (90°), clockwise, of the back face.
+ */
 void Model::backMove()
 {
     // QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
-     QVector<QColor> temp = left.getCol(0); //sets up to left row
-     QVector<QColor> temp2 = down.getRow(2); //sets up to left row
-     QVector<QColor> temp3 = right.getCol(2); //sets up to left row
-     QVector<QColor> temp4 = up.getRow(0); //sets up to left row
-     QVector<QColor> temp5;
-     QVector<QColor> temp6;
+    QVector<QColor> temp = left.getCol(0); //sets up to left row
+    QVector<QColor> temp2 = down.getRow(2); //sets up to left row
+    QVector<QColor> temp3 = right.getCol(2); //sets up to left row
+    QVector<QColor> temp4 = up.getRow(0); //sets up to left row
+    QVector<QColor> temp5;
+    QVector<QColor> temp6;
 
 
-     for(int i =0; i < 3; i++){
-         temp5.push_front(temp4[i]);
-         temp6.push_front(temp2[i]);
-     }
- //    left.swapColumn(2, down.getRow(0)); //sets left to down col
- //    down.swapRow(0, right.getCol(0)); //sets down to right col
- //    right.swapColumn(0, temp); //sets right to up row
+    for(int i =0; i < 3; i++){
+        temp5.push_front(temp4[i]);
+        temp6.push_front(temp2[i]);
+    }
 
-     up.swapRow(0, temp3);
-     left.swapColumn(0, temp5);
-     down.swapRow(2, temp);
-     right.swapColumn(2, temp6);
+    up.swapRow(0, temp3);
+    left.swapColumn(0, temp5);
+    down.swapRow(2, temp);
+    right.swapColumn(2, temp6);
 
-     //rotate front 90 degrees;
-     back.rotateClockwise();
+    //rotate front 90 degrees;
+    back.rotateClockwise();
 
-     updateFaces();
+    updateFaces();
 
 }
 
+/*!
+ * \brief Model::leftMove makes a single turn, (90°), clockwise, of the left face.
+ */
 void Model::leftMove(){
 
     QVector<QColor> temp = up.getCol(0); //sets up to left row
@@ -192,6 +203,9 @@ void Model::leftMove(){
     updateFaces();
 }
 
+/*!
+ * \brief Model::downMove makes a single turn, (90°), clockwise, of the down face.
+ */
 void Model::downMove(){
 
     QVector<QColor> temp = back.getRow(2);
@@ -209,39 +223,59 @@ void Model::downMove(){
     updateFaces();
 }
 
+/*!
+ * \brief Model::frontMovePrime does F' move to the rubix cube, updating faces accordingly
+ */
 void Model::frontMovePrime(){
- for(int i =0; i<3;i++)
-     frontMove();
+    for(int i =0; i<3;i++)
+        frontMove();
 }
 
+/*!
+ * \brief Model::rightMovePrime does R' move to the rubix cube, updating faces accordingly
+ */
 void Model::rightMovePrime(){
- for(int i =0; i<3;i++)
-     rightMove();
+    for(int i =0; i<3;i++)
+        rightMove();
 }
 
+/*!
+ * \brief Model::upMovePrime does U' move to the rubix cube, updating faces accordingly
+ */
 void Model::upMovePrime(){
- for(int i =0; i<3;i++)
-     upMove();
+    for(int i =0; i<3;i++)
+        upMove();
 }
 
+/*!
+ * \brief Model::backMovePrime does B' move to the rubix cube, updating faces accordingly
+ */
 void Model::backMovePrime(){
- for(int i =0; i<3;i++)
-     backMove();
+    for(int i =0; i<3;i++)
+        backMove();
 }
 
+/*!
+ * \brief Model::leftMovePrime does L' move to the rubix cube, updating faces accordingly
+ */
 void Model::leftMovePrime(){
- for(int i =0; i<3;i++)
-     leftMove();
+    for(int i =0; i<3;i++)
+        leftMove();
 }
 
+/*!
+ * \brief Model::downMovePrime does D' move to the rubix cube, updating faces accordingly
+ */
 void Model::downMovePrime(){
- for(int i =0; i<3;i++)
-     downMove();
+    for(int i =0; i<3;i++)
+        downMove();
 }
 
 
 
-
+/*!
+ * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
+ */
 void Model::scramble(){
 
     for(int i=0; i< 100; i++){
@@ -268,6 +302,9 @@ void Model::scramble(){
 }
 
 
+/*!
+ * \brief Model::resetFaces method resets faces of rubix to be unscrambles
+ */
 void Model::resetFaces(){
 
     front = Faces(Qt::green, "front");
