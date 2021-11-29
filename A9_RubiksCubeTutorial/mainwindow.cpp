@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&modelObj, &Model::sendRightGrid, ui->rightLabel, &QLabel::setPixmap);
 
     //View to model
-    connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::updateFaces);
+    connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::resetFaces);
+     connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
     ui->updateFaceButton->click();
 
 

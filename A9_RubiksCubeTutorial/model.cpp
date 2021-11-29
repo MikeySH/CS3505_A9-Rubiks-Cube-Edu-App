@@ -10,12 +10,7 @@ using namespace std;
 
 Model::Model(QObject *parent) : QObject(parent)
 {
-    front = Faces(Qt::green, "front");
-    back = Faces(Qt::blue, "back");
-    up = Faces(Qt::white, "up"); //QColor(255,165,0)
-    down = Faces(Qt::yellow, "down");
-    left = Faces(QColor(255,165,0), "left");
-    right = Faces(Qt::red, "right");
+   resetFaces();
 }
 
 
@@ -242,5 +237,45 @@ void Model::leftMovePrime(){
 void Model::downMovePrime(){
  for(int i =0; i<3;i++)
      downMove();
+}
+
+
+
+
+void Model::scramble(){
+
+    for(int i=0; i< 100; i++){
+        // get random number that corresponds to a value
+        int v = QRandomGenerator::global()->bounded(1, 7);
+
+        switch(v){
+        case 1:
+            leftMove();
+            break;
+        case 2:  frontMove();
+            break;
+        case 3:  rightMove();
+            break;
+        case 4: upMove();
+            break;
+        case 5: backMove();
+            break;
+        case 6: downMove();
+            break;
+        }
+    }
+
+}
+
+
+void Model::resetFaces(){
+
+    front = Faces(Qt::green, "front");
+    back = Faces(Qt::blue, "back");
+    up = Faces(Qt::white, "up"); //QColor(255,165,0)
+    down = Faces(Qt::yellow, "down");
+    left = Faces(QColor(255,165,0), "left");
+    right = Faces(Qt::red, "right");
+    updateFaces();
 }
 

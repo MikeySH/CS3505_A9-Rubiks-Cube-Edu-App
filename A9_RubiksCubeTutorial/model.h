@@ -3,6 +3,7 @@
 #include "faces.h"
 #include <QColor>
 #include <QPainter>
+#include <QRandomGenerator>
 
 class Model : public QObject
 {
@@ -39,6 +40,9 @@ void upMovePrime();
 void backMovePrime();
 void leftMovePrime();
 void downMovePrime();
+
+void scramble();
+void resetFaces();
 
 signals:
     void sendFrontGrid(QPixmap);
