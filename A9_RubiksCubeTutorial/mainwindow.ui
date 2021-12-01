@@ -308,10 +308,10 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>430</y>
-      <width>341</width>
-      <height>211</height>
+      <x>140</x>
+      <y>20</y>
+      <width>641</width>
+      <height>481</height>
      </rect>
     </property>
    </widget>
@@ -322,7 +322,7 @@
      <x>0</x>
      <y>0</y>
      <width>1004</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

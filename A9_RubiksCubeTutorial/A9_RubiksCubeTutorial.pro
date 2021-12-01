@@ -30,11 +30,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-
-DISTFILES += \
-    me.png
-
-RESOURCES +=
+RESOURCES += \
+    image.qrc
 
 macx|win32: LIBS += -L$$PWD/box2d/ -lbox2d
 

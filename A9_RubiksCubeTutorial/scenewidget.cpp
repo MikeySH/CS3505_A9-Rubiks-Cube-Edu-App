@@ -4,7 +4,7 @@
 SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent),
     world(b2Vec2(0.0f, 10.0f)),
     timer(this),
-    image("../../../me.png") // Make a resource file - mac executables are in a hidden folder
+    image(":/me.png") // Make a resource file - mac executables are in a hidden folder
 {
 
     // Define the ground body.
@@ -61,12 +61,12 @@ void SceneWidget::paintEvent(QPaintEvent *) {
     float angle = body->GetAngle();
 
 //    printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-    QImage img = QImage(1028, 1028, QImage::Format_RGBA64);
-    QColor blank(0,0,0,255);
-    img.fill(blank);
+   // QImage img = QImage(1028, 1028, QImage::Format_RGBA64);
+   // QColor blank(0,0,0,255);
+    //image.fill(blank);
 
-    painter.drawImage((int)(position.x*20), (int)(position.y*20), img);
-    painter.drawImage(200, 200, img);
+    painter.drawImage((int)(position.x*25), (int)(position.y*25), image);
+    //painter.drawImage(200, 200, image);
    // qDebug() << image;
     painter.end();
    }
