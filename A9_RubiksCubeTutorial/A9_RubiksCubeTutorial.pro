@@ -24,12 +24,6 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-macx: LIBS += -L$$PWD/box2d/build/bin/ -lbox2d
-
-INCLUDEPATH += $$PWD/box2d/include
-DEPENDPATH += $$PWD/box2d/include
-
-macx: PRE_TARGETDEPS += $$PWD/box2d/build/bin/libbox2d.a
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -41,3 +35,11 @@ DISTFILES += \
     me.png
 
 RESOURCES +=
+
+macx|win32: LIBS += -L$$PWD/box2d/ -lbox2d
+
+INCLUDEPATH += $$PWD/box2d/include
+DEPENDPATH += $$PWD/box2d/include
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/box2d/box2d.lib
+else:macx|win32-g++: PRE_TARGETDEPS += $$PWD/box2d/libbox2d.a
