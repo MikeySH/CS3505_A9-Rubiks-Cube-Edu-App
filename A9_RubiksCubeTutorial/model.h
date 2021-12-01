@@ -59,6 +59,8 @@ public slots:
     // resets faces to classic rubic's cube faces
     void resetFaces();
 
+    void save(QString);
+
 signals:
     // signal that handles sending the front face of cube
     void sendFrontGrid(QPixmap);

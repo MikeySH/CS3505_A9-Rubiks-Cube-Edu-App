@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
 
 /*!
  * \brief MainWindow::MainWindow Method constructs MainWindow object and establishes
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //    ui->widget->show();
+       ui->widget->show();
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -26,6 +27,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->updateFaceButton, &QPushButton::clicked, &modelObj, &Model::resetFaces);
     connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
     ui->updateFaceButton->click();
+
+
+
+    connect(this, &MainWindow::saveName, &modelObj, &Model::save);
+
 
     //Regular moves
     connect(ui->fButton, &QPushButton::clicked, &modelObj, &Model::frontMove);
@@ -54,4 +60,13 @@ MainWindow::~MainWindow()
 
 
 
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString saveFile = QFileDialog::getSaveFileName(this, tr("Sprite Save As"), "", tr("PNG Files (*.png)"));
+    if(!saveFile.isEmpty()){
+        emit saveName(saveFile);
+    }
+}
 
