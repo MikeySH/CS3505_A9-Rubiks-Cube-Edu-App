@@ -82,6 +82,9 @@ signals:
    // update step label
    // void sendStep(QString);
 
+
+    void sendImage(QImage);
+
 };
 
 #endif // MODEL_H

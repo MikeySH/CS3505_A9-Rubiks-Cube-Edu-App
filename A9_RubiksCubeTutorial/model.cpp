@@ -380,9 +380,11 @@ void Model::save(QString fileName){
 
    }
 
+   cout << fileName.toStdString() << endl;
+
    newimg = pixmap.toImage();
-   newimg.save(fileName);
-   //newimg.save("../");
+   //newimg.save("filename");
+   emit sendImage(newimg);
 }
 
 //void Model::incrementStep(){

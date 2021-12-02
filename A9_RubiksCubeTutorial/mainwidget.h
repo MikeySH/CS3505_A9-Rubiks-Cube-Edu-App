@@ -61,6 +61,8 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
+#include <QMainWindow>
+
 
 class GeometryEngine;
 
