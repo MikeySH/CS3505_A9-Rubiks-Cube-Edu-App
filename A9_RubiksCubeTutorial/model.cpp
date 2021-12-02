@@ -366,8 +366,7 @@ void Model::save(){
 
 
 
-   //newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
-   newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio);
+   newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
 
    QPixmap pixmap(QPixmap::fromImage(newimg));
    QPainter painter(&pixmap);
