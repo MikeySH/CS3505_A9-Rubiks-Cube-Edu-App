@@ -229,6 +229,7 @@ void Model::downMove(){
  * \brief Model::frontMovePrime does F' move to the rubix cube, updating faces accordingly
  */
 void Model::frontMovePrime(){
+
     for(int i =0; i<3;i++)
         frontMove();
 }
@@ -320,23 +321,31 @@ void Model::resetFaces(){
 
 void Model::save(){
    QImage newimg =  QImage(6,9, QImage::Format_RGBA64);
+  QImage temp =  QImage(3,3, QImage::Format_RGBA64);
+
+  QTransform tempTransform;
+  tempTransform.rotate(-90);
+
 
    //top half
    for(int i = 0; i < 3; i++){
        for(int j = 0; j < 3; j++){
-           newimg.setPixelColor(i, j, left.getImage().pixelColor(i,j));
+           temp = left.getImage();
+           newimg.setPixelColor(i, j,  temp.transformed(tempTransform).pixelColor(i,j));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 3; j < 6; j++){
-           newimg.setPixelColor(i, j, down.getImage().pixelColor(i,j-3));
+           temp = down.getImage();
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i,j-3));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 6; j < 9; j++){
-           newimg.setPixelColor(i, j, front.getImage().pixelColor(i,j-6));
+           temp = front.getImage();
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i,j-6));
        }
    }
 
@@ -344,19 +353,22 @@ void Model::save(){
    //bottom half
    for(int i = 3; i < 6; i++){
        for(int j = 0; j < 3; j++){
-           newimg.setPixelColor(i, j, back.getImage().pixelColor(i-3,j));
+           temp = back.getImage();
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 3; j < 6; j++){
-           newimg.setPixelColor(i, j, up.getImage().pixelColor(i-3,j-3));
+           temp = up.getImage();
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j-3));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 6; j < 9; j++){
-           newimg.setPixelColor(i, j, right.getImage().pixelColor(i-3,j-6));
+           temp = right.getImage();
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j-6));
        }
    }
 
