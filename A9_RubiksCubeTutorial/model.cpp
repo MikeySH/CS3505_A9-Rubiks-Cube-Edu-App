@@ -324,19 +324,19 @@ void Model::save(){
    //top half
    for(int i = 0; i < 3; i++){
        for(int j = 0; j < 3; j++){
-           newimg.setPixelColor(i, j, right.getImage().pixelColor(i,j));
+           newimg.setPixelColor(i, j, left.getImage().pixelColor(i,j));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 3; j < 6; j++){
-           newimg.setPixelColor(i, j, up.getImage().pixelColor(i,j-3));
+           newimg.setPixelColor(i, j, down.getImage().pixelColor(i,j-3));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 6; j < 9; j++){
-           newimg.setPixelColor(i, j, back.getImage().pixelColor(i,j-6));
+           newimg.setPixelColor(i, j, front.getImage().pixelColor(i,j-6));
        }
    }
 
@@ -344,19 +344,19 @@ void Model::save(){
    //bottom half
    for(int i = 3; i < 6; i++){
        for(int j = 0; j < 3; j++){
-           newimg.setPixelColor(i, j, front.getImage().pixelColor(i-3,j));
+           newimg.setPixelColor(i, j, back.getImage().pixelColor(i-3,j));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 3; j < 6; j++){
-           newimg.setPixelColor(i, j, down.getImage().pixelColor(i-3,j-3));
+           newimg.setPixelColor(i, j, up.getImage().pixelColor(i-3,j-3));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 6; j < 9; j++){
-           newimg.setPixelColor(i, j, left.getImage().pixelColor(i-3,j-6));
+           newimg.setPixelColor(i, j, right.getImage().pixelColor(i-3,j-6));
        }
    }
 
