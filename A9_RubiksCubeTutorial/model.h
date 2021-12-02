@@ -21,6 +21,9 @@ public:
     Faces left;
     Faces right;
 
+    QVector<QString> steps;
+    int currStep;
+
 private:
     // method draws grids of all faces
     void makeGrid(Faces);
@@ -60,6 +63,8 @@ public slots:
     void resetFaces();
 
     void save(QString);
+    // changes current step
+   // void incrementStep();
 
 signals:
     // signal that handles sending the front face of cube
@@ -74,6 +79,8 @@ signals:
     void sendLeftGrid(QPixmap);
     // signal that handles sending the right face of cube
     void sendRightGrid(QPixmap);
+   // update step label
+   // void sendStep(QString);
 
 };
 

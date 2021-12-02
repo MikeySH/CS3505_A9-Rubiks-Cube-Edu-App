@@ -17,13 +17,14 @@ Model::Model(QObject *parent) : QObject(parent)
 }
 
 
+
 /*!
  * \brief Model::makeGrid makes the grid for the sprite drawing.
  * \param canvasSize size of the canvas/preview drawing of sprite
  */
 void Model::makeGrid(Faces face ){
     // add grid lines on top of sprite image's pixmap
-    QPixmap pixmap(QPixmap::fromImage(face.getImage()).scaled(180, 180, Qt::KeepAspectRatio));
+    QPixmap pixmap(QPixmap::fromImage(face.getImage()).scaled(120, 120, Qt::KeepAspectRatio));
     QPainter painter(&pixmap);
     // use black as the line color
     painter.setPen(QColor(0, 0, 0, 255));
@@ -383,4 +384,9 @@ void Model::save(QString fileName){
    newimg.save(fileName);
    //newimg.save("../");
 }
+
+//void Model::incrementStep(){
+//    currStep++;
+//    emit sendStep(steps[currStep]);
+//}
 
