@@ -63,6 +63,7 @@ void Model::updateFaces(){
     makeGrid(down);
     makeGrid(left);
     makeGrid(right);
+    save();
 }
 
 /*!
@@ -317,7 +318,7 @@ void Model::resetFaces(){
     updateFaces();
 }
 
-void Model::save(QString fileName){
+void Model::save(){
    QImage newimg =  QImage(6,9, QImage::Format_RGBA64);
 
    //top half
@@ -364,23 +365,26 @@ void Model::save(QString fileName){
 
 
 
-   newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
+
+   //newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
+   newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio);
 
    QPixmap pixmap(QPixmap::fromImage(newimg));
    QPainter painter(&pixmap);
    // use black as the line color
    painter.setPen(QColor(0, 0, 0, 255));
 
-   // draw vertical and horizontal lines
-   for(float lineIndex = 0; lineIndex <= pixmap.width(); lineIndex+=pixmap.width()/6){
-       //vertical lines
-       painter.drawLine(lineIndex, 0, lineIndex, pixmap.height());
-       //horizontal lines
-       painter.drawLine(0, lineIndex, pixmap.width(), lineIndex);
 
+
+
+   for(float x = 0; x <= pixmap.width(); x+=pixmap.width()/9){
+       painter.drawLine(x, 0, x, pixmap.height());
+   }
+   //horizontal lines
+   for(float y = 0; y <= pixmap.height(); y+=pixmap.height()/6){
+       painter.drawLine(0, y, pixmap.width(), y);
    }
 
-   cout << fileName.toStdString() << endl;
 
    newimg = pixmap.toImage();
    //newimg.save("filename");

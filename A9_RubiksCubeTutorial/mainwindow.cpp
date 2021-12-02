@@ -30,8 +30,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->resetButton->click();
 
 
+    //model to widget ------------
+    connect(&modelObj, &Model::sendImage, ui->openGLWidget, &MainWidget::setNewImage);
 
-    connect(this, &MainWindow::saveName, &modelObj, &Model::save);
+
+
 
 
     //Regular moves
@@ -60,15 +63,4 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    QString saveFile = QFileDialog::getSaveFileName(this, tr("Sprite Save As"), "", tr("PNG Files (*.png)"));
-    if(!saveFile.isEmpty()){
-        emit saveName(saveFile);
-    }
-}
 

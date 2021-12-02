@@ -99,6 +99,11 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed = 0;
     QQuaternion rotation;
+
+    QImage cubeImage;
+
+public slots:
+    void setNewImage(QImage);
 };
 
 #endif // MAINWIDGET_H

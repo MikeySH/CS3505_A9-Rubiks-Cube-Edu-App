@@ -62,7 +62,7 @@ public slots:
     // resets faces to classic rubic's cube faces
     void resetFaces();
 
-    void save(QString);
+    void save();
     // changes current step
    // void incrementStep();
 
