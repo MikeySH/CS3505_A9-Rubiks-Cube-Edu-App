@@ -1,8 +1,10 @@
-QT       += core gui
+QT       += core gui widgets opengl openglwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+
+TEMPLATE = app
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -10,13 +12,17 @@ CONFIG += c++11
 
 SOURCES += \
     faces.cpp \
+    geometryengine.cpp \
     main.cpp \
+    mainwidget.cpp \
     mainwindow.cpp \
     model.cpp \
     scenewidget.cpp
 
 HEADERS += \
     faces.h \
+    geometryengine.h \
+    mainwidget.h \
     mainwindow.h \
     model.h \
     scenewidget.h
@@ -31,7 +37,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    image.qrc
+    image.qrc \
+    shaders.qrc
 
 macx|win32: LIBS += -L$$PWD/box2d/ -lbox2d
 

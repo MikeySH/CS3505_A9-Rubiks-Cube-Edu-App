@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->bPrimeButton, &QPushButton::clicked, &modelObj, &Model::backMovePrime);
     connect(ui->lPrimeButton, &QPushButton::clicked, &modelObj, &Model::leftMovePrime);
     connect(ui->dPrimeButton, &QPushButton::clicked, &modelObj, &Model::downMovePrime);
+
 }
 
 /*!
