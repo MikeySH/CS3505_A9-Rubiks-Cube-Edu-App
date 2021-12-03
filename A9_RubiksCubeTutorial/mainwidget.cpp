@@ -70,11 +70,11 @@ void MainWidget::keyPressEvent(QKeyEvent *event){
     int angle = 0;
     if( event->key() == Qt::Key_Up ){
         rotationAxis = (QVector3D(1,0,0)).normalized();
-        angle = 25;
+        angle = 45;
     }
     else if( event->key() == Qt::Key_Down ){
         rotationAxis = (QVector3D(-1,0,0)).normalized();
-        angle = 25;
+        angle = 45;
     }
     else if( event->key() == Qt::Key_Right ){
         rotationAxis = (QVector3D(0,-1,0)).normalized();
@@ -177,7 +177,7 @@ void MainWidget::initializeGL()
     rotationAxis = (QVector3D(0,-1,0)).normalized();
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
     rotationAxis = (QVector3D(1,0,0)).normalized();
-    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 25) * rotation;
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
 
 }
 
