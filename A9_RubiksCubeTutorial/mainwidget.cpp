@@ -155,8 +155,8 @@ void MainWidget::timerEvent(QTimerEvent *)
 void MainWidget::initializeGL()
 {
     initializeOpenGLFunctions();
-
-    glClearColor(1, 1, 1, 0);
+   // glutInitDisplayMode(GLUT_RGBA | GLUT_ALPHA);
+    glClearColor(.92, .92, .92, 1);
 
     initShaders();
     initTextures();

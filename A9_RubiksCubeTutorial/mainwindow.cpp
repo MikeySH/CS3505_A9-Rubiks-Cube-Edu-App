@@ -79,19 +79,30 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_moveCubeLeft_clicked()
 {
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+    QCoreApplication::postEvent (this, event);
+
     for(int i =0 ; i<2 ; i++){
-        QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
+        event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
         QCoreApplication::postEvent (this, event);
     }
 
+    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+    QCoreApplication::postEvent (this, event);
 }
 
 
 void MainWindow::on_moveCubeRight_clicked()
 {
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+    QCoreApplication::postEvent (this, event);
+
     for(int i =0 ; i<2 ; i++){
-        QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+        event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
         QCoreApplication::postEvent (this, event);
     }
+
+    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+    QCoreApplication::postEvent (this, event);
 }
 
