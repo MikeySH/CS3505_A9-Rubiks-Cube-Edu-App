@@ -302,6 +302,9 @@ void MainWidget::rotateCubeLeft(){
 
 }
 
+/*!
+ * \brief MainWidget::flipCube defines how to flip cube
+ */
 void MainWidget::flipCube(){
     QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
 
@@ -310,8 +313,6 @@ void MainWidget::flipCube(){
          keyPressEvent(event);
     }
 
-    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
-    keyPressEvent(event);
     delete event;
 }
 
