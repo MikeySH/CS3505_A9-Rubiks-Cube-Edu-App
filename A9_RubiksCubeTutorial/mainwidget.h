@@ -105,6 +105,7 @@ private:
 
 public slots:
     void setNewImage(QImage);
+    void resetCubePos();
 };
 
 #endif // MAINWIDGET_H

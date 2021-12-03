@@ -319,7 +319,7 @@ void Model::resetFaces(){
     left = Faces(QColor(255,165,0), "left");
     right = Faces(Qt::red, "right");
     updateFaces();
-
+    emit resetCube();
 }
 
 void Model::save(){

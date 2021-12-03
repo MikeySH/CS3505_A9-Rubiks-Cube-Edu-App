@@ -85,6 +85,8 @@ signals:
 
     void sendImage(QImage);
 
+    void resetCube();
+
 };
 
 #endif // MODEL_H

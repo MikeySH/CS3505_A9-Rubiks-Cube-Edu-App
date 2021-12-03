@@ -174,10 +174,13 @@ void MainWidget::initializeGL()
     // Use QBasicTimer because its faster than QTimer
     timer.start(12, this);
 
-    rotationAxis = (QVector3D(0,-1,0)).normalized();
-    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
-    rotationAxis = (QVector3D(1,0,0)).normalized();
-    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
+    // start cube at 3-sided view
+    rotation = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
+
+//    rotationAxis = (QVector3D(0,-1,0)).normalized();
+//    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
+//    rotationAxis = (QVector3D(1,0,0)).normalized();
+//    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
 
 }
 
@@ -273,5 +276,11 @@ void MainWidget::paintGL()
 void MainWidget::setNewImage(QImage newimg){
     this->cubeImage = newimg;
     initTextures();
+    update();
+}
+
+void MainWidget::resetCubePos(){
+    rotation = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
+    angularSpeed = 0;
     update();
 }

@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //model to widget ------------
     connect(&modelObj, &Model::sendImage, ui->openGLWidget, &MainWidget::setNewImage);
-
+    connect(&modelObj, &Model::resetCube, ui->openGLWidget, &MainWidget::resetCubePos);
 
 
 
