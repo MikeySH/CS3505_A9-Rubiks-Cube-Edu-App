@@ -37,5 +37,7 @@ private slots:
     void on_moveCubeLeft_clicked();
     // evoked when right button clicks - moves 3d cube right by one face
     void on_moveCubeRight_clicked();
+    // evoked when flip button clicked - flips cube
+    void on_flipButton_clicked();
 };
 #endif // MAINWINDOW_H

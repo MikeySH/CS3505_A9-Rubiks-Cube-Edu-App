@@ -102,6 +102,10 @@ private:
     QQuaternion rotation;
 
     QImage cubeImage;
+    void rotateCubeLeft();
+         void rotateCubeRight();
+         void rotateRightBy90();
+         void flipCube();
 
 public slots:
     void setNewImage(QImage);

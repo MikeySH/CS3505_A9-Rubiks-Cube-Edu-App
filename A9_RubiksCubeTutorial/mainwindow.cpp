@@ -76,33 +76,34 @@ MainWindow::~MainWindow()
 }
 
 
-
+/*!
+ * \brief MainWindow::on_moveCubeLeft_clicked calls left key slot when move left button clicked
+ */
 void MainWindow::on_moveCubeLeft_clicked()
 {
-    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
-    QCoreApplication::postEvent (this, event);
-
-    for(int i =0 ; i<2 ; i++){
-        event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
-        QCoreApplication::postEvent (this, event);
-    }
-
-    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
 }
 
-
+/*!
+ * \brief MainWindow::on_moveCubeRight_clicked calls right key slot when move eight pressed
+ */
 void MainWindow::on_moveCubeRight_clicked()
 {
-    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
+\
+}
 
-    for(int i =0 ; i<2 ; i++){
-        event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
-        QCoreApplication::postEvent (this, event);
-    }
-
-    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+/*!
+ * \brief MainWindow::on_flipButton_clicked method defines what to call to flip rubix
+ */
+void MainWindow::on_flipButton_clicked()
+{
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
 }
+
+
+
 

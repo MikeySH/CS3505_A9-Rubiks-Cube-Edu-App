@@ -77,21 +77,19 @@ void MainWidget::keyPressEvent(QKeyEvent *event){
         angle = 45;
     }
     else if( event->key() == Qt::Key_Right ){
-        rotationAxis = (QVector3D(0,-1,0)).normalized();
-        angle = 45;
+        rotateCubeRight();
     }
     else if( event->key() == Qt::Key_Left ){
-        rotationAxis = (QVector3D(0,1,0)).normalized();
-        angle = 45;
-    }
+        rotateCubeLeft();
+        }
     else if( event->key() == Qt::Key_Space ){
-        rotationAxis = (QVector3D(0,1,0)).normalized();
-        angle = 180;
+       flipCube();
     }
     // Update rotation
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
     update();
 }
+
 
 //! [0]
 void MainWidget::mousePressEvent(QMouseEvent *e)
@@ -282,5 +280,55 @@ void MainWidget::setNewImage(QImage newimg){
 void MainWidget::resetCubePos(){
     rotation = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
     angularSpeed = 0;
+    update();
+}
+
+
+
+/*!
+ * \brief rotateCubeLeft rotates current cube fully left
+ */
+void MainWidget::rotateCubeLeft(){
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+    keyPressEvent(event);
+
+    for(int i =0 ; i<2 ; i++){
+        rotateRightBy90();
+    }
+
+    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+    keyPressEvent(event);
+    delete event;
+
+}
+
+void MainWidget::flipCube(){
+    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+
+
+    for(int i =0 ; i<4 ; i++){
+         keyPressEvent(event);
+    }
+
+    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
+    keyPressEvent(event);
+    delete event;
+}
+
+/*!
+ * \brief rotateCubeLeft rotates current cube fully right
+ */
+void MainWidget::rotateCubeRight(){
+   for(int i =0 ; i<3; i++)
+       rotateCubeLeft();
+}
+/*!
+ * \brief MainWidget::rotateRightBy90 rotates rubix from face to face - or 90 degrees
+ */
+void MainWidget::rotateRightBy90(){
+    rotationAxis = (QVector3D(0,-1,0)).normalized();
+    int angle = 45;
+    // Update rotation
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
     update();
 }
