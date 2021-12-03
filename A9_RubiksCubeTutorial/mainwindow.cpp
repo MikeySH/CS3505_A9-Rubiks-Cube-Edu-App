@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
        ui->widget->show();
        ui->openGLWidget->show();
 
+
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
     connect(&modelObj, &Model::sendBackGrid, ui->backLabel, &QLabel::setPixmap);

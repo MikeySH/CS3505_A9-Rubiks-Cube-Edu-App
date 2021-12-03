@@ -27,7 +27,9 @@ void Model::makeGrid(Faces face ){
     QPixmap pixmap(QPixmap::fromImage(face.getImage()).scaled(120, 120, Qt::KeepAspectRatio));
     QPainter painter(&pixmap);
     // use black as the line color
-    painter.setPen(QColor(0, 0, 0, 255));
+    //painter.setPen(QColor(0, 0, 0, 255));
+    painter.setPen(QPen(Qt::black, 3));
+
 
     // draw vertical and horizontal lines
     for(float lineIndex = 0; lineIndex <= pixmap.width(); lineIndex+=pixmap.width()/3){
@@ -400,7 +402,7 @@ void Model::save(){
 
 
    newimg = pixmap.toImage();
-   //newimg.save("filename");
+   newimg.save("filename");
    emit sendImage(newimg);
 }
 

@@ -173,6 +173,12 @@ void MainWidget::initializeGL()
 
     // Use QBasicTimer because its faster than QTimer
     timer.start(12, this);
+
+    rotationAxis = (QVector3D(0,-1,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
+    rotationAxis = (QVector3D(1,0,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 25) * rotation;
+
 }
 
 //! [3]
@@ -203,10 +209,10 @@ void MainWidget::initTextures()
     //texture = new QOpenGLTexture(QImage(":/me.png").mirrored());
 
     if(cubeImage.isNull()){
-        texture = new QOpenGLTexture(QImage(":/cube.png").mirrored());
+        texture = new QOpenGLTexture(QImage(":/cube.png"));
     }
     else {
-        texture = new QOpenGLTexture(cubeImage.mirrored());
+        texture = new QOpenGLTexture(cubeImage);
     }
     //texture = new QOpenGLTexture(cubeImage.mirrored());
 
@@ -265,7 +271,7 @@ void MainWidget::paintGL()
 }
 
 void MainWidget::setNewImage(QImage newimg){
-    this->cubeImage = newimg.mirrored();
+    this->cubeImage = newimg;
     initTextures();
     update();
 }
