@@ -74,6 +74,8 @@ public:
     using QOpenGLWidget::QOpenGLWidget;
     ~MainWidget();
 
+    void keyPressEvent(QKeyEvent *event) override;
+
 protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;

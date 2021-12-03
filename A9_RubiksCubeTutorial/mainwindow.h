@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "model.h"
 #include "mainwidget.h"
+#include <QKeyEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,8 @@ public:
 private:
     Ui::MainWindow *ui;
     Model modelObj;
+    // sends key events to 3d drawer
+    void keyPressEvent(QKeyEvent *event);
 
 signals:
     void saveName();

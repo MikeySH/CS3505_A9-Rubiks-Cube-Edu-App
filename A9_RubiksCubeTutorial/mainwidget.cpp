@@ -53,6 +53,7 @@
 #include <QMouseEvent>
 
 #include <cmath>
+#include <iostream>
 
 MainWidget::~MainWidget()
 {
@@ -63,6 +64,22 @@ MainWidget::~MainWidget()
     delete geometries;
     doneCurrent();
     cubeImage = QImage(":/me.png");
+}
+
+void MainWidget::keyPressEvent(QKeyEvent *event){
+    angularSpeed += 0.93;
+    if( event->key() == Qt::Key_Up ){
+        rotationAxis = (QVector3D(1,0,0)).normalized();
+    }
+    else if( event->key() == Qt::Key_Down ){
+        rotationAxis = (QVector3D(-1,0,0)).normalized();
+    }
+    else if( event->key() == Qt::Key_Right ){
+        rotationAxis = (QVector3D(0,-1,0)).normalized();
+    }
+    else if( event->key() == Qt::Key_Left ){
+        rotationAxis = (QVector3D(0,1,0)).normalized();
+    }
 }
 
 //! [0]
@@ -80,7 +97,7 @@ void MainWidget::mousePressEvent(QMouseEvent *e)
     qreal acc = diff.length() / 100.0;
 
     // Calculate new rotation axis as weighted sum
-    rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
+    //rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
 
     // Increase angular speed
     angularSpeed += acc;
@@ -99,7 +116,7 @@ void MainWidget::mouseReleaseEvent(QMouseEvent *e)
     qreal acc = diff.length() / 100.0;
 
     // Calculate new rotation axis as weighted sum
-    rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
+    rotationAxis = (QVector3D(1,0,0)).normalized();
 
     // Increase angular speed
     angularSpeed += acc;

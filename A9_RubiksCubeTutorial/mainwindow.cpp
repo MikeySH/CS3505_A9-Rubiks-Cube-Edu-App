@@ -56,6 +56,18 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 /*!
+ * \brief MainWindow::keyPressEvent sends key events to 3d cube object to update drawing
+ * \param event event defining key pressed
+ */
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    if( event->key() == Qt::Key_Left ||  event->key() == Qt::Key_Right ||  event->key() == Qt::Key_Up ||  event->key() == Qt::Key_Down){
+        ui->openGLWidget->keyPressEvent(event);
+    }
+}
+
+
+
+/*!
  * \brief MainWindow::~MainWindow destructor
  */
 MainWindow::~MainWindow()
