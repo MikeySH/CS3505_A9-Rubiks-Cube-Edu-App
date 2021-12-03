@@ -317,6 +317,7 @@ void Model::resetFaces(){
     left = Faces(QColor(255,165,0), "left");
     right = Faces(Qt::red, "right");
     updateFaces();
+
 }
 
 void Model::save(){
@@ -324,28 +325,28 @@ void Model::save(){
   QImage temp =  QImage(3,3, QImage::Format_RGBA64);
 
   QTransform tempTransform;
-  tempTransform.rotate(-90);
+  tempTransform.rotate(-270);
 
 
    //top half
    for(int i = 0; i < 3; i++){
        for(int j = 0; j < 3; j++){
            temp = left.getImage();
-           newimg.setPixelColor(i, j,  temp.transformed(tempTransform).pixelColor(i,j));
+           newimg.setPixelColor(i, j,  temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 3; j < 6; j++){
            temp = down.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i,j-3));
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-3));
        }
    }
 
    for(int i = 0; i < 3; i++){
        for(int j = 6; j < 9; j++){
            temp = front.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i,j-6));
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-6));
        }
    }
 
@@ -354,21 +355,21 @@ void Model::save(){
    for(int i = 3; i < 6; i++){
        for(int j = 0; j < 3; j++){
            temp = back.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j));
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 3; j < 6; j++){
            temp = up.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j-3));
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-3));
        }
    }
 
    for(int i = 3; i < 6; i++){
        for(int j = 6; j < 9; j++){
            temp = right.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).pixelColor(i-3,j-6));
+           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-6));
        }
    }
 
