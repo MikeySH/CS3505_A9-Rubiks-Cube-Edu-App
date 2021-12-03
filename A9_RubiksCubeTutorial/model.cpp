@@ -384,7 +384,8 @@ void Model::save(){
    QPixmap pixmap(QPixmap::fromImage(newimg));
    QPainter painter(&pixmap);
    // use black as the line color
-   painter.setPen(QColor(0, 0, 0, 255));
+   //painter.setPen(QColor(0, 0, 0, 255));
+   painter.setPen(QPen(Qt::black, 6));
 
 
 

@@ -63,7 +63,6 @@ MainWidget::~MainWidget()
     delete texture;
     delete geometries;
     doneCurrent();
-    cubeImage = QImage(":/me.png");
 }
 
 void MainWidget::keyPressEvent(QKeyEvent *event){
@@ -202,7 +201,14 @@ void MainWidget::initTextures()
 {
     // Load cube.png image
     //texture = new QOpenGLTexture(QImage(":/me.png").mirrored());
-    texture = new QOpenGLTexture(cubeImage.mirrored());
+
+    if(cubeImage.isNull()){
+        texture = new QOpenGLTexture(QImage(":/cube.png").mirrored());
+    }
+    else {
+        texture = new QOpenGLTexture(cubeImage.mirrored());
+    }
+    //texture = new QOpenGLTexture(cubeImage.mirrored());
 
 
     // Set nearest filtering mode for texture minification
