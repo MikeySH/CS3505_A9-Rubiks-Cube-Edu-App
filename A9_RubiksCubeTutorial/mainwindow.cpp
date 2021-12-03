@@ -60,9 +60,8 @@ MainWindow::MainWindow(QWidget *parent)
  * \param event event defining key pressed
  */
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    if( event->key() == Qt::Key_Left ||  event->key() == Qt::Key_Right ||  event->key() == Qt::Key_Up ||  event->key() == Qt::Key_Down){
-        ui->openGLWidget->keyPressEvent(event);
-    }
+
+    ui->openGLWidget->keyPressEvent(event);
 }
 
 
@@ -75,4 +74,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
+void MainWindow::on_moveCubeLeft_clicked()
+{
+    for(int i =0 ; i<2 ; i++){
+        QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
+        QCoreApplication::postEvent (this, event);
+    }
+
+}
+
+
+void MainWindow::on_moveCubeRight_clicked()
+{
+    for(int i =0 ; i<2 ; i++){
+        QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+        QCoreApplication::postEvent (this, event);
+    }
+}
 

@@ -67,19 +67,31 @@ MainWidget::~MainWidget()
 }
 
 void MainWidget::keyPressEvent(QKeyEvent *event){
-    angularSpeed += 0.93;
+    angularSpeed += 0;
+    int angle = 0;
     if( event->key() == Qt::Key_Up ){
         rotationAxis = (QVector3D(1,0,0)).normalized();
+        angle = 25;
     }
     else if( event->key() == Qt::Key_Down ){
         rotationAxis = (QVector3D(-1,0,0)).normalized();
+        angle = 25;
     }
     else if( event->key() == Qt::Key_Right ){
         rotationAxis = (QVector3D(0,-1,0)).normalized();
+        angle = 45;
     }
     else if( event->key() == Qt::Key_Left ){
         rotationAxis = (QVector3D(0,1,0)).normalized();
+        angle = 45;
     }
+    else if( event->key() == Qt::Key_Space ){
+        rotationAxis = (QVector3D(0,1,0)).normalized();
+        angle = 180;
+    }
+    // Update rotation
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
+    update();
 }
 
 //! [0]
@@ -94,10 +106,10 @@ void MainWidget::mousePressEvent(QMouseEvent *e)
     QVector3D n = QVector3D(diff.y(), diff.x(), 0.0).normalized();
 
     // Accelerate angular speed relative to the length of the mouse sweep
-    qreal acc = diff.length() / 100.0;
+    qreal acc = diff.length() / 50.0;
 
     // Calculate new rotation axis as weighted sum
-    //rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
+    rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
 
     // Increase angular speed
     angularSpeed += acc;
@@ -116,7 +128,7 @@ void MainWidget::mouseReleaseEvent(QMouseEvent *e)
     qreal acc = diff.length() / 100.0;
 
     // Calculate new rotation axis as weighted sum
-    rotationAxis = (QVector3D(1,0,0)).normalized();
+    rotationAxis = (n * acc).normalized();
 
     // Increase angular speed
     angularSpeed += acc;
@@ -127,15 +139,14 @@ void MainWidget::mouseReleaseEvent(QMouseEvent *e)
 void MainWidget::timerEvent(QTimerEvent *)
 {
     // Decrease angular speed (friction)
-    angularSpeed *= 0.99;
+    angularSpeed *= .99;
 
     // Stop rotation when speed goes below threshold
     if (angularSpeed < 0.01) {
         angularSpeed = 0.0;
     } else {
-        // Update rotation
-        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
 
+        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
         // Request an update
         update();
     }
@@ -151,13 +162,13 @@ void MainWidget::initializeGL()
     initShaders();
     initTextures();
 
-//! [2]
+    //! [2]
     // Enable depth buffer
     glEnable(GL_DEPTH_TEST);
 
     // Enable back face culling
     glEnable(GL_CULL_FACE);
-//! [2]
+    //! [2]
 
     geometries = new GeometryEngine;
 
@@ -230,7 +241,7 @@ void MainWidget::paintGL()
 
     texture->bind();
 
-//! [6]
+    //! [6]
     // Calculate model view transformation
     QMatrix4x4 matrix;
     matrix.translate(0.0, 0.0, -5.0);
@@ -238,7 +249,7 @@ void MainWidget::paintGL()
 
     // Set modelview-projection matrix
     program.setUniformValue("mvp_matrix", projection * matrix);
-//! [6]
+    //! [6]
 
     // Use texture unit 0 which contains cube.png
     program.setUniformValue("texture", 0);

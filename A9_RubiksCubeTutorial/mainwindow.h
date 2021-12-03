@@ -32,5 +32,10 @@ private:
 signals:
     void saveName();
 
+private slots:
+    // reacts when left button is selected  - moves 3d cube left by one face
+    void on_moveCubeLeft_clicked();
+    // evoked when right button clicks - moves 3d cube right by one face
+    void on_moveCubeRight_clicked();
 };
 #endif // MAINWINDOW_H
