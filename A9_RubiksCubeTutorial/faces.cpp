@@ -83,6 +83,10 @@ QString Faces::getName(){
     return name;
 }
 
+void Faces::setName(QString otherName){
+    name = otherName;
+}
+
 /*!
  * \brief Faces::getRow returns vector of colors represented by the row inquired for
  * \param rowNum row number that colors will be returned from

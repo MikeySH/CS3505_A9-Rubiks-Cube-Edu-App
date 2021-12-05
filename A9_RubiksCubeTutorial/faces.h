@@ -29,6 +29,7 @@ public:
     // class getters
     QImage getImage();
     QString getName();
+    void setName(QString);
     QVector<QColor> getRow(int);
     QVector<QColor> getCol(int);
 

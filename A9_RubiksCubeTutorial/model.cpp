@@ -415,14 +415,15 @@ void Model::save(){
 
 void Model::rotateRight(){
     //front -> right -> back -> left
-    cout <<left.getName().toStdString() <<endl;
     Faces temp = left;
     left = back;
-
-    cout <<left.getName().toStdString() <<endl;
+    left.setName("left");
     back = right;
+    back.setName("back");
     right = front;
+    right.setName("right");
     front  = temp;
+    front.setName("front");
     up.rotateCounterClockwise();
     down.rotateClockwise();
     updateFaces();
