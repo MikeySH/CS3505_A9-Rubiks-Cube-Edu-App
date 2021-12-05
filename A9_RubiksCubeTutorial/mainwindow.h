@@ -32,6 +32,9 @@ private:
 signals:
     void saveName();
 
+    void rotateRight();
+    void rotateLeft();
+
 private slots:
     // reacts when left button is selected  - moves 3d cube left by one face
     void on_moveCubeLeft_clicked();

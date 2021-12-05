@@ -16,6 +16,11 @@ Faces::Faces(QColor thisOriginalColor, QString name)
     colorPicture.fill(thisOriginalColor);
 }
 
+Faces::Faces(const Faces& other)
+{
+    this->colorPicture = other.colorPicture;
+}
+
 /*!
  * \brief Faces::getColorCorrespondingToInt Returns color at given pixel of face
  * \param x x pos of color inquiry
@@ -128,5 +133,11 @@ void Faces::rotateClockwise(){
                 colorPicture.setPixelColor(j, 3 - 1 - i, temp);
             }
         }
+    }
+}
+
+void Faces::rotateCounterClockwise(){
+    for(int i = 0; i < 3; i++){
+        rotateClockwise();
     }
 }

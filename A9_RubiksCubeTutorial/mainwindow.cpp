@@ -29,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->resetButton, &QPushButton::clicked, &modelObj, &Model::resetFaces);
     connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
     ui->resetButton->click();
+    connect(this, &MainWindow::rotateRight, &modelObj, &Model::rotateRight);
+    connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);
+
 
 
     //model to widget ------------
@@ -63,8 +66,13 @@ MainWindow::MainWindow(QWidget *parent)
  * \param event event defining key pressed
  */
 void MainWindow::keyPressEvent(QKeyEvent *event){
-
-    ui->openGLWidget->keyPressEvent(event);
+    if( event->key() == Qt::Key_Right ){
+        emit rotateRight();
+    }
+    else if( event->key() == Qt::Key_Left ){
+        emit rotateLeft();
+    }
+   ui->openGLWidget->keyPressEvent(event);
 }
 
 

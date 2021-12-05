@@ -18,6 +18,7 @@ Model::Model(QObject *parent) : QObject(parent)
 
 
 
+
 /*!
  * \brief Model::makeGrid makes the grid for the sprite drawing.
  * \param canvasSize size of the canvas/preview drawing of sprite
@@ -411,3 +412,22 @@ void Model::save(){
 //    emit sendStep(steps[currStep]);
 //}
 
+void Model::rotateRight(){
+    //front -> right -> back -> left
+    Faces temp = left;
+    left = back;
+    back = right;
+    right = front;
+    front  = temp;
+    up.rotateCounterClockwise();
+    down.rotateClockwise();
+    updateFaces();
+}
+
+void Model::rotateLeft(){
+    //front -> right -> back -> left
+    for(int i = 0; i<3; i++){
+        rotateRight();
+    }
+    updateFaces();
+}

@@ -44,7 +44,6 @@ public slots:
     void leftMove();
     // handles moving down face clockwise
     void downMove();
-
     // handles counterclockwise moving of the front face
     void frontMovePrime();
     // handles counterclockwise moving of the right face
@@ -65,6 +64,9 @@ public slots:
     void save();
     // changes current step
    // void incrementStep();
+
+    void rotateRight();
+    void rotateLeft();
 
 signals:
     // signal that handles sending the front face of cube

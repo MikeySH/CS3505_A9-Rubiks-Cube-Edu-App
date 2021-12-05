@@ -18,6 +18,7 @@ public:
     //constructor
     Faces() = default;
     Faces(QColor, QString);
+    Faces(const Faces&);
 
     // swap methods
     QVector<QColor> swapRow(int,  QVector<QColor> );
@@ -31,6 +32,7 @@ public:
     QVector<QColor> getCol(int);
 
     void rotateClockwise();
+    void rotateCounterClockwise();
 
 };
 

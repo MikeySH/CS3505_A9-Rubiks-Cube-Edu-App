@@ -54,6 +54,9 @@
 
 #include <cmath>
 #include <iostream>
+using namespace std;
+
+
 
 MainWidget::~MainWidget()
 {
@@ -66,41 +69,32 @@ MainWidget::~MainWidget()
 }
 
 void MainWidget::keyPressEvent(QKeyEvent *event){
-    angularSpeed += 0;
-    int angle = 0;
-//    if( event->key() == Qt::Key_Up ){
-//        rotationAxis = (QVector3D(1,0,0)).normalized();
-//        angle = 45;
-//    }
-//    else if( event->key() == Qt::Key_Down ){
-//        rotationAxis = (QVector3D(-1,0,0)).normalized();
-//        angle = 45;
-//    }
     if( event->key() == Qt::Key_Right ){
+        angularSpeed = 2;
         rotateCubeRight();
     }
     else if( event->key() == Qt::Key_Left ){
+        angularSpeed = 2;
         rotateCubeLeft();
         }
     else if( event->key() == Qt::Key_Space ){
-       flipCube();
+        angularSpeed = 2;
+        flipCube();
     }
-    // Update rotation
-    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
-    update();
 }
 
 //! [1]
 void MainWidget::timerEvent(QTimerEvent *)
 {
-    // Decrease angular speed (friction)
-    angularSpeed *= .99;
+   //  Decrease angular speed (friction)
+    angularSpeed *= .90;
 
     // Stop rotation when speed goes below threshold
     if (angularSpeed < 0.01) {
         angularSpeed = 0.0;
     } else {
-
+        rotation = QQuaternion::slerp(rotation, startingPosition, 0.1);
+        update();
         rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
         // Request an update
         update();
@@ -264,7 +258,7 @@ void MainWidget::rotateCubeRight(){
  */
 void MainWidget::rotateRightBy90(){
     rotationAxis = (QVector3D(0,-1,0)).normalized();
-    int angle = 45;
+    int angle = -45;
     // Update rotation
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
     update();
