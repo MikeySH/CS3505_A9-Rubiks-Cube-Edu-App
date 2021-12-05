@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->resetButton->click();
     connect(this, &MainWindow::rotateRight, &modelObj, &Model::rotateRight);
     connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);
+    connect(this, &MainWindow::rotateFlip, &modelObj, &Model::rotateFlip);
 
 
     //model to widget ------------
@@ -111,6 +112,7 @@ void MainWindow::on_flipButton_clicked()
 {
     QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
+    emit rotateFlip();
 }
 
 void MainWindow::on_perspective2DButton_clicked()

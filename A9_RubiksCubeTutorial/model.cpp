@@ -435,3 +435,32 @@ void Model::rotateLeft(){
         rotateRight();
     }
 }
+
+void Model::rotateFlip(){
+ Faces frontTemp = front;
+ front  = left;
+ front.rotateClockwise();
+ front.rotateClockwise();
+ front.setName("front");
+ left = frontTemp;
+ left.rotateClockwise();
+ left.rotateClockwise();
+ left.setName("left");
+ Faces backTemp = back;
+ back  = right;
+ back.rotateClockwise();
+ back.rotateClockwise();
+ back.setName("back");
+ right = backTemp;
+ right.rotateClockwise();
+ right.rotateClockwise();
+ right.setName("right");
+ Faces upTemp = up;
+ up = down;
+ up.rotateCounterClockwise();
+ up.setName("up");
+ down = upTemp;
+ down.rotateClockwise();
+ down.setName("down");
+ updateFaces();
+}

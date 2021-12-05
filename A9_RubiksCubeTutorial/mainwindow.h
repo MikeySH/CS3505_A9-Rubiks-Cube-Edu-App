@@ -33,6 +33,7 @@ signals:
     void saveName();
     void rotateRight();
     void rotateLeft();
+    void rotateFlip();
 
 private slots:
     // reacts when left button is selected  - moves 3d cube left by one face

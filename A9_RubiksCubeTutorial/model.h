@@ -67,6 +67,7 @@ public slots:
 
     void rotateRight();
     void rotateLeft();
+    void rotateFlip();
 
 signals:
     // signal that handles sending the front face of cube
