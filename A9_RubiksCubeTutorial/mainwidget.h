@@ -77,8 +77,8 @@ public:
     void keyPressEvent(QKeyEvent *event) override;
 
 protected:
-    void mousePressEvent(QMouseEvent *e) override;
-    void mouseReleaseEvent(QMouseEvent *e) override;
+ //   void mousePressEvent(QMouseEvent *e) override;
+ //   void mouseReleaseEvent(QMouseEvent *e) override;
     void timerEvent(QTimerEvent *e) override;
     void initializeGL() override;
     void resizeGL(int w, int h) override;
@@ -100,12 +100,16 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed = 0;
     QQuaternion rotation;
+    QQuaternion startingPosition;
 
     QImage cubeImage;
     void rotateCubeLeft();
-         void rotateCubeRight();
-         void rotateRightBy90();
-         void flipCube();
+    void rotateCubeRight();
+    void rotateRightBy90();
+    void flipCube();
+
+    void rotateCubeUp();
+    void rotateCubeDown();
 
 public slots:
     void setNewImage(QImage);

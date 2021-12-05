@@ -54,6 +54,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->lPrimeButton, &QPushButton::clicked, &modelObj, &Model::leftMovePrime);
     connect(ui->dPrimeButton, &QPushButton::clicked, &modelObj, &Model::downMovePrime);
 
+
+    ui->perspective3DButton->click();
 }
 
 /*!
@@ -104,6 +106,35 @@ void MainWindow::on_flipButton_clicked()
     QCoreApplication::postEvent (this, event);
 }
 
+void MainWindow::on_perspective2DButton_clicked()
+{
+    ui->frontLabel->show();
+    ui->backLabel->show();
+    ui->upLabel->show();
+    ui->downLabel->show();
+    ui->rightLabel->show();
+    ui->leftLabel->show();
 
+    ui->openGLWidget->hide();
+    ui->moveCubeLeft->hide();
+    ui->moveCubeRight->hide();
+    ui->flipButton->hide();
+}
+
+
+void MainWindow::on_perspective3DButton_clicked()
+{
+    ui->frontLabel->hide();
+    ui->backLabel->hide();
+    ui->upLabel->hide();
+    ui->downLabel->hide();
+    ui->rightLabel->hide();
+    ui->leftLabel->hide();
+
+    ui->openGLWidget->show();
+    ui->moveCubeLeft->show();
+    ui->moveCubeRight->show();
+    ui->flipButton->show();
+}
 
 

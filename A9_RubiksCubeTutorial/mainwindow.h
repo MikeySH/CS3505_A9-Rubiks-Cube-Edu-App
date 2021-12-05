@@ -39,5 +39,7 @@ private slots:
     void on_moveCubeRight_clicked();
     // evoked when flip button clicked - flips cube
     void on_flipButton_clicked();
+    void on_perspective2DButton_clicked();
+    void on_perspective3DButton_clicked();
 };
 #endif // MAINWINDOW_H

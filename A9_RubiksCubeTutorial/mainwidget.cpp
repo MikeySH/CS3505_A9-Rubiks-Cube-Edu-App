@@ -68,15 +68,15 @@ MainWidget::~MainWidget()
 void MainWidget::keyPressEvent(QKeyEvent *event){
     angularSpeed += 0;
     int angle = 0;
-    if( event->key() == Qt::Key_Up ){
-        rotationAxis = (QVector3D(1,0,0)).normalized();
-        angle = 45;
-    }
-    else if( event->key() == Qt::Key_Down ){
-        rotationAxis = (QVector3D(-1,0,0)).normalized();
-        angle = 45;
-    }
-    else if( event->key() == Qt::Key_Right ){
+//    if( event->key() == Qt::Key_Up ){
+//        rotationAxis = (QVector3D(1,0,0)).normalized();
+//        angle = 45;
+//    }
+//    else if( event->key() == Qt::Key_Down ){
+//        rotationAxis = (QVector3D(-1,0,0)).normalized();
+//        angle = 45;
+//    }
+    if( event->key() == Qt::Key_Right ){
         rotateCubeRight();
     }
     else if( event->key() == Qt::Key_Left ){
@@ -89,48 +89,6 @@ void MainWidget::keyPressEvent(QKeyEvent *event){
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
     update();
 }
-
-
-//! [0]
-void MainWidget::mousePressEvent(QMouseEvent *e)
-{
-    // Save mouse press position
-    mousePressPosition = QVector2D(e->position());
-    QVector2D diff = QVector2D(e->position()) - mousePressPosition;
-
-    // Rotation axis is perpendicular to the mouse position difference
-    // vector
-    QVector3D n = QVector3D(diff.y(), diff.x(), 0.0).normalized();
-
-    // Accelerate angular speed relative to the length of the mouse sweep
-    qreal acc = diff.length() / 50.0;
-
-    // Calculate new rotation axis as weighted sum
-    rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
-
-    // Increase angular speed
-    angularSpeed += acc;
-}
-
-void MainWidget::mouseReleaseEvent(QMouseEvent *e)
-{
-    // Mouse release position - mouse press position
-    QVector2D diff = QVector2D(e->position()) - mousePressPosition;
-
-    // Rotation axis is perpendicular to the mouse position difference
-    // vector
-    QVector3D n = QVector3D(diff.y(), diff.x(), 0.0).normalized();
-
-    // Accelerate angular speed relative to the length of the mouse sweep
-    qreal acc = diff.length() / 100.0;
-
-    // Calculate new rotation axis as weighted sum
-    rotationAxis = (n * acc).normalized();
-
-    // Increase angular speed
-    angularSpeed += acc;
-}
-//! [0]
 
 //! [1]
 void MainWidget::timerEvent(QTimerEvent *)
@@ -173,13 +131,8 @@ void MainWidget::initializeGL()
     timer.start(12, this);
 
     // start cube at 3-sided view
-    rotation = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
-
-//    rotationAxis = (QVector3D(0,-1,0)).normalized();
-//    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
-//    rotationAxis = (QVector3D(1,0,0)).normalized();
-//    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
-
+    startingPosition = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
+    rotation = startingPosition;
 }
 
 //! [3]
@@ -277,43 +230,25 @@ void MainWidget::setNewImage(QImage newimg){
     update();
 }
 
+
+/*!
+ * \brief MainWidget::resetCubePos Resets the cube to its starting position when reset button is pressed.
+ */
 void MainWidget::resetCubePos(){
-    rotation = QQuaternion::fromEulerAngles(QVector3D(30,-54.7356,-35.2644));
+    rotation = startingPosition;
     angularSpeed = 0;
     update();
 }
-
-
 
 /*!
  * \brief rotateCubeLeft rotates current cube fully left
  */
 void MainWidget::rotateCubeLeft(){
-    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
-    keyPressEvent(event);
-
+    rotateCubeDown();
     for(int i =0 ; i<2 ; i++){
         rotateRightBy90();
     }
-
-    event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
-    keyPressEvent(event);
-    delete event;
-
-}
-
-/*!
- * \brief MainWidget::flipCube defines how to flip cube
- */
-void MainWidget::flipCube(){
-    QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
-
-
-    for(int i =0 ; i<4 ; i++){
-         keyPressEvent(event);
-    }
-
-    delete event;
+    rotateCubeUp();
 }
 
 /*!
@@ -323,6 +258,7 @@ void MainWidget::rotateCubeRight(){
    for(int i =0 ; i<3; i++)
        rotateCubeLeft();
 }
+
 /*!
  * \brief MainWidget::rotateRightBy90 rotates rubix from face to face - or 90 degrees
  */
@@ -331,5 +267,32 @@ void MainWidget::rotateRightBy90(){
     int angle = 45;
     // Update rotation
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angle) * rotation;
+    update();
+}
+
+/*!
+ * \brief MainWidget::flipCube defines how to flip cube
+ */
+void MainWidget::flipCube(){
+    for(int i =0 ; i<4 ; i++){
+         rotateCubeDown();
+    }
+}
+
+/*!
+ * \brief MainWidget::rotateCubeUp rotates rubix up
+ */
+void MainWidget::rotateCubeUp(){
+    rotationAxis = (QVector3D(1,0,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
+    update();
+}
+
+/*!
+ * \brief MainWidget::rotateCubeDown rotates rubix down
+ */
+void MainWidget::rotateCubeDown(){
+    rotationAxis = (QVector3D(-1,0,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
     update();
 }

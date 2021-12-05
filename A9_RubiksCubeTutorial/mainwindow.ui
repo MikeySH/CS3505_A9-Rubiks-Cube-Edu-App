@@ -17,8 +17,8 @@
    <widget class="QLabel" name="leftLabel">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>150</y>
+      <x>90</x>
+      <y>210</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -33,8 +33,8 @@
    <widget class="QLabel" name="frontLabel">
     <property name="geometry">
      <rect>
-      <x>151</x>
-      <y>150</y>
+      <x>210</x>
+      <y>210</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -49,8 +49,8 @@
    <widget class="QLabel" name="rightLabel">
     <property name="geometry">
      <rect>
-      <x>272</x>
-      <y>150</y>
+      <x>330</x>
+      <y>210</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -65,8 +65,8 @@
    <widget class="QLabel" name="downLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>271</y>
+      <x>210</x>
+      <y>330</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -81,8 +81,8 @@
    <widget class="QLabel" name="upLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>29</y>
+      <x>210</x>
+      <y>90</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -97,8 +97,8 @@
    <widget class="QLabel" name="backLabel">
     <property name="geometry">
      <rect>
-      <x>393</x>
-      <y>150</y>
+      <x>450</x>
+      <y>210</y>
       <width>120</width>
       <height>120</height>
      </rect>
@@ -113,10 +113,10 @@
    <widget class="QPushButton" name="resetButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>113</width>
-      <height>32</height>
+      <x>20</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -129,8 +129,8 @@
    <widget class="QPushButton" name="fButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>50</y>
+      <x>180</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -145,8 +145,8 @@
    <widget class="QPushButton" name="rButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>50</y>
+      <x>280</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -161,8 +161,8 @@
    <widget class="QPushButton" name="uButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>50</y>
+      <x>330</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -177,8 +177,8 @@
    <widget class="QPushButton" name="bButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>50</y>
+      <x>230</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -193,8 +193,8 @@
    <widget class="QPushButton" name="lButton">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>50</y>
+      <x>380</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -209,8 +209,8 @@
    <widget class="QPushButton" name="dButton">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>50</y>
+      <x>430</x>
+      <y>540</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -225,8 +225,8 @@
    <widget class="QPushButton" name="dPrimeButton">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>80</y>
+      <x>430</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -241,8 +241,8 @@
    <widget class="QPushButton" name="lPrimeButton">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>80</y>
+      <x>380</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -257,8 +257,8 @@
    <widget class="QPushButton" name="fPrimeButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>80</y>
+      <x>180</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -273,8 +273,8 @@
    <widget class="QPushButton" name="rPrimeButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>80</y>
+      <x>280</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -289,8 +289,8 @@
    <widget class="QPushButton" name="uPrimeButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>80</y>
+      <x>330</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -305,8 +305,8 @@
    <widget class="QPushButton" name="bPrimeButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>80</y>
+      <x>230</x>
+      <y>570</y>
       <width>40</width>
       <height>32</height>
      </rect>
@@ -321,10 +321,10 @@
    <widget class="QPushButton" name="scrambleButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>360</y>
-      <width>113</width>
-      <height>32</height>
+      <x>20</x>
+      <y>70</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -337,10 +337,10 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>0</y>
+      <x>640</x>
+      <y>130</y>
       <width>161</width>
-      <height>131</height>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -395,18 +395,18 @@
    <widget class="MainWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>90</y>
-      <width>381</width>
-      <height>281</height>
+      <x>120</x>
+      <y>100</y>
+      <width>421</width>
+      <height>321</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="moveCubeLeft">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>400</y>
+      <x>210</x>
+      <y>430</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -421,8 +421,8 @@
    <widget class="QPushButton" name="moveCubeRight">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>400</y>
+      <x>320</x>
+      <y>430</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -437,14 +437,49 @@
    <widget class="QPushButton" name="flipButton">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>450</y>
+      <x>260</x>
+      <y>480</y>
       <width>113</width>
       <height>32</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="text">
      <string>flip</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="perspective2DButton">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>50</y>
+      <width>71</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="text">
+     <string>2D</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="perspective3DButton">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>50</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="text">
+     <string>3D</string>
     </property>
    </widget>
   </widget>
@@ -454,7 +489,7 @@
      <x>0</x>
      <y>0</y>
      <width>1004</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
