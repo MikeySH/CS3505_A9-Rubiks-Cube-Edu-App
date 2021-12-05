@@ -19,6 +19,7 @@ Faces::Faces(QColor thisOriginalColor, QString name)
 Faces::Faces(const Faces& other)
 {
     this->colorPicture = other.colorPicture;
+    this->name = other.name;
 }
 
 /*!

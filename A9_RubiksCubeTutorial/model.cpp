@@ -66,6 +66,7 @@ void Model::updateFaces(){
     makeGrid(down);
     makeGrid(left);
     makeGrid(right);
+
     save();
 }
 
@@ -414,8 +415,11 @@ void Model::save(){
 
 void Model::rotateRight(){
     //front -> right -> back -> left
+    cout <<left.getName().toStdString() <<endl;
     Faces temp = left;
     left = back;
+
+    cout <<left.getName().toStdString() <<endl;
     back = right;
     right = front;
     front  = temp;
@@ -429,5 +433,4 @@ void Model::rotateLeft(){
     for(int i = 0; i<3; i++){
         rotateRight();
     }
-    updateFaces();
 }

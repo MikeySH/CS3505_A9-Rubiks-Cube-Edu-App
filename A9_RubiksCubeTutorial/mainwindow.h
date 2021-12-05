@@ -31,7 +31,6 @@ private:
 
 signals:
     void saveName();
-
     void rotateRight();
     void rotateLeft();
 

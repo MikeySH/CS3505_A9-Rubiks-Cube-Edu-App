@@ -33,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);
 
 
-
     //model to widget ------------
     connect(&modelObj, &Model::sendImage, ui->openGLWidget, &MainWidget::setNewImage);
     connect(&modelObj, &Model::resetCube, ui->openGLWidget, &MainWidget::resetCubePos);
@@ -143,6 +142,7 @@ void MainWindow::on_perspective3DButton_clicked()
     ui->moveCubeLeft->show();
     ui->moveCubeRight->show();
     ui->flipButton->show();
+    ui->openGLWidget->update();
 }
 
 
