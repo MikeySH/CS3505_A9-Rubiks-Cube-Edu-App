@@ -72,6 +72,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     else if( event->key() == Qt::Key_Left ){
         emit rotateLeft();
     }
+    else if( event->key() == Qt::Key_Space ){
+        emit rotateFlip();
+    }
    ui->openGLWidget->keyPressEvent(event);
 }
 
@@ -112,7 +115,6 @@ void MainWindow::on_flipButton_clicked()
 {
     QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
-    emit rotateFlip();
 }
 
 void MainWindow::on_perspective2DButton_clicked()
