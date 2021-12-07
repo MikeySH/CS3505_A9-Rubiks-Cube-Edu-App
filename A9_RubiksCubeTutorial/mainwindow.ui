@@ -492,7 +492,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="img2Label">
@@ -505,7 +505,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>2</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="img3Label">
@@ -518,7 +518,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>3</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="solvedLabel">
@@ -531,7 +531,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>solvedLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="hintLabel">
@@ -597,7 +597,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>step1</string>
+     <string>Step 1: </string>
     </property>
    </widget>
    <widget class="QLabel" name="step2Label">
@@ -610,7 +610,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>step1</string>
+     <string>Step 2:</string>
     </property>
    </widget>
    <widget class="QLabel" name="step3Label">
@@ -623,7 +623,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>step1</string>
+     <string>Step 3:</string>
     </property>
    </widget>
   </widget>
@@ -633,7 +633,7 @@
      <x>0</x>
      <y>0</y>
      <width>1294</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
