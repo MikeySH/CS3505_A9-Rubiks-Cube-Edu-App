@@ -221,6 +221,15 @@ void MainWindow::drawWhiteCrossStep(){
     ui->step2Label->show();
     ui->step3Label->show();
 
+    ui->case1Label->show();
+   // ui->case2Label->show();
+    ui->case3Label->show();
+    ui->case1Label->setText("R' F'");
+   //ui->case2Label->setText("asdfa");
+    ui->case3Label->setText("Line up with color and turn twice on the face");
+
+
+
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
@@ -239,6 +248,13 @@ void MainWindow::drawWhiteCornersStep(){
     ui->step1Label->show();
     ui->step2Label->show();
     ui->step3Label->show();
+
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->show();
+    ui->case1Label->setText("R' D' R D R' D' R D R' D' R");
+    ui->case2Label->setText("F D F'");
+    ui->case3Label->setText("R' D' R");
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -259,6 +275,12 @@ void MainWindow::drawSecondLayerStep(){
     ui->step2Label->show();
     ui->step3Label->show();
 
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->hide();
+    ui->case1Label->setText("U R U' R' U' F' U F");
+    ui->case2Label->setText("U' L' U L U F U' F'");
+
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
@@ -277,6 +299,13 @@ void MainWindow::drawYellowCrossStep(){
     ui->step1Label->show();
     ui->step2Label->show();
     ui->step3Label->show();
+
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->show();
+    ui->case1Label->setText("F U R U' R' F' U F R U R' U' F'");
+    ui->case2Label->setText("F R U R' U' F'");
+    ui->case3Label->setText("F U R U' R' F'");
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -298,6 +327,11 @@ void MainWindow::drawYellowCornerStep(){
     ui->step1Label->show();
     ui->step2Label->hide();
     ui->step3Label->hide();
+
+    ui->case1Label->show();
+    ui->case2Label->hide();
+    ui->case3Label->hide();
+    ui->case1Label->setText("R U R' U R U2 R'");
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/2.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
@@ -321,6 +355,13 @@ void MainWindow::drawThirdLayerStep(){
     ui->step2Label->show();
     ui->step3Label->hide();
 
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->show();
+    ui->case1Label->setText("U2 R' F R' B2 R F' R' B2 R2");
+    ui->case2Label->setText("F2 U R' L F2 R L' U F2");
+    ui->case3Label->setText("F2 U' R' L F2 R L' U' F2");
+
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
@@ -334,6 +375,7 @@ void MainWindow::showAllStepLables(){
     ui->img1Label->show();
     ui->img2Label->show();
     ui->img3Label->show();
+    ui->stepComboBox->show();
 }
 
 /*!
@@ -344,6 +386,10 @@ void MainWindow::hideAllStepLabels(){
     ui->step2Label->hide();
     ui->step3Label->hide();
     ui->hintLabel->hide();
+    ui->case1Label->hide();
+    ui->case2Label->hide();
+    ui->case3Label->hide();
+    ui->stepComboBox->hide();
 }
 
 /*!

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1294</width>
-    <height>758</height>
+    <height>815</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -364,7 +364,7 @@
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>480</y>
+      <y>560</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -380,7 +380,7 @@
     <property name="geometry">
      <rect>
       <x>950</x>
-      <y>480</y>
+      <y>560</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -525,7 +525,7 @@
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>290</y>
+      <y>370</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -538,7 +538,7 @@
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>590</y>
+      <y>640</y>
       <width>471</width>
       <height>81</height>
      </rect>
@@ -552,38 +552,38 @@
      <rect>
       <x>970</x>
       <y>30</y>
-      <width>69</width>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
     <item>
      <property name="text">
-      <string>Step 1</string>
+      <string>White Cross</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Step 2</string>
+      <string>White Corners</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Step 3</string>
+      <string>Second Layer</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Step 4</string>
+      <string>Yellow Cross</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Step 5</string>
+      <string>Yellow Corners</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Step 6</string>
+      <string>Third Layer</string>
      </property>
     </item>
    </widget>
@@ -626,6 +626,54 @@
      <string>Step 3:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="case1Label">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>310</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="case2Label">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>310</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="case3Label">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>310</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -633,7 +681,7 @@
      <x>0</x>
      <y>0</y>
      <width>1294</width>
-     <height>24</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
