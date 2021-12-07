@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-       ui->widget->show();
-       ui->openGLWidget->show();
+    ui->widget->show();
+    ui->openGLWidget->show();
 
 
     // connection for sending grids to the faces
@@ -32,6 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::rotateRight, &modelObj, &Model::rotateRight);
     connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);
     connect(this, &MainWindow::rotateFlip, &modelObj, &Model::rotateFlip);
+    connect(ui->learnButton, &QPushButton::clicked, &modelObj, &Model::startTutorial);
+    connect(ui->lastButtonStep, &QPushButton::clicked, &modelObj, &Model::decrementStep);
+    connect(ui->nextStepButton, &QPushButton::clicked, &modelObj, &Model::incrementStep);
+
+    // model to View
+    connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);
 
 
     //model to widget ------------
@@ -75,7 +81,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     else if( event->key() == Qt::Key_Space ){
         emit rotateFlip();
     }
-   ui->openGLWidget->keyPressEvent(event);
+    ui->openGLWidget->keyPressEvent(event);
 }
 
 
@@ -105,7 +111,7 @@ void MainWindow::on_moveCubeRight_clicked()
 {
     QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
-\
+    \
 }
 
 /*!
@@ -149,4 +155,42 @@ void MainWindow::on_perspective3DButton_clicked()
     ui->openGLWidget->update();
 }
 
+void MainWindow::showCurrentStep(int stepIndex){
+    switch (stepIndex){
+    case 0:
+        ui->img1Label->show();
+        ui->img2Label->show();
+        ui->img3Label->show();
+        ui->solvedLabel->show();
 
+        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+        break;
+    case 1:
+        ui->img1Label->show();
+        ui->img2Label->show();
+        ui->img3Label->show();
+        ui->solvedLabel->show();
+
+        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Corners/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+        break;
+    case 2:
+        break;
+    case 3:
+        //emit
+        break;
+    case 4:
+        //emit
+        break;
+    case 5:
+        //emit
+        break;
+
+    }
+}

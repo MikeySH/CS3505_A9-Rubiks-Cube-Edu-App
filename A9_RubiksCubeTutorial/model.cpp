@@ -402,16 +402,29 @@ void Model::save(){
        painter.drawLine(0, y, pixmap.width(), y);
    }
 
-
    newimg = pixmap.toImage();
    newimg.save("filename");
    emit sendImage(newimg);
 }
 
-//void Model::incrementStep(){
-//    currStep++;
-//    emit sendStep(steps[currStep]);
-//}
+void Model::startTutorial(){
+    currStep = 0;
+    emit sendStep(currStep);
+}
+
+void Model::incrementStep(){
+    if (currStep <= 5){
+        currStep++;
+    }
+    emit sendStep(currStep);
+}
+
+void Model::decrementStep(){
+    if (currStep > 0){
+        currStep--;
+    }
+    emit sendStep(currStep);
+}
 
 void Model::rotateRight(){
     //front -> right -> back -> left

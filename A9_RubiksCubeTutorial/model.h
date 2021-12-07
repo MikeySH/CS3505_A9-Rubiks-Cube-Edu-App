@@ -21,7 +21,6 @@ public:
     Faces left;
     Faces right;
 
-    QVector<QString> steps;
     int currStep;
 
 private:
@@ -62,8 +61,13 @@ public slots:
     void resetFaces();
 
     void save();
-    // changes current step
-   // void incrementStep();
+    // increments current step
+    void incrementStep();
+
+    // decrements current step
+    void decrementStep();
+
+    void startTutorial();
 
     void rotateRight();
     void rotateLeft();
@@ -83,7 +87,7 @@ signals:
     // signal that handles sending the right face of cube
     void sendRightGrid(QPixmap);
    // update step label
-   // void sendStep(QString);
+    void sendStep(int);
 
 
     void sendImage(QImage);

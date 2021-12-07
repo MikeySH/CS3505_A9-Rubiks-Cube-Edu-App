@@ -23,6 +23,7 @@ public:
     ~MainWindow();
 
 
+
 private:
     Ui::MainWindow *ui;
     Model modelObj;
@@ -34,6 +35,7 @@ signals:
     void rotateRight();
     void rotateLeft();
     void rotateFlip();
+    void initiateTutorial();
 
 private slots:
     // reacts when left button is selected  - moves 3d cube left by one face
@@ -44,5 +46,8 @@ private slots:
     void on_flipButton_clicked();
     void on_perspective2DButton_clicked();
     void on_perspective3DButton_clicked();
+
+public slots:
+    void showCurrentStep(int);
 };
 #endif // MAINWINDOW_H
