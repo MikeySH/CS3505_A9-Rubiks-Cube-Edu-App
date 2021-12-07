@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1294</width>
+    <width>1349</width>
     <height>815</height>
    </rect>
   </property>
@@ -337,8 +337,8 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>1110</x>
-      <y>160</y>
+      <x>1180</x>
+      <y>240</y>
       <width>161</width>
       <height>431</height>
      </rect>
@@ -680,7 +680,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1294</width>
+     <width>1349</width>
      <height>33</height>
     </rect>
    </property>

@@ -22,6 +22,10 @@ Faces::Faces(const Faces& other)
     this->name = other.name;
 }
 
+//void Faces::setColor(int x, int y, QColor color){
+//    colorPicture.setPixelColor(x,y,color);
+//}
+
 /*!
  * \brief Faces::getColorCorrespondingToInt Returns color at given pixel of face
  * \param x x pos of color inquiry

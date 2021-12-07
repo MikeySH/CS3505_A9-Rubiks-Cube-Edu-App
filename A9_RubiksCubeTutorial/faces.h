@@ -20,6 +20,8 @@ public:
     Faces(QColor, QString);
     Faces(const Faces&);
 
+    //void setColor(int, int, QColor);
+
 
     // swap methods
     QVector<QColor> swapRow(int,  QVector<QColor> );
