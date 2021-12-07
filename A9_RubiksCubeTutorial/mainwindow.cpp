@@ -15,10 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->widget->show();
     ui->openGLWidget->show();
-    ui->step1Label->hide();
-    ui->step2Label->hide();
-    ui->step3Label->hide();
-    ui->hintLabel->hide();
+    hideAllStepLabels();
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -158,96 +155,165 @@ void MainWindow::on_perspective3DButton_clicked()
     ui->openGLWidget->update();
 }
 
+/*!
+ * \brief MainWindow::showCurrentStep draws whatever step is requested by model
+ * \param stepIndex the ith step we are on
+ */
 void MainWindow::showCurrentStep(int stepIndex){
     switch (stepIndex){
     case 0:
-        ui->img1Label->show();
-        ui->img2Label->show();
-        ui->img3Label->show();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->show();
-        ui->step3Label->show();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
+        // white cross
+      drawWhiteCrossStep();
         break;
     case 1:
-        ui->img1Label->show();
-        ui->img2Label->show();
-        ui->img3Label->show();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->show();
-        ui->step3Label->show();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Corners/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+        // white corners
+        drawWhiteCornersStep();
         break;
     case 2:
-        ui->img1Label->show();
-        ui->img2Label->show();
-        ui->img3Label->show();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->show();
-        ui->step3Label->show();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-        break;
+        // 2nd layer
+        drawSecondLayerStep();
+       break;
     case 3:
-        ui->img1Label->show();
-        ui->img2Label->show();
-        ui->img3Label->show();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->show();
-        ui->step3Label->show();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-        ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-        break;
+        // yellow cross
+        drawYellowCrossStep();
+      break;
     case 4:
-        ui->img1Label->show();
-        ui->img2Label->hide();
-        ui->img3Label->hide();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->hide();
-        ui->step3Label->hide();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/2.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-        break;
+        // yellow corners
+        drawYellowCornerStep();
+       break;
     case 5:
-        ui->img1Label->show();
-        ui->img2Label->show();
-        ui->img3Label->hide();
-        ui->solvedLabel->show();
-
-        ui->step1Label->show();
-        ui->step2Label->show();
-        ui->step3Label->hide();
-
-        ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-        ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-        ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-        break;
+        // 3rd layer
+        drawThirdLayerStep();
+       break;
 
     }
+
+}
+
+/*!
+ * \brief MainWindow::drawCase0 method draws the correct labels, etc when model tells view it is on step 1 of learning
+ */
+void MainWindow::drawWhiteCrossStep(){
+   showAllStepLables();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->show();
+    ui->step3Label->show();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::drawCase1 method draws the correct labels, etc when model tells view it is on step 2 of learning
+ */
+void MainWindow::drawWhiteCornersStep(){
+  showAllStepLables();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->show();
+    ui->step3Label->show();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Corners/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::drawCase2 method draws the correct labels, etc when model tells view it is on step 2 of learning
+ */
+void MainWindow::drawSecondLayerStep(){
+   showAllStepLables();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->show();
+    ui->step3Label->show();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::drawCase3 method draws the correct labels, etc when model tells view it is on step 4 of learning
+ */
+void MainWindow::drawYellowCrossStep(){
+   showAllStepLables();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->show();
+    ui->step3Label->show();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::drawCase4 method draws the correct labels, etc when model tells view it is on step 5 of learning
+ */
+void MainWindow::drawYellowCornerStep(){
+    ui->img1Label->show();
+    ui->img2Label->hide();
+    ui->img3Label->hide();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->hide();
+    ui->step3Label->hide();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/2.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::drawCase5 method draws the correct labels, etc when model tells view it is on step 6 of learning
+ */
+void MainWindow::drawThirdLayerStep(){
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->hide();
+    ui->solvedLabel->show();
+
+    ui->step1Label->show();
+    ui->step2Label->show();
+    ui->step3Label->hide();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+
+}
+
+/*!
+ * \brief MainWindow::showAllStepLables method draws labels that shows "step 1", "step 2", "step 3"
+ */
+void MainWindow::showAllStepLables(){
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+}
+
+/*!
+ * \brief MainWindow::hideAllStepLabels method hides all step labels that show "step 1", "step 2", "step 3"
+ */
+void MainWindow::hideAllStepLabels(){
+    ui->step1Label->hide();
+    ui->step2Label->hide();
+    ui->step3Label->hide();
+    ui->hintLabel->hide();
 }
