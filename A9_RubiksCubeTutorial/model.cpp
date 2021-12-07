@@ -412,6 +412,9 @@ void Model::startTutorial(){
     emit sendStep(currStep);
 }
 
+/*!
+ * \brief Model::incrementStep method goes one step forward and updates view
+ */
 void Model::incrementStep(){
     if (currStep <= 5){
         currStep++;
@@ -419,10 +422,22 @@ void Model::incrementStep(){
     emit sendStep(currStep);
 }
 
+/*!
+ * \brief Model::decrementStep method goes one step back and updates view
+ */
 void Model::decrementStep(){
     if (currStep > 0){
         currStep--;
     }
+    emit sendStep(currStep);
+}
+
+/*!
+ * \brief Model::setStep method takes in steps and send updated step to view
+ * \param i the ith step we are setting
+ */
+void Model::setStep(int i) {
+    currStep = i;
     emit sendStep(currStep);
 }
 

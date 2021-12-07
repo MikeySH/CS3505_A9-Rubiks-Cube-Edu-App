@@ -35,9 +35,9 @@ private:
     void drawYellowCrossStep();
     void drawYellowCornerStep();
     void drawThirdLayerStep();
-
     void showAllStepLables();
     void hideAllStepLabels();
+    void enableLastAndNextStepButtons();
 
 
 signals:
@@ -56,6 +56,8 @@ private slots:
     void on_flipButton_clicked();
     void on_perspective2DButton_clicked();
     void on_perspective3DButton_clicked();
+
+    void on_learnButton_clicked();
 
 public slots:
     void showCurrentStep(int);

@@ -63,7 +63,8 @@ public slots:
     void save();
     // increments current step
     void incrementStep();
-
+    // set index of step
+    void setStep(int);
     // decrements current step
     void decrementStep();
 

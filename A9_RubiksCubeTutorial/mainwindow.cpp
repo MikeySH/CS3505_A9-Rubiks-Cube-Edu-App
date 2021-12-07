@@ -15,7 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->widget->show();
     ui->openGLWidget->show();
+
+    ui->lastButtonStep->hide();
+    ui->nextStepButton->hide();
+
     hideAllStepLabels();
+
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -35,6 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->learnButton, &QPushButton::clicked, &modelObj, &Model::startTutorial);
     connect(ui->lastButtonStep, &QPushButton::clicked, &modelObj, &Model::decrementStep);
     connect(ui->nextStepButton, &QPushButton::clicked, &modelObj, &Model::incrementStep);
+    connect(ui->stepComboBox, &QComboBox::activated, &modelObj, &Model::setStep);
+
+    // view to view
+    connect(ui->stepComboBox, &QComboBox::activated, this, &MainWindow::on_learnButton_clicked);
 
     // model to View
     connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);
@@ -160,32 +169,40 @@ void MainWindow::on_perspective3DButton_clicked()
  * \param stepIndex the ith step we are on
  */
 void MainWindow::showCurrentStep(int stepIndex){
+
+    ui->stepComboBox->setCurrentIndex(stepIndex);
+
     switch (stepIndex){
     case 0:
+
         // white cross
-      drawWhiteCrossStep();
+        drawWhiteCrossStep();
         break;
     case 1:
+
         // white corners
         drawWhiteCornersStep();
         break;
     case 2:
+
         // 2nd layer
         drawSecondLayerStep();
-       break;
+        break;
     case 3:
+
         // yellow cross
         drawYellowCrossStep();
-      break;
+        break;
     case 4:
+
         // yellow corners
         drawYellowCornerStep();
-       break;
+        break;
     case 5:
+
         // 3rd layer
         drawThirdLayerStep();
-       break;
-
+        break;
     }
 
 }
@@ -194,7 +211,10 @@ void MainWindow::showCurrentStep(int stepIndex){
  * \brief MainWindow::drawCase0 method draws the correct labels, etc when model tells view it is on step 1 of learning
  */
 void MainWindow::drawWhiteCrossStep(){
-   showAllStepLables();
+    ui->lastButtonStep->setEnabled(false);
+    ui->nextStepButton->setEnabled(true);
+
+    showAllStepLables();
     ui->solvedLabel->show();
 
     ui->step1Label->show();
@@ -212,7 +232,8 @@ void MainWindow::drawWhiteCrossStep(){
  * \brief MainWindow::drawCase1 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawWhiteCornersStep(){
-  showAllStepLables();
+    showAllStepLables();
+    enableLastAndNextStepButtons();
     ui->solvedLabel->show();
 
     ui->step1Label->show();
@@ -230,7 +251,8 @@ void MainWindow::drawWhiteCornersStep(){
  * \brief MainWindow::drawCase2 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawSecondLayerStep(){
-   showAllStepLables();
+    enableLastAndNextStepButtons();
+    showAllStepLables();
     ui->solvedLabel->show();
 
     ui->step1Label->show();
@@ -248,7 +270,8 @@ void MainWindow::drawSecondLayerStep(){
  * \brief MainWindow::drawCase3 method draws the correct labels, etc when model tells view it is on step 4 of learning
  */
 void MainWindow::drawYellowCrossStep(){
-   showAllStepLables();
+    enableLastAndNextStepButtons();
+    showAllStepLables();
     ui->solvedLabel->show();
 
     ui->step1Label->show();
@@ -266,6 +289,7 @@ void MainWindow::drawYellowCrossStep(){
  * \brief MainWindow::drawCase4 method draws the correct labels, etc when model tells view it is on step 5 of learning
  */
 void MainWindow::drawYellowCornerStep(){
+    enableLastAndNextStepButtons();
     ui->img1Label->show();
     ui->img2Label->hide();
     ui->img3Label->hide();
@@ -284,6 +308,10 @@ void MainWindow::drawYellowCornerStep(){
  * \brief MainWindow::drawCase5 method draws the correct labels, etc when model tells view it is on step 6 of learning
  */
 void MainWindow::drawThirdLayerStep(){
+    ui->lastButtonStep->setEnabled(true);
+    ui->nextStepButton->setEnabled(false);
+
+
     ui->img1Label->show();
     ui->img2Label->show();
     ui->img3Label->hide();
@@ -317,3 +345,21 @@ void MainWindow::hideAllStepLabels(){
     ui->step3Label->hide();
     ui->hintLabel->hide();
 }
+
+/*!
+ * \brief MainWindow::on_learnButton_clicked show all buttons related to steps when clicked
+ */
+void MainWindow::on_learnButton_clicked()
+{
+    ui->lastButtonStep->show();
+    ui->nextStepButton->show();
+}
+
+/*!
+ * \brief MainWindow::enableLastAndNextStepButtons enables both next step and previous step buttons
+ */
+void MainWindow::enableLastAndNextStepButtons(){
+    ui->lastButtonStep->setEnabled(true);
+    ui->nextStepButton->setEnabled(true);
+}
+
