@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>me.png</file>
+        <file>cube.png</file>
+        <file>Yellow Cross/1.png</file>
+        <file>Yellow Cross/2.png</file>
+        <file>Yellow Cross/3.png</file>
+        <file>Yellow Cross/4.png</file>
+        <file>Yellow Corners/1.png</file>
+        <file>Yellow Corners/2.png</file>
+        <file>White Cross/1.png</file>
+        <file>White Cross/2.png</file>
+        <file>White Cross/3.png</file>
+        <file>White Cross/4.png</file>
+        <file>White Corners/1.png</file>
+        <file>White Corners/2.png</file>
+        <file>White Corners/3.png</file>
+        <file>White Corners/4.png</file>
+        <file>Third Layer/1.png</file>
+        <file>Third Layer/2.png</file>
+        <file>Third Layer/3.png</file>
+        <file>White Corners/1.png</file>
+        <file>White Corners/2.png</file>
+        <file>White Corners/3.png</file>
+        <file>White Corners/4.png</file>
+        <file>Second Layer/1.png</file>
+        <file>Second Layer/2.png</file>
+        <file>Second Layer/3.png</file>
+        <file>Second Layer/4.png</file>
+    </qresource>
+</RCC>

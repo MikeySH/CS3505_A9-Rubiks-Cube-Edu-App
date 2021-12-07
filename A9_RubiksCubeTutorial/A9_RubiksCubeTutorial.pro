@@ -37,7 +37,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    image.qrc \
+    images.qrc \
     shaders.qrc
 
 macx|win32: LIBS += -L$$PWD/box2d/ -lbox2d
