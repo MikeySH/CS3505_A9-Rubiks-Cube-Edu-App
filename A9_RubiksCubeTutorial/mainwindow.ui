@@ -337,10 +337,10 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>1180</x>
-      <y>240</y>
+      <x>1170</x>
+      <y>340</y>
       <width>161</width>
-      <height>431</height>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -538,9 +538,9 @@
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>640</y>
+      <y>620</y>
       <width>471</width>
-      <height>81</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="text">
@@ -681,7 +681,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
