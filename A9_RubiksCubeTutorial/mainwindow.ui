@@ -123,7 +123,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="text">
-     <string>resetButton</string>
+     <string>Reset</string>
     </property>
    </widget>
    <widget class="QPushButton" name="fButton">
@@ -331,7 +331,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="text">
-     <string>scramble</string>
+     <string>Scramble</string>
     </property>
    </widget>
    <widget class="SceneWidget" name="widget" native="true">
@@ -373,7 +373,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="text">
-     <string>last step</string>
+     <string>Last Step</string>
     </property>
    </widget>
    <widget class="QPushButton" name="nextStepButton">
@@ -389,7 +389,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="text">
-     <string>next step</string>
+     <string>Next Step</string>
     </property>
    </widget>
    <widget class="MainWidget" name="openGLWidget">
@@ -447,7 +447,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="text">
-     <string>flip</string>
+     <string>Flip</string>
     </property>
    </widget>
    <widget class="QPushButton" name="perspective2DButton">
@@ -776,7 +776,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
