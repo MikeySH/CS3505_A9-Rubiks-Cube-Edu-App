@@ -233,6 +233,7 @@ void MainWindow::drawWhiteCrossStep(){
     ui->lastButtonStep->setEnabled(false);
     ui->nextStepButton->setEnabled(true);
 
+    hideAllStepLabels();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -242,10 +243,8 @@ void MainWindow::drawWhiteCrossStep(){
     ui->hintLabel->show();
 
     ui->case1Label->show();
-   // ui->case2Label->show();
     ui->case3Label->show();
     ui->case1Label->setText("R' F'");
-   //ui->case2Label->setText("asdfa");
     ui->case3Label->setText("Line up with color and turn twice on the face");
     ui->hintLabel->setText("\nThe goal of this first step is to get the 'white cross'. One trick is to get all \n"
                            "the white edges on the same side as the yellow center, then line up the \n"
@@ -265,6 +264,7 @@ void MainWindow::drawWhiteCrossStep(){
  * \brief MainWindow::drawCase1 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawWhiteCornersStep(){
+    hideAllStepLabels();
     showAllStepLables();
     enableLastAndNextStepButtons();
     ui->solvedLabel->show();
@@ -296,6 +296,7 @@ void MainWindow::drawWhiteCornersStep(){
  */
 void MainWindow::drawSecondLayerStep(){
     enableLastAndNextStepButtons();
+    hideAllStepLabels();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -307,7 +308,7 @@ void MainWindow::drawSecondLayerStep(){
 
     ui->case1Label->show();
     ui->case2Label->show();
-    ui->case3Label->hide();
+    //ui->case3Label->hide();
     ui->case1Label->setText("U R U' R' U' F' U F");
     ui->case2Label->setText("U' L' U L U F U' F'");
     ui->hintLabel->setText("\nFlip the cube so yellow is on top, and find an edge that doesn't contain\n"
@@ -329,6 +330,7 @@ void MainWindow::drawSecondLayerStep(){
  */
 void MainWindow::drawYellowCrossStep(){
     enableLastAndNextStepButtons();
+    hideAllStepLabels();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -372,6 +374,7 @@ void MainWindow::drawYellowCornerStep(){
     ui->step2Label->hide();
     ui->step3Label->hide();
     ui->hintLabel->show();
+    ui->goalLabel->show();
 
     ui->case1Label->show();
     ui->case2Label->hide();
@@ -398,13 +401,14 @@ void MainWindow::drawThirdLayerStep(){
 
     ui->img1Label->show();
     ui->img2Label->show();
-    ui->img3Label->hide();
+    ui->img3Label->show();
     ui->solvedLabel->show();
 
     ui->step1Label->show();
     ui->step2Label->show();
     ui->step3Label->show();
     ui->hintLabel->show();
+    ui->goalLabel->show();
 
     ui->case1Label->show();
     ui->case2Label->show();
@@ -422,7 +426,8 @@ void MainWindow::drawThirdLayerStep(){
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
 
 }
 
@@ -434,6 +439,7 @@ void MainWindow::showAllStepLables(){
     ui->img2Label->show();
     ui->img3Label->show();
     ui->stepComboBox->show();
+    ui->goalLabel->show();
 }
 
 /*!
@@ -448,6 +454,7 @@ void MainWindow::hideAllStepLabels(){
     ui->case2Label->hide();
     ui->case3Label->hide();
     ui->stepComboBox->hide();
+    ui->goalLabel->hide();
 }
 
 /*!

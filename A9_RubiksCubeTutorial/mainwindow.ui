@@ -788,7 +788,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Step 1: </string>
+     <string>Case 1: </string>
     </property>
    </widget>
    <widget class="QLabel" name="step2Label">
@@ -808,7 +808,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Step 2:</string>
+     <string>Case 2:</string>
     </property>
    </widget>
    <widget class="QLabel" name="step3Label">
@@ -828,7 +828,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Step 3:</string>
+     <string>Case 3:</string>
     </property>
    </widget>
    <widget class="QLabel" name="case1Label">
@@ -992,6 +992,24 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="goalLabel">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>360</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Silom</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Goal:</string>
     </property>
    </widget>
   </widget>
