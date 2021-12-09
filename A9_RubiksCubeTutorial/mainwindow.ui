@@ -677,79 +677,79 @@
    <widget class="QLabel" name="fArrowLabel">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>260</y>
-      <width>81</width>
-      <height>81</height>
+      <x>240</x>
+      <y>250</y>
+      <width>90</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
-     <string>fArrow</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="rArrowButton">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>470</y>
-      <width>60</width>
-      <height>16</height>
+      <x>350</x>
+      <y>250</y>
+      <width>90</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
-     <string>rArrow</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="uArrowLabel">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>470</y>
-      <width>60</width>
-      <height>16</height>
+      <x>280</x>
+      <y>160</y>
+      <width>110</width>
+      <height>110</height>
      </rect>
     </property>
     <property name="text">
-     <string>uArrow</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="dArrowLabel">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>510</y>
-      <width>60</width>
-      <height>16</height>
+      <x>230</x>
+      <y>310</y>
+      <width>90</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
-     <string>dArrow</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="bArrowLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>510</y>
-      <width>60</width>
-      <height>16</height>
+      <x>330</x>
+      <y>90</y>
+      <width>90</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
-     <string>bArrow</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="lArrowLabel">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>510</y>
-      <width>60</width>
-      <height>16</height>
+      <x>230</x>
+      <y>90</y>
+      <width>90</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
-     <string>lArrow</string>
+     <string/>
     </property>
    </widget>
   </widget>
