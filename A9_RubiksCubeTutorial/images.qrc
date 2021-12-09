@@ -2,12 +2,12 @@
     <qresource prefix="/">
         <file>me.png</file>
         <file>cube.png</file>
-        <file>rubiks3D.png</file>
-        <file>rubiks2D.png</file>
-        <file>leftArrow.png</file>
-        <file>rightArrow.png</file>
-        <file>reset.png</file>
-        <file>shuffle.png</file>
+        <file>misc/rubiks3D.png</file>
+        <file>misc/rubiks2D.png</file>
+        <file>misc/leftArrow.png</file>
+        <file>misc/rightArrow.png</file>
+        <file>misc/reset.png</file>
+        <file>misc/shuffle.png</file>
         <file>Yellow Cross/1.png</file>
         <file>Yellow Cross/2.png</file>
         <file>Yellow Cross/3.png</file>

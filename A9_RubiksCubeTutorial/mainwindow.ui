@@ -134,7 +134,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/reset.png</normaloff>:/reset.png</iconset>
+      <normaloff>:/misc/reset.png</normaloff>:/misc/reset.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -443,7 +443,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/shuffle.png</normaloff>:/shuffle.png</iconset>
+      <normaloff>:/misc/shuffle.png</normaloff>:/misc/shuffle.png</iconset>
     </property>
    </widget>
    <widget class="SceneWidget" name="widget" native="true">
@@ -531,7 +531,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/leftArrow.png</normaloff>:/leftArrow.png</iconset>
+      <normaloff>:/misc/leftArrow.png</normaloff>:/misc/leftArrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -557,7 +557,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/rightArrow.png</normaloff>:/rightArrow.png</iconset>
+      <normaloff>:/misc/rightArrow.png</normaloff>:/misc/rightArrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -613,7 +613,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/rubiks2D.png</normaloff>:/rubiks2D.png</iconset>
+      <normaloff>:/misc/rubiks2D.png</normaloff>:/misc/rubiks2D.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -646,7 +646,7 @@
     </property>
     <property name="icon">
      <iconset resource="images.qrc">
-      <normaloff>:/rubiks3D.png</normaloff>:/rubiks3D.png</iconset>
+      <normaloff>:/misc/rubiks3D.png</normaloff>:/misc/rubiks3D.png</iconset>
     </property>
     <property name="iconSize">
      <size>
