@@ -65,7 +65,7 @@ void SceneWidget::paintEvent(QPaintEvent *) {
    // QColor blank(0,0,0,255);
     //image.fill(blank);
 
-    painter.drawImage((int)(position.x*25), (int)(position.y*25), image);
+    painter.drawImage(0,220, image);
     //painter.drawImage(200, 200, image);
    // qDebug() << image;
     painter.end();

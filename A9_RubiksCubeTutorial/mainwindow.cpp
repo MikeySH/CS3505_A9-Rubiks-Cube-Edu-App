@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lastButtonStep->hide();
     ui->nextStepButton->hide();
 
-    ui->perspective2DButton->setStyleSheet("background-image: :/rubiks3D.png ");
+    ui->hintLabel->setStyleSheet("border-image: url(:/bubble.png);");
+
 
     hideAllStepLabels();
 
@@ -246,7 +247,7 @@ void MainWindow::drawWhiteCrossStep(){
     ui->case1Label->setText("R' F'");
    //ui->case2Label->setText("asdfa");
     ui->case3Label->setText("Line up with color and turn twice on the face");
-    ui->hintLabel->setText("The goal of this first step is to get the 'white cross'. One trick is to get all \n"
+    ui->hintLabel->setText("\nThe goal of this first step is to get the 'white cross'. One trick is to get all \n"
                            "the white edges on the same side as the yellow center, then line up the \n"
                            "other color with its respective center, and turn that side twice. After doing \n"
                            "this with all four white edges, you should have the white cross!");
@@ -279,7 +280,7 @@ void MainWindow::drawWhiteCornersStep(){
     ui->case1Label->setText("R' D' R D R' D' R D R' D' R");
     ui->case2Label->setText("F D F'");
     ui->case3Label->setText("R' D' R");
-    ui->hintLabel->setText("Now we need to put the white corners in. Find a corner piece with white in it, and\n"
+    ui->hintLabel->setText("\nNow we need to put the white corners in. Find a corner piece with white in it, and\n"
                            "line it up with one of the three cases above. Perform that specific algorithm and it\n"
                            "will put the corner in the right spot. Do this four times for all four edges.");
 
@@ -309,7 +310,7 @@ void MainWindow::drawSecondLayerStep(){
     ui->case3Label->hide();
     ui->case1Label->setText("U R U' R' U' F' U F");
     ui->case2Label->setText("U' L' U L U F U' F'");
-    ui->hintLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain\n"
+    ui->hintLabel->setText("\nFlip the cube so yellow is on top, and find an edge that doesn't contain\n"
                            "yellow on it. Line it up with one of the cases above and perform that\n"
                            "algorithm. Do it for all four non-yellow edges. If you don't have a\n"
                            "non-yellow edge on the top and the second layer isn't solved, do one \n"
@@ -342,7 +343,7 @@ void MainWindow::drawYellowCrossStep(){
     ui->case1Label->setText("F U R U' R' F' U F R U R' U' F'");
     ui->case2Label->setText("F R U R' U' F'");
     ui->case3Label->setText("F U R U' R' F'");
-    ui->hintLabel->setText("Now to solve the yellow cross. There are four different cases\n"
+    ui->hintLabel->setText("\nNow to solve the yellow cross. There are four different cases\n"
                            "you can have after solving the second layer: no yellow edges\n"
                            "facing up, two yellow edges in a reverse 'L' shape, two yellow\n"
                            "egdges in a '-' shape, and the yellow cross. If you don't have \n"
@@ -376,7 +377,7 @@ void MainWindow::drawYellowCornerStep(){
     ui->case2Label->hide();
     ui->case3Label->hide();
     ui->case1Label->setText("R U R' U R U2 R'");
-    ui->hintLabel->setText("Now that you have the yellow cross, your goal is to get your cube to have\n"
+    ui->hintLabel->setText("\nNow that you have the yellow cross, your goal is to get your cube to have\n"
                            "one yellow corner up, and the rest out (like the image above). Performing\n"
                            "that algorithm will solve the yellow side. If you have the yellow cross and\n"
                            "you don't have that case, keep doing that algorithm above until you get that\n"
@@ -402,7 +403,7 @@ void MainWindow::drawThirdLayerStep(){
 
     ui->step1Label->show();
     ui->step2Label->show();
-    ui->step3Label->hide();
+    ui->step3Label->show();
     ui->hintLabel->show();
 
     ui->case1Label->show();
@@ -411,7 +412,7 @@ void MainWindow::drawThirdLayerStep(){
     ui->case1Label->setText("U2 R' F R' B2 R F' R' B2 R2");
     ui->case2Label->setText("F2 U R' L F2 R L' U F2");
     ui->case3Label->setText("F2 U' R' L F2 R L' U' F2");
-    ui->hintLabel->setText("You're almost done! Your goal now is to get \"headlights\",\n"
+    ui->hintLabel->setText("\nYou're almost done! Your goal now is to get \"headlights\",\n"
                            "or two corners of the same color together. Perform the first\n"
                            "algorithm above to solve all the corners. If you don't have \n"
                            "headlights, do the first algorithm anywhere and you'll get them.\n"

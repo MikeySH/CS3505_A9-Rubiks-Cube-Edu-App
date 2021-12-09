@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>me.png</file>
         <file>cube.png</file>
+         <file>bubble.png</file>
         <file>misc/rubiks3D.png</file>
         <file>misc/rubiks2D.png</file>
         <file>misc/leftArrow.png</file>

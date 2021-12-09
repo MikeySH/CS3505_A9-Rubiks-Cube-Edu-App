@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1349</width>
-    <height>815</height>
+    <height>1300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -449,8 +449,8 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>1160</x>
-      <y>350</y>
+      <x>1200</x>
+      <y>330</y>
       <width>161</width>
       <height>411</height>
      </rect>
@@ -459,9 +459,9 @@
    <widget class="QPushButton" name="learnButton">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>1130</x>
       <y>30</y>
-      <width>113</width>
+      <width>81</width>
       <height>32</height>
      </rect>
     </property>
@@ -475,8 +475,8 @@
    <widget class="QPushButton" name="lastButtonStep">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>560</y>
+      <x>810</x>
+      <y>460</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -491,8 +491,8 @@
    <widget class="QPushButton" name="nextStepButton">
     <property name="geometry">
      <rect>
-      <x>950</x>
-      <y>560</y>
+      <x>940</x>
+      <y>460</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -658,8 +658,8 @@
    <widget class="QLabel" name="img1Label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>130</y>
+      <x>650</x>
+      <y>70</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -671,8 +671,8 @@
    <widget class="QLabel" name="img2Label">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>130</y>
+      <x>850</x>
+      <y>70</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -684,8 +684,8 @@
    <widget class="QLabel" name="img3Label">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>130</y>
+      <x>1050</x>
+      <y>70</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -697,8 +697,8 @@
    <widget class="QLabel" name="solvedLabel">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>370</y>
+      <x>850</x>
+      <y>280</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -710,10 +710,10 @@
    <widget class="QLabel" name="hintLabel">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>600</y>
-      <width>471</width>
-      <height>131</height>
+      <x>570</x>
+      <y>500</y>
+      <width>621</width>
+      <height>211</height>
      </rect>
     </property>
     <property name="font">
@@ -724,6 +724,9 @@
     <property name="text">
      <string>hintLabel</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
     <property name="wordWrap">
      <bool>true</bool>
     </property>
@@ -731,9 +734,9 @@
    <widget class="QComboBox" name="stepComboBox">
     <property name="geometry">
      <rect>
-      <x>970</x>
+      <x>1210</x>
       <y>30</y>
-      <width>141</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -771,8 +774,8 @@
    <widget class="QLabel" name="step1Label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>90</y>
+      <x>650</x>
+      <y>30</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -791,8 +794,8 @@
    <widget class="QLabel" name="step2Label">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>90</y>
+      <x>850</x>
+      <y>30</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -811,8 +814,8 @@
    <widget class="QLabel" name="step3Label">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>90</y>
+      <x>1050</x>
+      <y>30</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -831,11 +834,16 @@
    <widget class="QLabel" name="case1Label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>310</y>
+      <x>650</x>
+      <y>250</y>
       <width>161</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -850,11 +858,16 @@
    <widget class="QLabel" name="case2Label">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>310</y>
+      <x>850</x>
+      <y>250</y>
       <width>161</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -869,11 +882,16 @@
    <widget class="QLabel" name="case3Label">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>310</y>
+      <x>1050</x>
+      <y>250</y>
       <width>161</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
