@@ -674,6 +674,84 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="fArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>260</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>fArrow</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rArrowButton">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>470</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>rArrow</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="uArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>470</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>uArrow</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>dArrow</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>bArrow</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>510</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>lArrow</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -681,7 +759,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>

@@ -74,6 +74,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     ui->perspective3DButton->click();
+
+    //have buttons have hover feature
+    ui->fButton->installEventFilter(this);
+    ui->rButton->installEventFilter(this);
+    ui->uButton->installEventFilter(this);
+    ui->bButton->installEventFilter(this);
+    ui->lButton->installEventFilter(this);
+    ui->dButton->installEventFilter(this);
+
 }
 
 /*!
@@ -447,4 +456,107 @@ void MainWindow::enableLastAndNextStepButtons(){
     ui->lastButtonStep->setEnabled(true);
     ui->nextStepButton->setEnabled(true);
 }
+
+//bool MainWindow::eventFilter(QObject *obj, QEvent *event){
+//    // This function repeatedly call for those QObjects
+//    // which have installed eventFilter (Step 2)
+//    if (obj == (QObject)ui->fButton) {
+//        if (event->type() == QEvent::Enter)
+//        {
+//            ui->backArrowLabel->show();
+//            ui->backArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/backarrow.png").scaled(ui->backArrowLabel->width(), ui->backArrowLabel->height(), Qt::KeepAspectRatio)));
+//        }
+//        if (event->type() == QEvent::Leave)
+//        {
+//            ui->backArrowLabel->hide();
+//        }
+//        return QWidget::eventFilter(obj, event);
+//    }
+
+//}
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    // This function repeatedly call for those QObjects
+    // which have installed eventFilter (Step 2)
+
+    if (obj == (QObject*)ui->fButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->fArrowLabel->show();
+            ui->fArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/fButtonArrow.png").scaled(ui->fArrowLabel->width(), ui->fArrowLabel->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->fArrowLabel->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+
+    if (obj == (QObject*)ui->rButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->rArrowButton->show();
+            ui->rArrowButton->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/rButtonArrow.png").scaled(ui->rArrowButton->width(), ui->rArrowButton->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->rArrowButton->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+
+    if (obj == (QObject*)ui->uButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->uArrowLabel->show();
+            ui->uArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/uButtonArrow.png").scaled(ui->uArrowLabel->width(), ui->uArrowLabel->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->uArrowLabel->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+
+    if (obj == (QObject*)ui->bButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->bArrowLabel->show();
+            ui->bArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/bButtonArrow.png").scaled(ui->bArrowLabel->width(), ui->bArrowLabel->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->bArrowLabel->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+
+    if (obj == (QObject*)ui->lButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->lArrowLabel->show();
+            ui->lArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/rButtonArrow.png").scaled(ui->lArrowLabel->width(), ui->lArrowLabel->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->lArrowLabel->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+
+    if (obj == (QObject*)ui->dButton) {
+        if (event->type() == QEvent::Enter)
+        {
+            ui->dArrowLabel->show();
+            ui->dArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/buttonArrows/dButtonArrow.png").scaled(ui->dArrowLabel->width(), ui->dArrowLabel->height(), Qt::KeepAspectRatio)));
+        }
+        if (event->type() == QEvent::Leave)
+        {
+            ui->dArrowLabel->hide();
+        }
+        return QWidget::eventFilter(obj, event);
+    }
+}
+
+
 

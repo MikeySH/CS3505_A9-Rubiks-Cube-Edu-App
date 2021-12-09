@@ -24,6 +24,7 @@ public:
 
 
 
+
 private:
     Ui::MainWindow *ui;
     Model modelObj;
@@ -38,6 +39,8 @@ private:
     void showAllStepLables();
     void hideAllStepLabels();
     void enableLastAndNextStepButtons();
+    bool eventFilter(QObject *obj, QEvent *event);
+
 
 
 signals:

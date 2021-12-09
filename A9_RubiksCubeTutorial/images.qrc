@@ -27,5 +27,11 @@
         <file>Second Layer/2.png</file>
         <file>Second Layer/3.png</file>
         <file>Second Layer/4.png</file>
+        <file>buttonArrows/bButtonArrow.png</file>
+        <file>buttonArrows/dButtonArrow.png</file>
+        <file>buttonArrows/fButtonArrow.png</file>
+        <file>buttonArrows/lButtonArrow.png</file>
+        <file>buttonArrows/rButtonArrow.png</file>
+        <file>buttonArrows/uButtonArrow.png</file>
     </qresource>
 </RCC>
