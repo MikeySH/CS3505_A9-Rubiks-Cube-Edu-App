@@ -340,7 +340,7 @@
       <x>1170</x>
       <y>340</y>
       <width>161</width>
-      <height>301</height>
+      <height>411</height>
      </rect>
     </property>
    </widget>
@@ -543,8 +543,16 @@
       <height>121</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+     </font>
+    </property>
     <property name="text">
      <string>hintLabel</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QComboBox" name="stepComboBox">
@@ -632,14 +640,17 @@
       <x>660</x>
       <y>310</y>
       <width>161</width>
-      <height>20</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="case2Label">
@@ -648,14 +659,17 @@
       <x>860</x>
       <y>310</y>
       <width>161</width>
-      <height>20</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="case3Label">
@@ -664,14 +678,17 @@
       <x>1060</x>
       <y>310</y>
       <width>161</width>
-      <height>20</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="fArrowLabel">
@@ -759,7 +776,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
