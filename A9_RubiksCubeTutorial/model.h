@@ -26,6 +26,10 @@ public:
 private:
     // method draws grids of all faces
     void makeGrid(Faces);
+    bool isSolved();
+    bool isScrambled = false;
+
+
 
 public slots:
     // handles redrawing of faces

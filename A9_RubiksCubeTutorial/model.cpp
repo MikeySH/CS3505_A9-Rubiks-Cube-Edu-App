@@ -67,7 +67,72 @@ void Model::updateFaces(){
     makeGrid(left);
     makeGrid(right);
 
+    if(isScrambled){
+        if(isSolved()){
+            isScrambled = false;
+            //do some sort of celebration here
+            cout<< "solved" << endl;
+        }
+    }
     save();
+}
+
+bool Model::isSolved(){
+    QColor frontCenter = front.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(front.getColorCorrespondingToInt(i, j) == frontCenter)){
+                return false;
+            }
+        }
+    }
+
+    QColor backCenter = back.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(back.getColorCorrespondingToInt(i, j) == backCenter)){
+                return false;
+            }
+        }
+    }
+
+    QColor leftCenter = left.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(left.getColorCorrespondingToInt(i, j) == leftCenter)){
+                return false;
+            }
+        }
+    }
+    QColor rightCenter = right.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(right.getColorCorrespondingToInt(i, j) == rightCenter)){
+                return false;
+            }
+        }
+    }
+
+    QColor upCenter = up.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(up.getColorCorrespondingToInt(i, j) == upCenter)){
+                return false;
+            }
+        }
+    }
+
+    QColor downCenter = down.getColorCorrespondingToInt(1,1);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (!(down.getColorCorrespondingToInt(i, j) == downCenter)){
+                return false;
+            }
+        }
+    }
+
+
+    return true;
 }
 
 /*!
@@ -284,8 +349,9 @@ void Model::downMovePrime(){
  * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
  */
 void Model::scramble(){
+     isScrambled = true;
 
-    for(int i=0; i< 100; i++){
+    for(int i=0; i< 20; i++){
         // get random number that corresponds to a value
         int v = QRandomGenerator::global()->bounded(1, 7);
 

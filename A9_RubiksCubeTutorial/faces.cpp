@@ -33,7 +33,7 @@ Faces::Faces(const Faces& other)
  * \return color at coordinate
  */
 QColor Faces::getColorCorrespondingToInt(int x, int y){
-    colorPicture.pixelColor(x, y);
+    return colorPicture.pixelColor(x, y);
 }
 
 /*!
