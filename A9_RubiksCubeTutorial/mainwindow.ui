@@ -695,9 +695,9 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>250</y>
-      <width>90</width>
-      <height>90</height>
+      <y>260</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="text">
@@ -733,8 +733,8 @@
    <widget class="QLabel" name="dArrowLabel">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>310</y>
+      <x>290</x>
+      <y>360</y>
       <width>90</width>
       <height>90</height>
      </rect>
@@ -760,6 +760,19 @@
     <property name="geometry">
      <rect>
       <x>230</x>
+      <y>79</y>
+      <width>90</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bPrimeArrowLabel">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
       <y>90</y>
       <width>90</width>
       <height>90</height>

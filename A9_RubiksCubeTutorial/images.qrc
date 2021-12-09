@@ -33,5 +33,10 @@
         <file>buttonArrows/lButtonArrow.png</file>
         <file>buttonArrows/rButtonArrow.png</file>
         <file>buttonArrows/uButtonArrow.png</file>
+         <file>buttonArrows/fPrimeButtonArrow.png</file>
+         <file>buttonArrows/bPrimeButtonArrow.png</file>
+         <file>buttonArrows/lPrimeButtonArrow.png</file>
+          <file>buttonArrows/rPrimeButtonArrow.png</file>
+
     </qresource>
 </RCC>
