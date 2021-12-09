@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
-
+// https://www.google.com/search?q=rubiks+3d+png&tbm=isch&ved=2ahUKEwj9sKiMmNb0AhW1oK0KHU_vDbsQ2-cCegQIABAA&oq=rubiks+3d+png&gs_lcp=CgNpbWcQAzoHCCMQ7wMQJ1CEBViICGCVCWgAcAB4AIABWogB8wGSAQEzmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=U6-xYb27N7XBtgXP3rfYCw&bih=645&biw=720#imgrc=9wGCuLAgjG9I9M
+// https://toppng.com/free-image/free-right-arrow-symbol-png-vector-arrow-right-vector-PNG-free-PNG-Images_220282
 /*!
  * \brief MainWindow::MainWindow Method constructs MainWindow object and establishes
  * all connections needed
@@ -18,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->lastButtonStep->hide();
     ui->nextStepButton->hide();
+
+    ui->perspective2DButton->setStyleSheet("background-image: :/rubiks3D.png ");
 
     hideAllStepLabels();
 
