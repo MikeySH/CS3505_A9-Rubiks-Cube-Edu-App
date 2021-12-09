@@ -474,23 +474,10 @@ void MainWindow::enableLastAndNextStepButtons(){
     ui->nextStepButton->setEnabled(true);
 }
 
-//bool MainWindow::eventFilter(QObject *obj, QEvent *event){
-//    // This function repeatedly call for those QObjects
-//    // which have installed eventFilter (Step 2)
-//    if (obj == (QObject)ui->fButton) {
-//        if (event->type() == QEvent::Enter)
-//        {
-//            ui->backArrowLabel->show();
-//            ui->backArrowLabel->setPixmap(QPixmap::fromImage(QImage(":/backarrow.png").scaled(ui->backArrowLabel->width(), ui->backArrowLabel->height(), Qt::KeepAspectRatio)));
-//        }
-//        if (event->type() == QEvent::Leave)
-//        {
-//            ui->backArrowLabel->hide();
-//        }
-//        return QWidget::eventFilter(obj, event);
-//    }
-
-//}
+/*!
+ * \brief MainWindow::eventFilter filter for all letter buttons that dictates what occurs when we hover over and off buttons
+ * \param obj button to apply filter on
+ */
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     // This function repeatedly call for those QObjects

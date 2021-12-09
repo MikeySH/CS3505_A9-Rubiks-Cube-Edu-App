@@ -17,8 +17,6 @@ Model::Model(QObject *parent) : QObject(parent)
 }
 
 
-
-
 /*!
  * \brief Model::makeGrid makes the grid for the sprite drawing.
  * \param canvasSize size of the canvas/preview drawing of sprite
@@ -77,60 +75,40 @@ void Model::updateFaces(){
     save();
 }
 
+/*!
+ * \brief Model::isSolved Method goes through all faces and makes sure they all match the middle piece. Checks if rubiks is solved
+ * \return true if cube is solved false otherwise
+ */\
 bool Model::isSolved(){
-    QColor frontCenter = front.getColorCorrespondingToInt(1,1);
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            if (!(front.getColorCorrespondingToInt(i, j) == frontCenter)){
+            // front face surrounding check
+            if (!(front.getColorCorrespondingToInt(i, j) == front.getColorCorrespondingToInt(1,1))){
                 return false;
             }
-        }
-    }
+            // back face surrounding check
+            else if (!(back.getColorCorrespondingToInt(i, j) ==  back.getColorCorrespondingToInt(1,1))){
+                return false;
+            }
+            // left face surrounding check
+            else if (!(left.getColorCorrespondingToInt(i, j) == left.getColorCorrespondingToInt(1,1))){
+                return false;
+            }
+            // right face surrounding check
+            else if (!(right.getColorCorrespondingToInt(i, j) == right.getColorCorrespondingToInt(1,1))){
+                return false;
+            }
+            // up face surrounding check
+            else if (!(up.getColorCorrespondingToInt(i, j) ==  up.getColorCorrespondingToInt(1,1))){
+                return false;
+            }
+            // down face surrounding check
+            else if (!(down.getColorCorrespondingToInt(i, j) == down.getColorCorrespondingToInt(1,1))){
+                return false;
+            }
 
-    QColor backCenter = back.getColorCorrespondingToInt(1,1);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            if (!(back.getColorCorrespondingToInt(i, j) == backCenter)){
-                return false;
-            }
         }
     }
-
-    QColor leftCenter = left.getColorCorrespondingToInt(1,1);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            if (!(left.getColorCorrespondingToInt(i, j) == leftCenter)){
-                return false;
-            }
-        }
-    }
-    QColor rightCenter = right.getColorCorrespondingToInt(1,1);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            if (!(right.getColorCorrespondingToInt(i, j) == rightCenter)){
-                return false;
-            }
-        }
-    }
-
-    QColor upCenter = up.getColorCorrespondingToInt(1,1);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            if (!(up.getColorCorrespondingToInt(i, j) == upCenter)){
-                return false;
-            }
-        }
-    }
-
-    QColor downCenter = down.getColorCorrespondingToInt(1,1);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            if (!(down.getColorCorrespondingToInt(i, j) == downCenter)){
-                return false;
-            }
-        }
-    }
-
 
     return true;
 }
@@ -349,7 +327,7 @@ void Model::downMovePrime(){
  * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
  */
 void Model::scramble(){
-     isScrambled = true;
+    isScrambled = true;
 
     for(int i=0; i< 20; i++){
         // get random number that corresponds to a value
@@ -391,88 +369,85 @@ void Model::resetFaces(){
 }
 
 void Model::save(){
-   QImage newimg =  QImage(6,9, QImage::Format_RGBA64);
-  QImage temp =  QImage(3,3, QImage::Format_RGBA64);
+    QImage newimg =  QImage(6,9, QImage::Format_RGBA64);
+    QImage temp =  QImage(3,3, QImage::Format_RGBA64);
 
-  QTransform tempTransform;
-  tempTransform.rotate(-270);
-
-
-   //top half
-   for(int i = 0; i < 3; i++){
-       for(int j = 0; j < 3; j++){
-           temp = left.getImage();
-           newimg.setPixelColor(i, j,  temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j));
-       }
-   }
-
-   for(int i = 0; i < 3; i++){
-       for(int j = 3; j < 6; j++){
-           temp = down.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-3));
-       }
-   }
-
-   for(int i = 0; i < 3; i++){
-       for(int j = 6; j < 9; j++){
-           temp = front.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-6));
-       }
-   }
+    QTransform tempTransform;
+    tempTransform.rotate(-270);
 
 
-   //bottom half
-   for(int i = 3; i < 6; i++){
-       for(int j = 0; j < 3; j++){
-           temp = back.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j));
-       }
-   }
+    //top half
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            temp = left.getImage();
+            newimg.setPixelColor(i, j,  temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j));
+        }
+    }
 
-   for(int i = 3; i < 6; i++){
-       for(int j = 3; j < 6; j++){
-           temp = up.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-3));
-       }
-   }
+    for(int i = 0; i < 3; i++){
+        for(int j = 3; j < 6; j++){
+            temp = down.getImage();
+            newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-3));
+        }
+    }
 
-   for(int i = 3; i < 6; i++){
-       for(int j = 6; j < 9; j++){
-           temp = right.getImage();
-           newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-6));
-       }
-   }
-
-   QTransform transform;
-   transform.rotate(90);
+    for(int i = 0; i < 3; i++){
+        for(int j = 6; j < 9; j++){
+            temp = front.getImage();
+            newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i,j-6));
+        }
+    }
 
 
+    //bottom half
+    for(int i = 3; i < 6; i++){
+        for(int j = 0; j < 3; j++){
+            temp = back.getImage();
+            newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j));
+        }
+    }
 
+    for(int i = 3; i < 6; i++){
+        for(int j = 3; j < 6; j++){
+            temp = up.getImage();
+            newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-3));
+        }
+    }
 
-   newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
+    for(int i = 3; i < 6; i++){
+        for(int j = 6; j < 9; j++){
+            temp = right.getImage();
+            newimg.setPixelColor(i, j, temp.transformed(tempTransform).mirrored(false, true).pixelColor(i-3,j-6));
+        }
+    }
 
-   QPixmap pixmap(QPixmap::fromImage(newimg));
-   QPainter painter(&pixmap);
-   // use black as the line color
-   //painter.setPen(QColor(0, 0, 0, 255));
-   painter.setPen(QPen(Qt::black, 6));
+    QTransform transform;
+    transform.rotate(90);
 
+    newimg = newimg.scaled(500, 750, Qt::KeepAspectRatio).transformed(transform);
 
+    QPixmap pixmap(QPixmap::fromImage(newimg));
+    QPainter painter(&pixmap);
+    // use black as the line color
+    //painter.setPen(QColor(0, 0, 0, 255));
+    painter.setPen(QPen(Qt::black, 6));
 
+    for(float x = 0; x <= pixmap.width(); x+=pixmap.width()/9){
+        painter.drawLine(x, 0, x, pixmap.height());
+    }
+    //horizontal lines
+    for(float y = 0; y <= pixmap.height(); y+=pixmap.height()/6){
+        painter.drawLine(0, y, pixmap.width(), y);
+    }
 
-   for(float x = 0; x <= pixmap.width(); x+=pixmap.width()/9){
-       painter.drawLine(x, 0, x, pixmap.height());
-   }
-   //horizontal lines
-   for(float y = 0; y <= pixmap.height(); y+=pixmap.height()/6){
-       painter.drawLine(0, y, pixmap.width(), y);
-   }
-
-   newimg = pixmap.toImage();
-   newimg.save("filename");
-   emit sendImage(newimg);
+    newimg = pixmap.toImage();
+    newimg.save("filename");
+    emit sendImage(newimg);
 }
 
+/*!
+ * \brief Model::startTutorial Begins tutorial by setting tutorial sequence to first phase
+ */
 void Model::startTutorial(){
     currStep = 0;
     emit sendStep(currStep);
@@ -507,6 +482,9 @@ void Model::setStep(int i) {
     emit sendStep(currStep);
 }
 
+/*!
+ * \brief Model::rotateRight rotates cube right
+ */
 void Model::rotateRight(){
     //front -> right -> back -> left
     Faces temp = left;
@@ -523,6 +501,9 @@ void Model::rotateRight(){
     updateFaces();
 }
 
+/*!
+ * \brief Model::rotateLeft rotates cube left
+ */
 void Model::rotateLeft(){
     //front -> right -> back -> left
     for(int i = 0; i<3; i++){
@@ -530,31 +511,34 @@ void Model::rotateLeft(){
     }
 }
 
+/*!
+ * \brief Model::rotateFlip flips cube
+ */
 void Model::rotateFlip(){
- Faces frontTemp = front;
- front  = left;
- front.rotateClockwise();
- front.rotateClockwise();
- front.setName("front");
- left = frontTemp;
- left.rotateClockwise();
- left.rotateClockwise();
- left.setName("left");
- Faces backTemp = back;
- back  = right;
- back.rotateClockwise();
- back.rotateClockwise();
- back.setName("back");
- right = backTemp;
- right.rotateClockwise();
- right.rotateClockwise();
- right.setName("right");
- Faces upTemp = up;
- up = down;
- up.rotateCounterClockwise();
- up.setName("up");
- down = upTemp;
- down.rotateClockwise();
- down.setName("down");
- updateFaces();
+    Faces frontTemp = front;
+    front  = left;
+    front.rotateClockwise();
+    front.rotateClockwise();
+    front.setName("front");
+    left = frontTemp;
+    left.rotateClockwise();
+    left.rotateClockwise();
+    left.setName("left");
+    Faces backTemp = back;
+    back  = right;
+    back.rotateClockwise();
+    back.rotateClockwise();
+    back.setName("back");
+    right = backTemp;
+    right.rotateClockwise();
+    right.rotateClockwise();
+    right.setName("right");
+    Faces upTemp = up;
+    up = down;
+    up.rotateCounterClockwise();
+    up.setName("up");
+    down = upTemp;
+    down.rotateClockwise();
+    down.setName("down");
+    updateFaces();
 }

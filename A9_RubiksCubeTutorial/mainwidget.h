@@ -91,23 +91,19 @@ private:
     QBasicTimer timer;
     QOpenGLShaderProgram program;
     GeometryEngine *geometries = nullptr;
-
     QOpenGLTexture *texture = nullptr;
-
     QMatrix4x4 projection;
-
     QVector2D mousePressPosition;
     QVector3D rotationAxis;
     qreal angularSpeed = 0;
     QQuaternion rotation;
     QQuaternion startingPosition;
-
     QImage cubeImage;
+
     void rotateCubeLeft();
     void rotateCubeRight();
     void rotateRightBy90();
     void flipCube();
-
     void rotateCubeUp();
     void rotateCubeDown();
 

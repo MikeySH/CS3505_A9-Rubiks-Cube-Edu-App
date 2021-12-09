@@ -34,7 +34,6 @@ private:
 public slots:
     // handles redrawing of faces
     void updateFaces();
-
     // handles moving front face clockwise
     void frontMove();
     // handles moving right face clockwise
@@ -63,7 +62,7 @@ public slots:
     void scramble();
     // resets faces to classic rubic's cube faces
     void resetFaces();
-
+    // save state of cube
     void save();
     // increments current step
     void incrementStep();
@@ -71,7 +70,7 @@ public slots:
     void setStep(int);
     // decrements current step
     void decrementStep();
-
+    // begin tutorial
     void startTutorial();
 
     void rotateRight();
@@ -93,10 +92,9 @@ signals:
     void sendRightGrid(QPixmap);
    // update step label
     void sendStep(int);
-
-
+    // send image to view
     void sendImage(QImage);
-
+    // let view know about reset cube
     void resetCube();
 
 };

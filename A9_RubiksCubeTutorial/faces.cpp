@@ -145,6 +145,9 @@ void Faces::rotateClockwise(){
     }
 }
 
+/*!
+ * \brief Faces::rotateCounterClockwise Rotates current face counterclockwise
+ */
 void Faces::rotateCounterClockwise(){
     for(int i = 0; i < 3; i++){
         rotateClockwise();
