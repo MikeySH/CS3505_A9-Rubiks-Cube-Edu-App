@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->widget->show();
+    ui->widget->hide();
     ui->openGLWidget->show();
 
     ui->lastButtonStep->hide();
@@ -54,8 +54,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //model to widget ------------
-    connect(&modelObj, &Model::sendImage, ui->openGLWidget, &MainWidget::setNewImage);
-    connect(&modelObj, &Model::resetCube, ui->openGLWidget, &MainWidget::resetCubePos);
+    connect(&modelObj, &Model::sendImage, ui->openGLWidget, &Cube3DWidget::setNewImage);
+    connect(&modelObj, &Model::resetCube, ui->openGLWidget, &Cube3DWidget::resetCubePos);
 
 
 
@@ -464,6 +464,7 @@ void MainWindow::on_learnButton_clicked()
 {
     ui->lastButtonStep->show();
     ui->nextStepButton->show();
+    ui->widget->show();
 }
 
 /*!

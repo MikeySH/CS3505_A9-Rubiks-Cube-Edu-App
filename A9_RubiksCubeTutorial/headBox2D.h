@@ -1,5 +1,5 @@
-#ifndef SCENEWIDGET_H
-#define SCENEWIDGET_H
+#ifndef HEADBOX2D_H
+#define HEADBOX2D_H
 
 #include <QWidget>
 #include <box2d/include/box2d/box2d.h>
@@ -7,11 +7,11 @@
 #include <QPainter>
 
 
-class SceneWidget : public QWidget
+class headBox2D : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SceneWidget(QWidget *parent = nullptr);
+    explicit headBox2D(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *);
 signals:
 
@@ -24,4 +24,4 @@ private:
     QTimer timer;
     QImage image;
 };
-#endif // SCENEWIDGET_H
+#endif // HEADBOX2D_H

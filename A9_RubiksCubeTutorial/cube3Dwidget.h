@@ -48,8 +48,8 @@
 **
 ****************************************************************************/
 
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#ifndef CUBE3DWIDGET_H
+#define CUBE3DWIDGET_H
 
 #include "geometryengine.h"
 
@@ -66,13 +66,13 @@
 
 class GeometryEngine;
 
-class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
+class Cube3DWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 
 public:
     using QOpenGLWidget::QOpenGLWidget;
-    ~MainWidget();
+    ~Cube3DWidget();
 
     void keyPressEvent(QKeyEvent *event) override;
 
@@ -112,4 +112,4 @@ public slots:
     void resetCubePos();
 };
 
-#endif // MAINWIDGET_H
+#endif // CUBE3DWIDGET_H

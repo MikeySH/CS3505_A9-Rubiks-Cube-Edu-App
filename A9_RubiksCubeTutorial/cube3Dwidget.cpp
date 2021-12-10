@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include "mainwidget.h"
+#include "cube3Dwidget.h"
 
 #include <QMouseEvent>
 
@@ -58,7 +58,7 @@ using namespace std;
 
 
 
-MainWidget::~MainWidget()
+Cube3DWidget::~Cube3DWidget()
 {
     // Make sure the context is current when deleting the texture
     // and the buffers.
@@ -68,7 +68,7 @@ MainWidget::~MainWidget()
     doneCurrent();
 }
 
-void MainWidget::keyPressEvent(QKeyEvent *event){
+void Cube3DWidget::keyPressEvent(QKeyEvent *event){
     if( event->key() == Qt::Key_Right ){
         angularSpeed = 2;
         rotateCubeRight();
@@ -84,7 +84,7 @@ void MainWidget::keyPressEvent(QKeyEvent *event){
 }
 
 //! [1]
-void MainWidget::timerEvent(QTimerEvent *)
+void Cube3DWidget::timerEvent(QTimerEvent *)
 {
    //  Decrease angular speed (friction)
     angularSpeed *= .90;
@@ -102,7 +102,7 @@ void MainWidget::timerEvent(QTimerEvent *)
 }
 //! [1]
 
-void MainWidget::initializeGL()
+void Cube3DWidget::initializeGL()
 {
     initializeOpenGLFunctions();
    // glutInitDisplayMode(GLUT_RGBA | GLUT_ALPHA);
@@ -130,7 +130,7 @@ void MainWidget::initializeGL()
 }
 
 //! [3]
-void MainWidget::initShaders()
+void Cube3DWidget::initShaders()
 {
     // Compile vertex shader
     if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl"))
@@ -151,7 +151,7 @@ void MainWidget::initShaders()
 //! [3]
 
 //! [4]
-void MainWidget::initTextures()
+void Cube3DWidget::initTextures()
 {
     // Load cube.png image
     //texture = new QOpenGLTexture(QImage(":/me.png").mirrored());
@@ -178,7 +178,7 @@ void MainWidget::initTextures()
 //! [4]
 
 //! [5]
-void MainWidget::resizeGL(int w, int h)
+void Cube3DWidget::resizeGL(int w, int h)
 {
     // Calculate aspect ratio
     qreal aspect = qreal(w) / qreal(h ? h : 1);
@@ -194,7 +194,7 @@ void MainWidget::resizeGL(int w, int h)
 }
 //! [5]
 
-void MainWidget::paintGL()
+void Cube3DWidget::paintGL()
 {
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -218,7 +218,7 @@ void MainWidget::paintGL()
     geometries->drawCubeGeometry(&program);
 }
 
-void MainWidget::setNewImage(QImage newimg){
+void Cube3DWidget::setNewImage(QImage newimg){
     this->cubeImage = newimg;
     initTextures();
     update();
@@ -228,7 +228,7 @@ void MainWidget::setNewImage(QImage newimg){
 /*!
  * \brief MainWidget::resetCubePos Resets the cube to its starting position when reset button is pressed.
  */
-void MainWidget::resetCubePos(){
+void Cube3DWidget::resetCubePos(){
     rotation = startingPosition;
     angularSpeed = 0;
     update();
@@ -237,7 +237,7 @@ void MainWidget::resetCubePos(){
 /*!
  * \brief rotateCubeLeft rotates current cube fully left
  */
-void MainWidget::rotateCubeLeft(){
+void Cube3DWidget::rotateCubeLeft(){
     rotateCubeDown();
     for(int i =0 ; i<2 ; i++){
         rotateRightBy90();
@@ -248,7 +248,7 @@ void MainWidget::rotateCubeLeft(){
 /*!
  * \brief rotateCubeLeft rotates current cube fully right
  */
-void MainWidget::rotateCubeRight(){
+void Cube3DWidget::rotateCubeRight(){
    for(int i =0 ; i<3; i++)
        rotateCubeLeft();
 }
@@ -256,7 +256,7 @@ void MainWidget::rotateCubeRight(){
 /*!
  * \brief MainWidget::rotateRightBy90 rotates rubix from face to face - or 90 degrees
  */
-void MainWidget::rotateRightBy90(){
+void Cube3DWidget::rotateRightBy90(){
     rotationAxis = (QVector3D(0,-1,0)).normalized();
     int angle = -45;
     // Update rotation
@@ -267,7 +267,7 @@ void MainWidget::rotateRightBy90(){
 /*!
  * \brief MainWidget::flipCube defines how to flip cube
  */
-void MainWidget::flipCube(){
+void Cube3DWidget::flipCube(){
     for(int i =0 ; i<4 ; i++){
          rotateCubeDown();
     }
@@ -276,7 +276,7 @@ void MainWidget::flipCube(){
 /*!
  * \brief MainWidget::rotateCubeUp rotates rubix up
  */
-void MainWidget::rotateCubeUp(){
+void Cube3DWidget::rotateCubeUp(){
     rotationAxis = (QVector3D(1,0,0)).normalized();
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
     update();
@@ -285,7 +285,7 @@ void MainWidget::rotateCubeUp(){
 /*!
  * \brief MainWidget::rotateCubeDown rotates rubix down
  */
-void MainWidget::rotateCubeDown(){
+void Cube3DWidget::rotateCubeDown(){
     rotationAxis = (QVector3D(-1,0,0)).normalized();
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, 45) * rotation;
     update();

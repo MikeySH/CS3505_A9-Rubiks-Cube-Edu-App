@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "model.h"
-#include "mainwidget.h"
+#include "cube3Dwidget.h"
 #include <QKeyEvent>
 
 QT_BEGIN_NAMESPACE

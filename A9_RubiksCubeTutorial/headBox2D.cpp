@@ -1,7 +1,7 @@
-#include "scenewidget.h"
+#include "headBox2D.h"
 #include <QDebug>
 
-SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent),
+headBox2D::headBox2D(QWidget *parent) : QWidget(parent),
     world(b2Vec2(0.0f, 10.0f)),
     timer(this),
     image(":/me.png") // Make a resource file - mac executables are in a hidden folder
@@ -45,16 +45,16 @@ SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent),
 
     // Override the default friction.
     fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.9;
+    fixtureDef.restitution = 1;
     // Add the shape to the body.
     body->CreateFixture(&fixtureDef);
     printf("Init world\n");
 
-    connect(&timer, &QTimer::timeout, this, &SceneWidget::updateWorld);
-    timer.start(50);
+    connect(&timer, &QTimer::timeout, this, &headBox2D::updateWorld);
+    timer.start(10);
 }
 
-void SceneWidget::paintEvent(QPaintEvent *) {
+void headBox2D::paintEvent(QPaintEvent *) {
     // Create a painter
     QPainter painter(this);
     b2Vec2 position = body->GetPosition();
@@ -65,15 +65,16 @@ void SceneWidget::paintEvent(QPaintEvent *) {
    // QColor blank(0,0,0,255);
     //image.fill(blank);
 
-    painter.drawImage(0,220, image);
+     painter.drawImage((int)(position.x * 25), (int)(position.y * 2), image);
+    //painter.drawImage(0,220, image);
     //painter.drawImage(200, 200, image);
    // qDebug() << image;
     painter.end();
    }
 
-void SceneWidget::updateWorld() {
+void headBox2D::updateWorld() {
     // It is generally best to keep the time step and iterations fixed.
-    world.Step(1.0/60.0, 6, 2);
+    world.Step(1.0/40.0, 6, 2);
 
     update();
 }

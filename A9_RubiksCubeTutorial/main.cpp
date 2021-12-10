@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "mainwidget.h"
+#include "cube3Dwidget.h"
 
 #include <QApplication>
 

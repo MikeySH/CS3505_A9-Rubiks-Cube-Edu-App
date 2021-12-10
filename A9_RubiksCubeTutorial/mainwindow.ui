@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1349</width>
-    <height>1300</height>
+    <height>807</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -449,10 +449,10 @@
    <widget class="SceneWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>1200</x>
-      <y>330</y>
-      <width>161</width>
-      <height>411</height>
+      <x>1190</x>
+      <y>550</y>
+      <width>131</width>
+      <height>151</height>
      </rect>
     </property>
    </widget>
@@ -712,13 +712,14 @@
      <rect>
       <x>570</x>
       <y>500</y>
-      <width>621</width>
-      <height>211</height>
+      <width>620</width>
+      <height>210</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Comic Sans MS</family>
+      <pointsize>8</pointsize>
      </font>
     </property>
     <property name="text">
@@ -782,7 +783,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Silom</family>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -802,7 +804,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Silom</family>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -822,7 +825,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Silom</family>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -842,7 +846,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -866,7 +873,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -890,7 +900,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -1005,7 +1018,10 @@
     </property>
     <property name="font">
      <font>
-      <family>Silom</family>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -1019,7 +1035,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

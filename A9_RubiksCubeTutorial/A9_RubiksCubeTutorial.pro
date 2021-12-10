@@ -11,21 +11,21 @@ TEMPLATE = app
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cube3Dwidget.cpp \
     faces.cpp \
     geometryengine.cpp \
+    headBox2D.cpp \
     main.cpp \
-    mainwidget.cpp \
     mainwindow.cpp \
-    model.cpp \
-    scenewidget.cpp
+    model.cpp
 
 HEADERS += \
+    cube3Dwidget.h \
     faces.h \
     geometryengine.h \
-    mainwidget.h \
+    headBox2D.h \
     mainwindow.h \
-    model.h \
-    scenewidget.h
+    model.h
 
 FORMS += \
     mainwindow.ui
