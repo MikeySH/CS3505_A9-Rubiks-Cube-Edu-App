@@ -357,7 +357,7 @@ void Model::scramble(){
  * \brief Model::resetFaces method resets faces of rubix to be unscrambles
  */
 void Model::resetFaces(){
-
+    isScrambled = false;
     front = Faces(Qt::green, "front");
     back = Faces(Qt::blue, "back");
     up = Faces(Qt::white, "up"); //QColor(255,165,0)
