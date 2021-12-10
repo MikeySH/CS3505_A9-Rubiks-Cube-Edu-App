@@ -446,7 +446,7 @@
       <normaloff>:/misc/shuffle.png</normaloff>:/misc/shuffle.png</iconset>
     </property>
    </widget>
-   <widget class="SceneWidget" name="widget" native="true">
+   <widget class="headBox2D" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>1190</x>
@@ -504,7 +504,7 @@
      <string>Next Step</string>
     </property>
    </widget>
-   <widget class="MainWidget" name="openGLWidget">
+   <widget class="Cube3DWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -1035,7 +1035,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
@@ -1054,15 +1054,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SceneWidget</class>
+   <class>headBox2D</class>
    <extends>QWidget</extends>
-   <header>SceneWidget.h</header>
+   <header>headBox2D.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MainWidget</class>
+   <class>Cube3DWidget</class>
    <extends>QOpenGLWidget</extends>
-   <header>mainwidget.h</header>
+   <header>Cube3DWidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>
