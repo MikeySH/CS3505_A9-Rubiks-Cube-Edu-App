@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1349</width>
+    <width>1440</width>
     <height>807</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1440</width>
+    <height>770</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,7 +23,7 @@
    <widget class="QLabel" name="leftLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>110</x>
       <y>260</y>
       <width>120</width>
       <height>120</height>
@@ -33,7 +39,7 @@
    <widget class="QLabel" name="frontLabel">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>230</x>
       <y>260</y>
       <width>120</width>
       <height>120</height>
@@ -49,7 +55,7 @@
    <widget class="QLabel" name="rightLabel">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>350</x>
       <y>260</y>
       <width>120</width>
       <height>120</height>
@@ -65,7 +71,7 @@
    <widget class="QLabel" name="downLabel">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>230</x>
       <y>380</y>
       <width>120</width>
       <height>120</height>
@@ -81,7 +87,7 @@
    <widget class="QLabel" name="upLabel">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>230</x>
       <y>140</y>
       <width>120</width>
       <height>120</height>
@@ -97,7 +103,7 @@
    <widget class="QLabel" name="backLabel">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>470</x>
       <y>260</y>
       <width>120</width>
       <height>120</height>
@@ -113,7 +119,7 @@
    <widget class="QPushButton" name="resetButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>30</y>
       <width>113</width>
       <height>32</height>
@@ -422,7 +428,7 @@
    <widget class="QPushButton" name="scrambleButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>60</y>
       <width>113</width>
       <height>32</height>
@@ -449,8 +455,8 @@
    <widget class="headBox2D" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>1190</x>
-      <y>550</y>
+      <x>1250</x>
+      <y>580</y>
       <width>131</width>
       <height>151</height>
      </rect>
@@ -459,11 +465,16 @@
    <widget class="QPushButton" name="learnButton">
     <property name="geometry">
      <rect>
-      <x>1130</x>
-      <y>30</y>
+      <x>1235</x>
+      <y>20</y>
       <width>81</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
@@ -476,7 +487,7 @@
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>460</y>
+      <y>500</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -492,7 +503,7 @@
     <property name="geometry">
      <rect>
       <x>940</x>
-      <y>460</y>
+      <y>500</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -658,8 +669,8 @@
    <widget class="QLabel" name="img1Label">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>70</y>
+      <x>640</x>
+      <y>90</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -672,7 +683,7 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>70</y>
+      <y>90</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -684,8 +695,8 @@
    <widget class="QLabel" name="img3Label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>70</y>
+      <x>1060</x>
+      <y>90</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -698,7 +709,7 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>280</y>
+      <y>320</y>
       <width>160</width>
       <height>160</height>
      </rect>
@@ -710,10 +721,10 @@
    <widget class="QLabel" name="hintLabel">
     <property name="geometry">
      <rect>
-      <x>519</x>
-      <y>500</y>
-      <width>671</width>
-      <height>210</height>
+      <x>600</x>
+      <y>539</y>
+      <width>681</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="font">
@@ -742,10 +753,15 @@
     <property name="geometry">
      <rect>
       <x>1210</x>
-      <y>30</y>
+      <y>50</y>
       <width>131</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
     </property>
     <item>
      <property name="text">
@@ -781,8 +797,8 @@
    <widget class="QLabel" name="step1Label">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>30</y>
+      <x>640</x>
+      <y>40</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -790,7 +806,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>12</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -803,7 +819,7 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>30</y>
+      <y>40</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -811,7 +827,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>12</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -823,8 +839,8 @@
    <widget class="QLabel" name="step3Label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>30</y>
+      <x>1060</x>
+      <y>40</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -832,7 +848,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>12</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -844,16 +860,16 @@
    <widget class="QLabel" name="case1Label">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>250</y>
-      <width>161</width>
+      <x>640</x>
+      <y>270</y>
+      <width>171</width>
       <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>10</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -872,15 +888,15 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>250</y>
-      <width>161</width>
+      <y>270</y>
+      <width>171</width>
       <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>10</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -898,8 +914,8 @@
    <widget class="QLabel" name="case3Label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>250</y>
+      <x>1060</x>
+      <y>270</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -907,7 +923,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>10</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1016,8 +1032,8 @@
    <widget class="QLabel" name="goalLabel">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>360</y>
+      <x>760</x>
+      <y>380</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -1025,7 +1041,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>12</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1086,10 +1102,10 @@
    <widget class="QLabel" name="hintTextLabel">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>510</y>
-      <width>551</width>
-      <height>191</height>
+      <x>621</x>
+      <y>550</y>
+      <width>541</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="font">
@@ -1108,6 +1124,7 @@
      <bool>true</bool>
     </property>
    </widget>
+   <zorder>widget</zorder>
    <zorder>step3Label</zorder>
    <zorder>step2Label</zorder>
    <zorder>step1Label</zorder>
@@ -1141,7 +1158,6 @@
    <zorder>uPrimeButton</zorder>
    <zorder>bPrimeButton</zorder>
    <zorder>scrambleButton</zorder>
-   <zorder>widget</zorder>
    <zorder>learnButton</zorder>
    <zorder>lastButtonStep</zorder>
    <zorder>nextStepButton</zorder>
@@ -1166,8 +1182,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1349</width>
-     <height>21</height>
+     <width>1440</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
