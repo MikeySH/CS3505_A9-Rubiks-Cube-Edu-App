@@ -55,6 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     // model to View
     connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);
     connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &QWidget::show);
+    connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &celebrationBox2D::startWorld);
+
 
 
 

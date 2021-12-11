@@ -25,29 +25,30 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
 
-    // Define the dynamic body. We set its position and call the body factory.
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(0.0f, 4.0f);
+    //this is the bobing head object
+//    // Define the dynamic body. We set its position and call the body factory.
+//    b2BodyDef bodyDef;
+//    bodyDef.type = b2_dynamicBody;
+//    bodyDef.position.Set(0.0f, 4.0f);
 
-    body = world.CreateBody(&bodyDef);
+//    body = world.CreateBody(&bodyDef);
 
-    // Define another box shape for our dynamic body.
-    b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(1.0f, 1.0f);
+//    // Define another box shape for our dynamic body.
+//    b2PolygonShape dynamicBox;
+//    dynamicBox.SetAsBox(1.0f, 1.0f);
 
-    // Define the dynamic body fixture.
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &dynamicBox;
+//    // Define the dynamic body fixture.
+//    b2FixtureDef fixtureDef;
+//    fixtureDef.shape = &dynamicBox;
 
-    // Set the box density to be non-zero, so it will be dynamic.
-    fixtureDef.density = 1.0f;
+//    // Set the box density to be non-zero, so it will be dynamic.
+//    fixtureDef.density = 1.0f;
 
-    // Override the default friction.
-    fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 1;
-    // Add the shape to the body.
-    body->CreateFixture(&fixtureDef);
+//    // Override the default friction.
+//    fixtureDef.friction = 0.3f;
+//    fixtureDef.restitution = 1;
+//    // Add the shape to the body.
+//    body->CreateFixture(&fixtureDef);
 
 
     float a = 0.5f;
@@ -59,7 +60,7 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
         boxFixtures.friction = 0.1f;
         boxFixtures.restitution = 0.99;
 
-        b2Vec2 x(4.0f, 7.75f);
+        b2Vec2 x(18.0f, -5.0f);
         b2Vec2 y;
         b2Vec2 deltaX(0.5625f, 1.25f);
         b2Vec2 deltaY(1.125f, 0.0f);
@@ -77,7 +78,8 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
                 body->CreateFixture(&boxFixtures);
                 //b2Vec2 p(6.0f, 6.0f);
                 //b2Vec2 v = -10.0f;
-                body->SetLinearVelocity(y);
+                b2Vec2 still(1.0f, 1.0f);
+                body->SetLinearVelocity(still);
 
                 y += deltaY;
             }
@@ -86,8 +88,12 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
         }
 
 
+
+}
+
+void celebrationBox2D::startWorld(){
     connect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
-    timer.start(10);
+    timer.start(15);
 }
 
 void celebrationBox2D::paintEvent(QPaintEvent *) {
@@ -106,7 +112,7 @@ void celebrationBox2D::paintEvent(QPaintEvent *) {
 
 void celebrationBox2D::updateWorld() {
     // It is generally best to keep the time step and iterations fixed.
-    world.Step(1.0/40.0, 6, 2);
+    world.Step(1.0/50.0, 6, 2);
 
     update();
 }

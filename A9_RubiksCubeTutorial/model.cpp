@@ -332,7 +332,7 @@ void Model::downMovePrime(){
 void Model::scramble(){
     isScrambled = true;
 
-    for(int i=0; i< 20; i++){
+    for(int i=0; i< 1; i++){    //*******************************************scrable is set to 1 for testing purposes while working with celebration screen, change back to 20****************************
         // get random number that corresponds to a value
         int v = QRandomGenerator::global()->bounded(1, 7);
 
