@@ -51,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // view to view
     connect(ui->stepComboBox, &QComboBox::activated, this, &MainWindow::on_learnButton_clicked);
+    connect(ui->restartButton, &QPushButton::clicked, ui->celebrationWidget, &QWidget::hide);
 
     // model to View
     connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);

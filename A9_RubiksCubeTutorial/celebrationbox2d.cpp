@@ -13,6 +13,8 @@ void celebrationBox2D::startWorld(){
         world.DestroyBody(body);
     }
 
+    disconnect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
+
     // Define the ground body.
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f,38.0f);
