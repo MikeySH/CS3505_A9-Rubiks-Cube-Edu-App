@@ -23,11 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->hintLabel->setStyleSheet("border-image: url(:/bubble.png);");
 
-
-
-
-    hideAllStepLabels();
-
+    hideAllLearningUI();
 
     // connection for sending grids to the faces
     connect(&modelObj, &Model::sendFrontGrid, ui->frontLabel, &QLabel::setPixmap);
@@ -57,16 +53,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);
     connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &QWidget::show);
     connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &celebrationBox2D::startWorld);
-
-
-
-
+    connect(&modelObj, &Model::showAnimation, this, &MainWindow::hideAllLearningUI);
 
     //model to widget ------------
     connect(&modelObj, &Model::sendImage, ui->openGLWidget, &Cube3DWidget::setNewImage);
     connect(&modelObj, &Model::resetCube, ui->openGLWidget, &Cube3DWidget::resetCubePos);
-
-
 
 
     //Regular moves
@@ -239,10 +230,12 @@ void MainWindow::showCurrentStep(int stepIndex){
  * \brief MainWindow::drawCase0 method draws the correct labels, etc when model tells view it is on step 1 of learning
  */
 void MainWindow::drawWhiteCrossStep(){
+
     ui->lastButtonStep->setEnabled(false);
     ui->nextStepButton->setEnabled(true);
 
-    hideAllStepLabels();
+    hideAllLearningUI();
+    showStepButtons();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -261,6 +254,10 @@ void MainWindow::drawWhiteCrossStep(){
                            "this with all four white edges, you should have the white cross!");
 
 
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -273,7 +270,9 @@ void MainWindow::drawWhiteCrossStep(){
  * \brief MainWindow::drawCase1 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawWhiteCornersStep(){
-    hideAllStepLabels();
+
+    hideAllLearningUI();
+    showStepButtons();
     showAllStepLables();
     enableLastAndNextStepButtons();
     ui->solvedLabel->show();
@@ -292,6 +291,10 @@ void MainWindow::drawWhiteCornersStep(){
     ui->hintLabel->setText("\nNow we need to put the white corners in. Find a corner piece with white in it, and\n"
                            "line it up with one of the three cases above. Perform that specific algorithm and it\n"
                            "will put the corner in the right spot. Do this four times for all four edges.");
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -304,8 +307,11 @@ void MainWindow::drawWhiteCornersStep(){
  * \brief MainWindow::drawCase2 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawSecondLayerStep(){
+    showStepButtons();
+
     enableLastAndNextStepButtons();
-    hideAllStepLabels();
+    hideAllLearningUI();
+    showStepButtons();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -326,6 +332,10 @@ void MainWindow::drawSecondLayerStep(){
                            "non-yellow edge on the top and the second layer isn't solved, do one \n"
                            "of the two algorithms above to move any yellow edge into that incorrect\n"
                            "spot and move the edge to its correct spot.");
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -338,8 +348,10 @@ void MainWindow::drawSecondLayerStep(){
  * \brief MainWindow::drawCase3 method draws the correct labels, etc when model tells view it is on step 4 of learning
  */
 void MainWindow::drawYellowCrossStep(){
+
     enableLastAndNextStepButtons();
-    hideAllStepLabels();
+    hideAllLearningUI();
+    showStepButtons();
     showAllStepLables();
     ui->solvedLabel->show();
 
@@ -360,6 +372,10 @@ void MainWindow::drawYellowCrossStep(){
                            "egdges in a '-' shape, and the yellow cross. If you don't have \n"
                            "the yellow cross already, orient your up side to the respective \n"
                            "picture and do the algorithm to get to the yellow cross");
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
@@ -372,6 +388,8 @@ void MainWindow::drawYellowCrossStep(){
  * \brief MainWindow::drawCase4 method draws the correct labels, etc when model tells view it is on step 5 of learning
  */
 void MainWindow::drawYellowCornerStep(){
+    showStepButtons();
+
     enableLastAndNextStepButtons();
     ui->img1Label->show();
     ui->img2Label->hide();
@@ -395,6 +413,9 @@ void MainWindow::drawYellowCornerStep(){
                            "you don't have that case, keep doing that algorithm above until you get that\n"
                            "case and then you'll solve the yellow side");
 
+    ui->img1Label->show();
+    ui->solvedLabel->show();
+
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/2.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
 
@@ -404,6 +425,8 @@ void MainWindow::drawYellowCornerStep(){
  * \brief MainWindow::drawCase5 method draws the correct labels, etc when model tells view it is on step 6 of learning
  */
 void MainWindow::drawThirdLayerStep(){
+    showStepButtons();
+
     ui->lastButtonStep->setEnabled(true);
     ui->nextStepButton->setEnabled(false);
 
@@ -432,7 +455,10 @@ void MainWindow::drawThirdLayerStep(){
                            "After getting the headlights, allign the corners to be solved and\n"
                            "find which of the two cases you have above. If you don't have either,\n"
                            "perform either of the last two above and then you'll have one of the two cases.");
-
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+    ui->solvedLabel->show();
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
@@ -452,9 +478,16 @@ void MainWindow::showAllStepLables(){
 }
 
 /*!
- * \brief MainWindow::hideAllStepLabels method hides all step labels that show "step 1", "step 2", "step 3"
+ * \brief MainWindow::hideAllStepLabels method hides all step labels that show "step 1", "step 2", "step 3", all buttons, and images relating to teaching
  */
-void MainWindow::hideAllStepLabels(){
+void MainWindow::hideAllLearningUI(){
+    ui->lastButtonStep->hide();
+    ui->nextStepButton->hide();
+
+    ui->img1Label->hide();
+    ui->img2Label->hide();
+    ui->img3Label->hide();
+    ui->solvedLabel->hide();
     ui->step1Label->hide();
     ui->step2Label->hide();
     ui->step3Label->hide();
@@ -467,13 +500,21 @@ void MainWindow::hideAllStepLabels(){
 }
 
 /*!
- * \brief MainWindow::on_learnButton_clicked show all buttons related to steps when clicked
+ * \brief MainWindow::showStepButtons show all buttons related to steps and learning when clicked
  */
-void MainWindow::on_learnButton_clicked()
+void MainWindow::showStepButtons()
 {
     ui->lastButtonStep->show();
     ui->nextStepButton->show();
     ui->widget->show();
+}
+
+/*!
+ * \brief MainWindow::on_learnButton_clicked method shows all buttons related to steps when clicked
+ */
+void MainWindow::on_learnButton_clicked()
+{
+    showStepButtons();
 }
 
 /*!

@@ -37,9 +37,10 @@ private:
     void drawYellowCornerStep();
     void drawThirdLayerStep();
     void showAllStepLables();
-    void hideAllStepLabels();
+    void hideAllLearningUI();
     void enableLastAndNextStepButtons();
     bool eventFilter(QObject *obj, QEvent *event);
+    void showStepButtons();
 
 
 
