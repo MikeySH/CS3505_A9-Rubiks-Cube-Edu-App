@@ -74,7 +74,6 @@ void Model::updateFaces(){
             isScrambled = false;
             //do some sort of celebration here
             emit showAnimation();
-            cout<< "solved" << endl;
         }
     }
 
@@ -116,7 +115,6 @@ bool Model::isSolved(){
 
         }
     }
-    cout<<"lo"<<endl;
     stopUpdateCountdown();
 
     return true;
@@ -358,6 +356,7 @@ void Model::scramble(){
     }
     isScrambled = true;
     timer->start(1000);
+    time.setHMS(0,0,0);
 }
 
 
@@ -366,11 +365,7 @@ void Model::scramble(){
  */
 void Model::resetFaces(){
     isScrambled = false;
-
-    timer->stop();
-    emit sendCurrentTime("best time: " + bestTime.toString("m:ss"));
-    time.setHMS(0,0,0);
-
+    fixTimerIfResetPressed();
     front = Faces(Qt::green, "front");
     back = Faces(Qt::blue, "back");
     up = Faces(Qt::white, "up"); //QColor(255,165,0)
@@ -557,14 +552,14 @@ void Model::rotateFlip(){
 }
 
 /*!
- * \brief Model::updateCountdown MEthod is called every second and sends time to view
+ * \brief Model::updateCountdown Method is called every second and sends time to view
  */
 void Model::updateCountdown()
 {
     time = time.addSecs(1);
     // emit time string depending on if highscore is 0
-    if(bestTime.minute()!=0 || bestTime.second()!=0)
-        emit sendCurrentTime("current time: " +time.toString("m:ss")+ "\n" + "recent try: " + bestTime.toString("m:ss"));
+    if(!isBestTimeZero())
+        emit sendCurrentTime("current time: " +time.toString("m:ss")+ "\n" + "best time: " + bestTime.toString("m:ss"));
     else
         emit sendCurrentTime("current time: " +time.toString("m:ss"));
 }
@@ -576,13 +571,35 @@ void Model::stopUpdateCountdown()
 {
     timer->stop();
     // check if best time is 0, if so simply set best time as the current time, else set best time if needed
-    if(bestTime.minute()!=0 || bestTime.second()!=0){
+    if(!isBestTimeZero())
+    {
         if(time<bestTime)
             bestTime = time;
     }
     else
         bestTime = time;
+
     // send times
     emit sendCurrentTime("best time: " + bestTime.toString("m:ss"));
     time.setHMS(0,0,0);
+}
+
+/*!
+ * \brief Model::fixTimerIfResetPressed If cube is scrambled we want to make sure the best time does not get touched
+ */
+void Model::fixTimerIfResetPressed(){
+    timer->stop();
+    if(!isBestTimeZero())
+        emit sendCurrentTime("best time: " + bestTime.toString("m:ss"));
+    else
+        emit sendCurrentTime("");
+    time.setHMS(0,0,0);
+}
+
+/*!
+ * \brief Model::isBestTimeZero Method checks the content of best time
+ * \return returns true if bestTime is clocked to 0, else false
+ */
+bool Model::isBestTimeZero(){
+    return bestTime.minute()==0 && bestTime.second()==0;
 }

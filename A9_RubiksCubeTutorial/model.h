@@ -29,6 +29,8 @@ private:
     // method draws grids of all faces
     void makeGrid(Faces);
     bool isSolved();
+    void fixTimerIfResetPressed();
+    bool isBestTimeZero();
     bool isScrambled = false;
     QTimer* timer = new QTimer();
     QTime time;
