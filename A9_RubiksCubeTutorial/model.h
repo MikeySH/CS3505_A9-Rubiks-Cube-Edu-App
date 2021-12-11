@@ -4,6 +4,8 @@
 #include <QColor>
 #include <QPainter>
 #include <QRandomGenerator>
+#include <QTimer>
+#include <QTime>
 
 /*!
  * \brief The Model class class handles all rubic's cube ui data
@@ -28,6 +30,9 @@ private:
     void makeGrid(Faces);
     bool isSolved();
     bool isScrambled = false;
+    QTimer* timer = new QTimer();
+    QTime time;
+    QTime bestTime;
 
 
 
@@ -77,6 +82,11 @@ public slots:
     void rotateLeft();
     void rotateFlip();
 
+    // updates timer by one second
+    void updateCountdown();
+    // stops the updateing of the timer keeping track of solving time
+    void stopUpdateCountdown();
+
 signals:
     // signal that handles sending the front face of cube
     void sendFrontGrid(QPixmap);
@@ -90,13 +100,15 @@ signals:
     void sendLeftGrid(QPixmap);
     // signal that handles sending the right face of cube
     void sendRightGrid(QPixmap);
-   // update step label
+    // update step label
     void sendStep(int);
     // send image to view
     void sendImage(QImage);
     // let view know about reset cube
     void resetCube();
     void showAnimation();
+    // sends string of current time taken to view
+    void sendCurrentTime(QString);
 
 };
 

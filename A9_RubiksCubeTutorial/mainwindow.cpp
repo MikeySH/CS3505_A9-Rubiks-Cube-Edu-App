@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &QWidget::show);
     connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &celebrationBox2D::startWorld);
     connect(&modelObj, &Model::showAnimation, this, &MainWindow::hideAllLearningUI);
+    connect(&modelObj, &Model::sendCurrentTime, ui->currentTimeLabel, &QLabel::setText);
 
     //model to widget ------------
     connect(&modelObj, &Model::sendImage, ui->openGLWidget, &Cube3DWidget::setNewImage);

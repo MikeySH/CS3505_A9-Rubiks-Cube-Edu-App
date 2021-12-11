@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1440</width>
-    <height>807</height>
+    <height>770</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1124,6 +1124,25 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="currentTimeLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>610</y>
+      <width>231</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Silom</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>widget</zorder>
    <zorder>step3Label</zorder>
    <zorder>step2Label</zorder>
@@ -1176,6 +1195,7 @@
    <zorder>bPrimeArrowLabel</zorder>
    <zorder>goalLabel</zorder>
    <zorder>hintTextLabel</zorder>
+   <zorder>currentTimeLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

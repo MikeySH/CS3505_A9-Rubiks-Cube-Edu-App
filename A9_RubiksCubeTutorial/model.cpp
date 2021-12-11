@@ -14,6 +14,10 @@ using namespace std;
 Model::Model(QObject *parent) : QObject(parent)
 {
     resetFaces();
+    bestTime.setHMS(0,0,0);
+    connect(timer, &QTimer::timeout, this, &Model::updateCountdown);
+
+
 }
 
 
@@ -112,6 +116,8 @@ bool Model::isSolved(){
 
         }
     }
+    cout<<"lo"<<endl;
+    stopUpdateCountdown();
 
     return true;
 }
@@ -351,6 +357,7 @@ void Model::scramble(){
         }
     }
     isScrambled = true;
+    timer->start(1000);
 }
 
 
@@ -359,6 +366,11 @@ void Model::scramble(){
  */
 void Model::resetFaces(){
     isScrambled = false;
+
+    timer->stop();
+    emit sendCurrentTime("best time: " + bestTime.toString("m:ss"));
+    time.setHMS(0,0,0);
+
     front = Faces(Qt::green, "front");
     back = Faces(Qt::blue, "back");
     up = Faces(Qt::white, "up"); //QColor(255,165,0)
@@ -542,4 +554,35 @@ void Model::rotateFlip(){
     down.rotateClockwise();
     down.setName("down");
     updateFaces();
+}
+
+/*!
+ * \brief Model::updateCountdown MEthod is called every second and sends time to view
+ */
+void Model::updateCountdown()
+{
+    time = time.addSecs(1);
+    // emit time string depending on if highscore is 0
+    if(bestTime.minute()!=0 || bestTime.second()!=0)
+        emit sendCurrentTime("current time: " +time.toString("m:ss")+ "\n" + "recent try: " + bestTime.toString("m:ss"));
+    else
+        emit sendCurrentTime("current time: " +time.toString("m:ss"));
+}
+
+/*!
+ * \brief Model::stopUpdateCountdown stops keeping track of current time and updates best times accordingly
+ */
+void Model::stopUpdateCountdown()
+{
+    timer->stop();
+    // check if best time is 0, if so simply set best time as the current time, else set best time if needed
+    if(bestTime.minute()!=0 || bestTime.second()!=0){
+        if(time<bestTime)
+            bestTime = time;
+    }
+    else
+        bestTime = time;
+    // send times
+    emit sendCurrentTime("best time: " + bestTime.toString("m:ss"));
+    time.setHMS(0,0,0);
 }
