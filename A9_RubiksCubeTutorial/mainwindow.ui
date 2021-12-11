@@ -1034,6 +1034,16 @@
      <string>Goal:</string>
     </property>
    </widget>
+   <widget class="celebrationBox2D" name="celebrationWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1331</width>
+      <height>721</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1041,7 +1051,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>33</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -1069,6 +1079,12 @@
    <class>Cube3DWidget</class>
    <extends>QOpenGLWidget</extends>
    <header>Cube3DWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>celebrationBox2D</class>
+   <extends>QWidget</extends>
+   <header>celebrationbox2d.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

@@ -96,6 +96,7 @@ signals:
     void sendImage(QImage);
     // let view know about reset cube
     void resetCube();
+    void showAnimation();
 
 };
 

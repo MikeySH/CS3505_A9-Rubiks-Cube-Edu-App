@@ -16,11 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->widget->hide();
     ui->openGLWidget->show();
+    ui->celebrationWidget->hide();
 
     ui->lastButtonStep->hide();
     ui->nextStepButton->hide();
 
     ui->hintLabel->setStyleSheet("border-image: url(:/bubble.png);");
+
+
 
 
     hideAllStepLabels();
@@ -51,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // model to View
     connect(&modelObj, &Model::sendStep, this, &MainWindow::showCurrentStep);
+    connect(&modelObj, &Model::showAnimation, ui->celebrationWidget, &QWidget::show);
+
+
 
 
     //model to widget ------------

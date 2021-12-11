@@ -69,9 +69,12 @@ void Model::updateFaces(){
         if(isSolved()){
             isScrambled = false;
             //do some sort of celebration here
+            emit showAnimation();
             cout<< "solved" << endl;
         }
     }
+
+
     save();
 }
 
