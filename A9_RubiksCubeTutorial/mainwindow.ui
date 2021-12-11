@@ -1044,6 +1044,57 @@
      </rect>
     </property>
    </widget>
+   <zorder>step3Label</zorder>
+   <zorder>step2Label</zorder>
+   <zorder>step1Label</zorder>
+   <zorder>hintLabel</zorder>
+   <zorder>solvedLabel</zorder>
+   <zorder>case3Label</zorder>
+   <zorder>case2Label</zorder>
+   <zorder>case1Label</zorder>
+   <zorder>img3Label</zorder>
+   <zorder>img2Label</zorder>
+   <zorder>img1Label</zorder>
+   <zorder>openGLWidget</zorder>
+   <zorder>celebrationWidget</zorder>
+   <zorder>leftLabel</zorder>
+   <zorder>frontLabel</zorder>
+   <zorder>rightLabel</zorder>
+   <zorder>downLabel</zorder>
+   <zorder>upLabel</zorder>
+   <zorder>backLabel</zorder>
+   <zorder>resetButton</zorder>
+   <zorder>fButton</zorder>
+   <zorder>rButton</zorder>
+   <zorder>uButton</zorder>
+   <zorder>bButton</zorder>
+   <zorder>lButton</zorder>
+   <zorder>dButton</zorder>
+   <zorder>dPrimeButton</zorder>
+   <zorder>lPrimeButton</zorder>
+   <zorder>fPrimeButton</zorder>
+   <zorder>rPrimeButton</zorder>
+   <zorder>uPrimeButton</zorder>
+   <zorder>bPrimeButton</zorder>
+   <zorder>scrambleButton</zorder>
+   <zorder>widget</zorder>
+   <zorder>learnButton</zorder>
+   <zorder>lastButtonStep</zorder>
+   <zorder>nextStepButton</zorder>
+   <zorder>moveCubeLeft</zorder>
+   <zorder>moveCubeRight</zorder>
+   <zorder>flipButton</zorder>
+   <zorder>perspective2DButton</zorder>
+   <zorder>perspective3DButton</zorder>
+   <zorder>stepComboBox</zorder>
+   <zorder>fArrowLabel</zorder>
+   <zorder>rArrowButton</zorder>
+   <zorder>uArrowLabel</zorder>
+   <zorder>dArrowLabel</zorder>
+   <zorder>bArrowLabel</zorder>
+   <zorder>lArrowLabel</zorder>
+   <zorder>bPrimeArrowLabel</zorder>
+   <zorder>goalLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

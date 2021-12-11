@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>me.png</file>
+        <file>me2.png</file>
         <file>cube.png</file>
          <file>bubble.png</file>
         <file>misc/rubiks3D.png</file>

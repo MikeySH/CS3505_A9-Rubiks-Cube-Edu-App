@@ -1,11 +1,17 @@
 #include "celebrationbox2d.h"
-#include <QDebug>
 
 celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
     world(b2Vec2(0.0f, 10.0f)),
     timer(this),
-    image(":/me.png") // Make a resource file - mac executables are in a hidden folder
+    image(":/me2.png")
 {
+
+}
+
+void celebrationBox2D::startWorld(){
+    for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
+        world.DestroyBody(body);
+    }
 
     // Define the ground body.
     b2BodyDef groundBodyDef;
@@ -25,33 +31,9 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
 
-    //this is the bobing head object
-//    // Define the dynamic body. We set its position and call the body factory.
-//    b2BodyDef bodyDef;
-//    bodyDef.type = b2_dynamicBody;
-//    bodyDef.position.Set(0.0f, 4.0f);
 
-//    body = world.CreateBody(&bodyDef);
-
-//    // Define another box shape for our dynamic body.
-//    b2PolygonShape dynamicBox;
-//    dynamicBox.SetAsBox(1.0f, 1.0f);
-
-//    // Define the dynamic body fixture.
-//    b2FixtureDef fixtureDef;
-//    fixtureDef.shape = &dynamicBox;
-
-//    // Set the box density to be non-zero, so it will be dynamic.
-//    fixtureDef.density = 1.0f;
-
-//    // Override the default friction.
-//    fixtureDef.friction = 0.3f;
-//    fixtureDef.restitution = 1;
-//    // Add the shape to the body.
-//    body->CreateFixture(&fixtureDef);
-
-
-    float a = 0.5f;
+    //float a = 0.5f;
+    float a = 1.0f;
         b2PolygonShape shape;
         shape.SetAsBox(a, a);
         b2FixtureDef boxFixtures;
@@ -60,15 +42,19 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
         boxFixtures.friction = 0.1f;
         boxFixtures.restitution = 0.99;
 
-        b2Vec2 x(18.0f, -5.0f);
+        b2Vec2 x(18.0f, -8.0f);
         b2Vec2 y;
         b2Vec2 deltaX(0.5625f, 1.25f);
         b2Vec2 deltaY(1.125f, 0.0f);
 
+        //Creating body's in the shape of a pyramid
+
+        //height of pyramid
         for (int32 i = 0; i < 5; ++i)
         {
             y = x;
 
+            //base width of pyramid
             for (int32 j = i; j < 10; ++j)
             {
                 b2BodyDef bd;
@@ -76,22 +62,14 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
                 bd.position = y;
                 b2Body* body = world.CreateBody(&bd);
                 body->CreateFixture(&boxFixtures);
-                //b2Vec2 p(6.0f, 6.0f);
-                //b2Vec2 v = -10.0f;
                 b2Vec2 still(1.0f, 1.0f);
                 body->SetLinearVelocity(still);
 
                 y += deltaY;
             }
-
             x += deltaX;
         }
 
-
-
-}
-
-void celebrationBox2D::startWorld(){
     connect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
     timer.start(15);
 }
@@ -100,14 +78,13 @@ void celebrationBox2D::paintEvent(QPaintEvent *) {
     // Create a painter
      QPainter painter(this);
 
-
+     //goes through all the body and draw them
      for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
          b2Vec2 position = body->GetPosition();
-                 painter.drawImage((int)(position.x * 25), (int)(position.y*25), image.scaled(80, 80, Qt::KeepAspectRatio));
+                 painter.drawImage((int)(position.x * 25), (int)(position.y*25), image.scaled(130, 130, Qt::KeepAspectRatio));
      }
 
      painter.end();
-
 }
 
 void celebrationBox2D::updateWorld() {

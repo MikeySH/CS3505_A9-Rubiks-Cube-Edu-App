@@ -48,7 +48,6 @@ headBox2D::headBox2D(QWidget *parent) : QWidget(parent),
     fixtureDef.restitution = 1;
     // Add the shape to the body.
     body->CreateFixture(&fixtureDef);
-    printf("Init world\n");
 
     connect(&timer, &QTimer::timeout, this, &headBox2D::updateWorld);
     timer.start(10);
