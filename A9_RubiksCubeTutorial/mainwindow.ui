@@ -710,9 +710,9 @@
    <widget class="QLabel" name="hintLabel">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>519</x>
       <y>500</y>
-      <width>620</width>
+      <width>671</width>
       <height>210</height>
      </rect>
     </property>
@@ -723,7 +723,7 @@
      </font>
     </property>
     <property name="text">
-     <string>hintLabel</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1037,7 +1037,7 @@
    <widget class="celebrationBox2D" name="celebrationWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>20</y>
       <width>1331</width>
       <height>721</height>
@@ -1046,9 +1046,9 @@
     <widget class="QLabel" name="congradulationLabel">
      <property name="geometry">
       <rect>
-       <x>440</x>
-       <y>270</y>
-       <width>531</width>
+       <x>400</x>
+       <y>260</y>
+       <width>621</width>
        <height>151</height>
       </rect>
      </property>
@@ -1082,6 +1082,31 @@
       <string>Restart</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="hintTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>510</y>
+      <width>551</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
    <zorder>step3Label</zorder>
    <zorder>step2Label</zorder>
@@ -1134,6 +1159,7 @@
    <zorder>lArrowLabel</zorder>
    <zorder>bPrimeArrowLabel</zorder>
    <zorder>goalLabel</zorder>
+   <zorder>hintTextLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1141,7 +1167,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

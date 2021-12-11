@@ -330,8 +330,6 @@ void Model::downMovePrime(){
  * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
  */
 void Model::scramble(){
-    isScrambled = true;
-
     for(int i=0; i< 1; i++){    //*******************************************scrable is set to 1 for testing purposes while working with celebration screen, change back to 20****************************
         // get random number that corresponds to a value
         int v = QRandomGenerator::global()->bounded(1, 7);
@@ -352,7 +350,7 @@ void Model::scramble(){
             break;
         }
     }
-
+    isScrambled = true;
 }
 
 
