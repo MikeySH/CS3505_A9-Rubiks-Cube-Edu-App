@@ -258,13 +258,13 @@ void MainWindow::drawCubePiecesStep(){
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/preface/center.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->hintLabel->show();
     ui->hintTextLabel->show();
-    ui->hintTextLabel->setText("Edge: Pieces with two colors. There are twelve edge pieces located in the middle row. \n"
-                               "Coner: Pieces with three colors. There are eight corner pieces located on the corners. \n"
-                               "Center: Pieces with once color. There are six center pieces located in the center of each side, center pieces DO NOT MOVE and represent the color of their side/face. \n"
+    ui->hintTextLabel->setText("Edge: Pieces with two colors. There are twelve edge pieces. \n"
+                               "Corner: Pieces with three colors. There are eight corner pieces. \n"
+                               "Center: Pieces with one color. There are six stationary center pieces that each represent a face. \n"
                                "Center colors are always opposite each other: \n"
-                               "White is opposite yellow \n"
-                               "Orange is opposite red \n"
-                               "Green is opposite blue");
+                               "White is opposite yellow. "
+                               "Orange is opposite red. "
+                               "Green is opposite blue.");
 }
 
 void MainWindow::drawButtonMovesStep(){
@@ -281,7 +281,7 @@ void MainWindow::drawButtonMovesStep(){
     ui->hintTextLabel->show();
     ui->hintTextLabel->setText("Each face of the cube is represented by a letter. Each move is a 1/4 turn rotation in a clockwise rotation. "
                                "Letters with a ' are pronounced as \"LETTER prime\" and will have a counter-clockwise rotation. "
-                               "An move that starts with a letter and end with a 2 such as \"F2\" for example would mean to turn that face twice.");
+                               "Any move that starts with a letter and end with a 2 such as \"F2\" for example would mean to turn that face twice.");
 
 }
 
