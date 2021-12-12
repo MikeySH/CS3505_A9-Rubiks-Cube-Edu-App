@@ -465,7 +465,7 @@ void Model::startTutorial(){
  * \brief Model::incrementStep method goes one step forward and updates view
  */
 void Model::incrementStep(){
-    if (currStep <= 5){
+    if (currStep <= 7){
         currStep++;
     }
     emit sendStep(currStep);

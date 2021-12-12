@@ -194,31 +194,38 @@ void MainWindow::showCurrentStep(int stepIndex){
 
     switch (stepIndex){
     case 0:
+        //teach about edge and corners and center pieces
+        drawCubePiecesStep();
+        break;
+    case 1:
+        drawButtonMovesStep();
+        //button moves and view selection
+        break;
+    case 2:
 
         // white cross
         drawWhiteCrossStep();
         break;
-    case 1:
-
+    case 3:
         // white corners
         drawWhiteCornersStep();
         break;
-    case 2:
+    case 4:
 
         // 2nd layer
         drawSecondLayerStep();
         break;
-    case 3:
+    case 5:
 
         // yellow cross
         drawYellowCrossStep();
         break;
-    case 4:
+    case 6:
 
         // yellow corners
         drawYellowCornerStep();
         break;
-    case 5:
+    case 7:
 
         // 3rd layer
         drawThirdLayerStep();
@@ -227,13 +234,61 @@ void MainWindow::showCurrentStep(int stepIndex){
 
 }
 
+void MainWindow::drawCubePiecesStep(){
+    ui->lastButtonStep->setEnabled(false);
+    ui->nextStepButton->setEnabled(true);
+    hideAllLearningUI();
+    ui->stepComboBox->show();
+    showStepButtons();
+
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->show();
+    ui->case1Label->setText("Edge");
+    ui->case2Label->setText("Corner");
+    ui->case3Label->setText("Center");
+
+
+    ui->img1Label->show();
+    ui->img2Label->show();
+    ui->img3Label->show();
+
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/preface/edge.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/preface/corner.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/preface/center.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->hintLabel->show();
+    ui->hintTextLabel->show();
+    ui->hintTextLabel->setText("Edge: Pieces with two colors. There are twelve edge pieces located in the middle row. \n"
+                               "Coner: Pieces with three colors. There are eight corner pieces located on the corners. \n"
+                               "Center: Pieces with once color. There are six center pieces located in the center of each side, center pieces DO NOT MOVE and represent the color of their side/face. \n"
+                               "Center colors are always opposite each other: \n"
+                               "White is opposite yellow \n"
+                               "Orange is opposite red \n"
+                               "Green is opposite blue");
+}
+
+void MainWindow::drawButtonMovesStep(){
+    ui->lastButtonStep->setEnabled(true);
+    hideAllLearningUI();
+    showStepButtons();
+    ui->stepComboBox->show();
+    ui->notationLabel->show();
+
+
+    ui->notationLabel->setPixmap(QPixmap::fromImage(QImage(":/preface/cubingNotations.png").scaled(ui->notationLabel->width(), ui->notationLabel->height(), Qt::KeepAspectRatio)));
+
+    ui->hintLabel->show();
+    ui->hintTextLabel->show();
+    ui->hintTextLabel->setText("Each face of the cube is represented by a letter. Moves are done in a clockwise rotation. "
+                               "Letters with a ' are pronounced as \"LETTER prime\" and will have a counter-clockwise rotation. "
+                               "An move that starts with a letter and end with a 2 such as \"F2\" for example would mean to turn that face twice.");
+
+}
+
 /*!
  * \brief MainWindow::drawCase0 method draws the correct labels, etc when model tells view it is on step 1 of learning
  */
 void MainWindow::drawWhiteCrossStep(){
-
-    ui->lastButtonStep->setEnabled(false);
-    ui->nextStepButton->setEnabled(true);
 
     hideAllLearningUI();
     showStepButtons();
@@ -291,8 +346,8 @@ void MainWindow::drawWhiteCornersStep(){
     ui->case1Label->setText("R' D' R D R' D' R D R' D' R");
     ui->case2Label->setText("F D F'");
     ui->case3Label->setText("R' D' R");
-    ui->hintTextLabel->setText("Now we need to put the white corners in. Find a corner piece with white in it, and"
-                           "line it up with one of the three cases above. Perform that specific algorithm and it"
+    ui->hintTextLabel->setText("Now we need to put the white corners in. Find a corner piece with white in it, and "
+                           "line it up with one of the three cases above. Perform that specific algorithm and it "
                            "will put the corner in the right spot. Do this four times for all four edges.");
     ui->img1Label->show();
     ui->img2Label->show();
@@ -330,11 +385,11 @@ void MainWindow::drawSecondLayerStep(){
     //ui->case3Label->hide();
     ui->case1Label->setText("U R U' R' U' F' U F");
     ui->case2Label->setText("U' L' U L U F U' F'");
-    ui->hintTextLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain"
-                           "yellow on it. Line it up with one of the cases above and perform that"
-                           "algorithm. Do it for all four non-yellow edges. If you don't have a"
+    ui->hintTextLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain "
+                           "yellow on it. Line it up with one of the cases above and perform that "
+                           "algorithm. Do it for all four non-yellow edges. If you don't have a "
                            "non-yellow edge on the top and the second layer isn't solved, do one "
-                           "of the two algorithms above to move any yellow edge into that incorrect"
+                           "of the two algorithms above to move any yellow edge into that incorrect "
                            "spot and move the edge to its correct spot.");
     ui->img1Label->show();
     ui->img2Label->show();
@@ -372,8 +427,8 @@ void MainWindow::drawYellowCrossStep(){
     ui->case2Label->setText("F R U R' U' F'");
     ui->case3Label->setText("F U R U' R' F'");
     ui->hintTextLabel->setText("Now to solve the yellow cross. There are four different cases"
-                           "you can have after solving the second layer: no yellow edges"
-                           "facing up, two yellow edges in a reverse 'L' shape, two yellow"
+                           "you can have after solving the second layer: no yellow edges "
+                           "facing up, two yellow edges in a reverse 'L' shape, two yellow "
                            "egdges in a '-' shape, and the yellow cross. If you don't have "
                            "the yellow cross already, orient your up side to the respective "
                            "picture and do the algorithm to get to the yellow cross.");
@@ -505,6 +560,7 @@ void MainWindow::hideAllLearningUI(){
     ui->case3Label->hide();
     ui->stepComboBox->hide();
     ui->goalLabel->hide();
+    ui->notationLabel->hide();
 }
 
 /*!

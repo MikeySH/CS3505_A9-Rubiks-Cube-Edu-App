@@ -4,6 +4,10 @@
         <file>me2.png</file>
         <file>cube.png</file>
          <file>bubble.png</file>
+         <file>preface/edge.png</file>
+         <file>preface/corner.png</file>
+         <file>preface/center.png</file>
+         <file>preface/cubingNotations.png</file>
         <file>misc/rubiks3D.png</file>
         <file>misc/rubiks2D.png</file>
         <file>misc/leftArrow.png</file>

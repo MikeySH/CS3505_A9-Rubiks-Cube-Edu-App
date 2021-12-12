@@ -765,6 +765,16 @@
     </property>
     <item>
      <property name="text">
+      <string>Cube Pieces</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Face Moves</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>White Cross</string>
      </property>
     </item>
@@ -1143,6 +1153,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="notationLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>90</y>
+      <width>750</width>
+      <height>380</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>widget</zorder>
    <zorder>step3Label</zorder>
    <zorder>step2Label</zorder>
@@ -1196,6 +1219,7 @@
    <zorder>goalLabel</zorder>
    <zorder>hintTextLabel</zorder>
    <zorder>currentTimeLabel</zorder>
+   <zorder>notationLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1203,7 +1227,7 @@
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

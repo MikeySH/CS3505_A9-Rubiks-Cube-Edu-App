@@ -30,6 +30,8 @@ private:
     Model modelObj;
     // sends key events to 3d drawer
     void keyPressEvent(QKeyEvent *event);
+    void drawCubePiecesStep();
+    void drawButtonMovesStep();
     void drawWhiteCrossStep();
     void drawWhiteCornersStep();
     void drawSecondLayerStep();
