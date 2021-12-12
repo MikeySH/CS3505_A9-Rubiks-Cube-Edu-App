@@ -279,7 +279,7 @@ void MainWindow::drawButtonMovesStep(){
 
     ui->hintLabel->show();
     ui->hintTextLabel->show();
-    ui->hintTextLabel->setText("Each face of the cube is represented by a letter. Moves are done in a clockwise rotation. "
+    ui->hintTextLabel->setText("Each face of the cube is represented by a letter. Each move is a 1/4 turn rotation in a clockwise rotation. "
                                "Letters with a ' are pronounced as \"LETTER prime\" and will have a counter-clockwise rotation. "
                                "An move that starts with a letter and end with a 2 such as \"F2\" for example would mean to turn that face twice.");
 
