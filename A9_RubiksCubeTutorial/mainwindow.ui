@@ -799,7 +799,7 @@
      <rect>
       <x>640</x>
       <y>40</y>
-      <width>71</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
@@ -820,7 +820,7 @@
      <rect>
       <x>850</x>
       <y>40</y>
-      <width>71</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
@@ -841,7 +841,7 @@
      <rect>
       <x>1060</x>
       <y>40</y>
-      <width>71</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
@@ -1035,7 +1035,7 @@
       <x>760</x>
       <y>380</y>
       <width>60</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1054,7 +1054,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>100</y>
       <width>1440</width>
       <height>750</height>
      </rect>
@@ -1203,7 +1203,7 @@
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

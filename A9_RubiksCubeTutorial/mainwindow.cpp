@@ -250,7 +250,7 @@ void MainWindow::drawWhiteCrossStep(){
     ui->case3Label->show();
     ui->case1Label->setText("R' F'");
     ui->case3Label->setText("Line up with color and turn twice on the face");
-    ui->hintTextLabel->setText("\nThe goal of this first step is to get the 'white cross'. One trick is to get all "
+    ui->hintTextLabel->setText("The goal of this first step is to get the 'white cross'. One trick is to get all "
                            "the white edges on the same side as the yellow center, then line up the "
                            "other color with its respective center, and turn that side twice. After doing "
                            "this with all four white edges, you should have the white cross!");
@@ -291,7 +291,7 @@ void MainWindow::drawWhiteCornersStep(){
     ui->case1Label->setText("R' D' R D R' D' R D R' D' R");
     ui->case2Label->setText("F D F'");
     ui->case3Label->setText("R' D' R");
-    ui->hintTextLabel->setText("\nNow we need to put the white corners in. Find a corner piece with white in it, and"
+    ui->hintTextLabel->setText("Now we need to put the white corners in. Find a corner piece with white in it, and"
                            "line it up with one of the three cases above. Perform that specific algorithm and it"
                            "will put the corner in the right spot. Do this four times for all four edges.");
     ui->img1Label->show();
@@ -330,7 +330,7 @@ void MainWindow::drawSecondLayerStep(){
     //ui->case3Label->hide();
     ui->case1Label->setText("U R U' R' U' F' U F");
     ui->case2Label->setText("U' L' U L U F U' F'");
-    ui->hintTextLabel->setText("\nFlip the cube so yellow is on top, and find an edge that doesn't contain"
+    ui->hintTextLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain"
                            "yellow on it. Line it up with one of the cases above and perform that"
                            "algorithm. Do it for all four non-yellow edges. If you don't have a"
                            "non-yellow edge on the top and the second layer isn't solved, do one "
@@ -371,7 +371,7 @@ void MainWindow::drawYellowCrossStep(){
     ui->case1Label->setText("F U R U' R' F' U F R U R' U' F'");
     ui->case2Label->setText("F R U R' U' F'");
     ui->case3Label->setText("F U R U' R' F'");
-    ui->hintTextLabel->setText("\nNow to solve the yellow cross. There are four different cases"
+    ui->hintTextLabel->setText("Now to solve the yellow cross. There are four different cases"
                            "you can have after solving the second layer: no yellow edges"
                            "facing up, two yellow edges in a reverse 'L' shape, two yellow"
                            "egdges in a '-' shape, and the yellow cross. If you don't have "
@@ -413,7 +413,7 @@ void MainWindow::drawYellowCornerStep(){
     ui->case2Label->hide();
     ui->case3Label->hide();
     ui->case1Label->setText("R U R' U R U2 R'");
-    ui->hintTextLabel->setText("\nNow that you have the yellow cross, your goal is to get your cube to have "
+    ui->hintTextLabel->setText("Now that you have the yellow cross, your goal is to get your cube to have "
                            "one yellow corner up, and the rest out (like the image above). Performing "
                            "that algorithm will solve the yellow side. If you have the yellow cross and "
                            "you don't have that case, keep doing that algorithm above until you get that "
@@ -455,7 +455,7 @@ void MainWindow::drawThirdLayerStep(){
     ui->case1Label->setText("U2 R' F R' B2 R F' R' B2 R2");
     ui->case2Label->setText("F2 U R' L F2 R L' U F2");
     ui->case3Label->setText("F2 U' R' L F2 R L' U' F2");
-    ui->hintTextLabel->setText("\nYou're almost done! Your goal now is to get \"headlights\", "
+    ui->hintTextLabel->setText("You're almost done! Your goal now is to get \"headlights\", "
                            "or two corners of the same color together. Perform the first "
                            "algorithm above to solve all the corners. If you don't have "
                            "headlights, do the first algorithm anywhere and you'll get them. "
