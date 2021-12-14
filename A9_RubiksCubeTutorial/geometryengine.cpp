@@ -48,6 +48,16 @@
 **
 ****************************************************************************/
 
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ *
+ * This class was borrowed from Qt's Examples and is needed for the
+ * 3D representation of the Rubik's Cube.
+ */
+
 #include "geometryengine.h"
 
 #include <QVector2D>

@@ -48,15 +48,19 @@
 **
 ****************************************************************************/
 
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ *
+ * This class was borrowed from Qt's Examples and modified for use in the
+ * Rubik's Cube tutorial application.
+ */
+
 #include "cube3Dwidget.h"
-
 #include <QMouseEvent>
-
 #include <cmath>
-#include <iostream>
-using namespace std;
-
-
 
 Cube3DWidget::~Cube3DWidget()
 {
@@ -254,7 +258,7 @@ void Cube3DWidget::rotateCubeRight(){
 }
 
 /*!
- * \brief MainWidget::rotateRightBy90 rotates rubix from face to face - or 90 degrees
+ * \brief MainWidget::rotateRightBy90 rotates rubik's cube from face to face - or 90 degrees
  */
 void Cube3DWidget::rotateRightBy90(){
     rotationAxis = (QVector3D(0,-1,0)).normalized();
@@ -274,7 +278,7 @@ void Cube3DWidget::flipCube(){
 }
 
 /*!
- * \brief MainWidget::rotateCubeUp rotates rubix up
+ * \brief MainWidget::rotateCubeUp rotates rubik's cube up
  */
 void Cube3DWidget::rotateCubeUp(){
     rotationAxis = (QVector3D(1,0,0)).normalized();
@@ -283,7 +287,7 @@ void Cube3DWidget::rotateCubeUp(){
 }
 
 /*!
- * \brief MainWidget::rotateCubeDown rotates rubix down
+ * \brief MainWidget::rotateCubeDown rotates rubik's cube down
  */
 void Cube3DWidget::rotateCubeDown(){
     rotationAxis = (QVector3D(-1,0,0)).normalized();

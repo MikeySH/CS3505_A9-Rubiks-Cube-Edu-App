@@ -1,6 +1,14 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
+// Citations:
 // https://www.google.com/search?q=rubiks+3d+png&tbm=isch&ved=2ahUKEwj9sKiMmNb0AhW1oK0KHU_vDbsQ2-cCegQIABAA&oq=rubiks+3d+png&gs_lcp=CgNpbWcQAzoHCCMQ7wMQJ1CEBViICGCVCWgAcAB4AIABWogB8wGSAQEzmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=U6-xYb27N7XBtgXP3rfYCw&bih=645&biw=720#imgrc=9wGCuLAgjG9I9M
 // https://toppng.com/free-image/free-right-arrow-symbol-png-vector-arrow-right-vector-PNG-free-PNG-Images_220282
 /*!
@@ -13,14 +21,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     ui->widget->hide();
+
+    // 3D cube widget
     ui->openGLWidget->show();
+
+    // Box2D celebration widget
     ui->celebrationWidget->hide();
 
+    // learning UI buttons
     ui->lastButtonStep->hide();
     ui->nextStepButton->hide();
 
+    // speech bubble
     ui->hintLabel->setStyleSheet("border-image: url(:/bubble.png);");
 
     hideAllLearningUI();
@@ -39,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->resetButton->click();
     connect(this, &MainWindow::rotateRight, &modelObj, &Model::rotateRight);
     connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);
-    connect(this, &MainWindow::rotateFlip, &modelObj, &Model::rotateFlip);
+    connect(this, &MainWindow::flip, &modelObj, &Model::flip);
     connect(ui->learnButton, &QPushButton::clicked, &modelObj, &Model::startTutorial);
     connect(ui->lastButtonStep, &QPushButton::clicked, &modelObj, &Model::decrementStep);
     connect(ui->nextStepButton, &QPushButton::clicked, &modelObj, &Model::incrementStep);
@@ -77,10 +90,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->lPrimeButton, &QPushButton::clicked, &modelObj, &Model::leftMovePrime);
     connect(ui->dPrimeButton, &QPushButton::clicked, &modelObj, &Model::downMovePrime);
 
-
+    // start the view on the 3D cube
     ui->perspective3DButton->click();
 
-    //have buttons have hover feature
+    // allows move buttons to have mouse-over features
     ui->fButton->installEventFilter(this);
     ui->rButton->installEventFilter(this);
     ui->uButton->installEventFilter(this);
@@ -93,7 +106,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->bPrimeButton->installEventFilter(this);
     ui->lPrimeButton->installEventFilter(this);
     ui->dPrimeButton->installEventFilter(this);
-
 }
 
 /*!
@@ -108,12 +120,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         emit rotateLeft();
     }
     else if( event->key() == Qt::Key_Space ){
-        emit rotateFlip();
+        emit flip();
     }
     ui->openGLWidget->keyPressEvent(event);
 }
-
-
 
 /*!
  * \brief MainWindow::~MainWindow destructor
@@ -122,7 +132,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 /*!
  * \brief MainWindow::on_moveCubeLeft_clicked calls left key slot when move left button clicked
@@ -140,7 +149,6 @@ void MainWindow::on_moveCubeRight_clicked()
 {
     QKeyEvent *event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
     QCoreApplication::postEvent (this, event);
-    \
 }
 
 /*!
@@ -167,7 +175,6 @@ void MainWindow::on_perspective2DButton_clicked()
     ui->flipButton->hide();
 }
 
-
 void MainWindow::on_perspective3DButton_clicked()
 {
     ui->frontLabel->hide();
@@ -186,10 +193,9 @@ void MainWindow::on_perspective3DButton_clicked()
 
 /*!
  * \brief MainWindow::showCurrentStep draws whatever step is requested by model
- * \param stepIndex the ith step we are on
+ * \param stepIndex the i-th step we are on.
  */
 void MainWindow::showCurrentStep(int stepIndex){
-
     ui->stepComboBox->setCurrentIndex(stepIndex);
 
     switch (stepIndex){
@@ -202,7 +208,6 @@ void MainWindow::showCurrentStep(int stepIndex){
         //button moves and view selection
         break;
     case 2:
-
         // white cross
         drawWhiteCrossStep();
         break;
@@ -211,53 +216,48 @@ void MainWindow::showCurrentStep(int stepIndex){
         drawWhiteCornersStep();
         break;
     case 4:
-
         // 2nd layer
         drawSecondLayerStep();
         break;
     case 5:
-
         // yellow cross
         drawYellowCrossStep();
         break;
     case 6:
-
         // yellow corners
         drawYellowCornerStep();
         break;
     case 7:
-
         // 3rd layer
         drawThirdLayerStep();
         break;
     }
-
 }
 
+/*!
+ * \brief MainWindow::drawCubePiecesStep Method for the cube pieces step in the tutorial.
+ * Shows defintions of cube terms and what the pieces are called.
+ */
 void MainWindow::drawCubePiecesStep(){
     ui->lastButtonStep->setEnabled(false);
     ui->nextStepButton->setEnabled(true);
     hideAllLearningUI();
-    ui->stepComboBox->show();
     showStepButtons();
+    showAllStepLabels();
+    ui->goalLabel->hide();
+    ui->solvedLabel->hide();
+    ui->case1Label->hide();
+    ui->case2Label->hide();
+    ui->case3Label->hide();
 
-    ui->case1Label->show();
-    ui->case2Label->show();
-    ui->case3Label->show();
-    ui->case1Label->setText("Edge");
-    ui->case2Label->setText("Corner");
-    ui->case3Label->setText("Center");
-
-
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
+    ui->case1AlgorithmLabel->setText("Edge");
+    ui->case2AlgorithmLabel->setText("Corner");
+    ui->case3AlgorithmLabel->setText("Center");
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/preface/edge.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/preface/corner.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/preface/center.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
+
     ui->hintTextLabel->setText("Edge: Pieces with two colors. There are twelve edge pieces. \n"
                                "Corner: Pieces with three colors. There are eight corner pieces. \n"
                                "Center: Pieces with one color. There are six stationary center pieces that each represent a face. \n"
@@ -267,98 +267,67 @@ void MainWindow::drawCubePiecesStep(){
                                "Green is opposite blue.");
 }
 
+/*!
+ * \brief MainWindow::drawCubePiecesStep Method for the Buton Moves step in the tutorial.
+ * Shows the definitions of the buttons and what they do to the cube.
+ */
 void MainWindow::drawButtonMovesStep(){
     ui->lastButtonStep->setEnabled(true);
     hideAllLearningUI();
     showStepButtons();
     ui->stepComboBox->show();
     ui->notationLabel->show();
-
-
-    ui->notationLabel->setPixmap(QPixmap::fromImage(QImage(":/preface/cubingNotations.png").scaled(ui->notationLabel->width(), ui->notationLabel->height(), Qt::KeepAspectRatio)));
-
     ui->hintLabel->show();
     ui->hintTextLabel->show();
+
+    ui->notationLabel->setPixmap(QPixmap::fromImage(QImage(":/preface/cubingNotations.png").scaled(ui->notationLabel->width(), ui->notationLabel->height(), Qt::KeepAspectRatio)));
     ui->hintTextLabel->setText("Each face of the cube is represented by a letter. Each move is a 1/4 turn rotation in a clockwise rotation. "
                                "Letters with a ' are pronounced as \"LETTER prime\" and will have a counter-clockwise rotation. "
                                "Any move that starts with a letter and end with a 2 such as \"F2\" for example would mean to turn that face twice.");
-
 }
 
 /*!
  * \brief MainWindow::drawCase0 method draws the correct labels, etc when model tells view it is on step 1 of learning
  */
 void MainWindow::drawWhiteCrossStep(){
-
     hideAllLearningUI();
     showStepButtons();
-    showAllStepLables();
-    ui->solvedLabel->show();
+    showAllStepLabels();
+    ui->case2AlgorithmLabel->hide();
 
-    ui->step1Label->show();
-    ui->step2Label->show();
-    ui->step3Label->show();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-
-    ui->case1Label->show();
-    ui->case3Label->show();
-    ui->case1Label->setText("R' F'");
-    ui->case3Label->setText("Line up with color and turn twice on the face");
+    ui->case1AlgorithmLabel->setText("R' F'");
+    ui->case3AlgorithmLabel->setText("Line up with color and turn twice on the face");
     ui->hintTextLabel->setText("The goal of this first step is to get the 'white cross'. One trick is to get all "
                            "the white edges on the same side as the yellow center, then line up the "
                            "other color with its respective center, and turn that side twice. After doing "
                            "this with all four white edges, you should have the white cross!");
 
-
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
-
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
  * \brief MainWindow::drawCase1 method draws the correct labels, etc when model tells view it is on step 2 of learning
  */
 void MainWindow::drawWhiteCornersStep(){
-
     hideAllLearningUI();
     showStepButtons();
-    showAllStepLables();
+    showAllStepLabels();
     enableLastAndNextStepButtons();
-    ui->solvedLabel->show();
 
-    ui->step1Label->show();
-    ui->step2Label->show();
-    ui->step3Label->show();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-
-    ui->case1Label->show();
-    ui->case2Label->show();
-    ui->case3Label->show();
-    ui->case1Label->setText("R' D' R D R' D' R D R' D' R");
-    ui->case2Label->setText("F D F'");
-    ui->case3Label->setText("R' D' R");
+    ui->case1AlgorithmLabel->setText("R' D' R D R' D' R D R' D' R");
+    ui->case2AlgorithmLabel->setText("F D F'");
+    ui->case3AlgorithmLabel->setText("R' D' R");
     ui->hintTextLabel->setText("Now we need to put the white corners in. Find a corner piece with white in it, and "
                            "line it up with one of the three cases above. Perform that specific algorithm and it "
                            "will put the corner in the right spot. Do this four times for all four edges.");
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/White Corners/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/White Corners/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
@@ -370,78 +339,49 @@ void MainWindow::drawSecondLayerStep(){
     enableLastAndNextStepButtons();
     hideAllLearningUI();
     showStepButtons();
-    showAllStepLables();
-    ui->solvedLabel->show();
+    showAllStepLabels();
 
-    ui->step1Label->show();
-    ui->step2Label->show();
-    ui->step3Label->show();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-
-
-    ui->case1Label->show();
-    ui->case2Label->show();
+    ui->case3AlgorithmLabel->hide();
     //ui->case3Label->hide();
-    ui->case1Label->setText("U R U' R' U' F' U F");
-    ui->case2Label->setText("U' L' U L U F U' F'");
+
+    ui->case1AlgorithmLabel->setText("U R U' R' U' F' U F");
+    ui->case2AlgorithmLabel->setText("U' L' U L U F U' F'");
     ui->hintTextLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain "
                            "yellow on it. Line it up with one of the cases above and perform that "
                            "algorithm. Do it for all four non-yellow edges. If you don't have a "
                            "non-yellow edge on the top and the second layer isn't solved, do one "
                            "of the two algorithms above to move any yellow edge into that incorrect "
                            "spot and move the edge to its correct spot.");
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
  * \brief MainWindow::drawCase3 method draws the correct labels, etc when model tells view it is on step 4 of learning
  */
 void MainWindow::drawYellowCrossStep(){
-
     enableLastAndNextStepButtons();
     hideAllLearningUI();
     showStepButtons();
-    showAllStepLables();
-    ui->solvedLabel->show();
+    showAllStepLabels();
 
-    ui->step1Label->show();
-    ui->step2Label->show();
-    ui->step3Label->show();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-
-    ui->case1Label->show();
-    ui->case2Label->show();
-    ui->case3Label->show();
-    ui->case1Label->setText("F U R U' R' F' U F R U R' U' F'");
-    ui->case2Label->setText("F R U R' U' F'");
-    ui->case3Label->setText("F U R U' R' F'");
+    ui->case1AlgorithmLabel->setText("F U R U' R' F' U F R U R' U' F'");
+    ui->case2AlgorithmLabel->setText("F R U R' U' F'");
+    ui->case3AlgorithmLabel->setText("F U R U' R' F'");
     ui->hintTextLabel->setText("Now to solve the yellow cross. There are four different cases"
                            "you can have after solving the second layer: no yellow edges "
                            "facing up, two yellow edges in a reverse 'L' shape, two yellow "
                            "egdges in a '-' shape, and the yellow cross. If you don't have "
                            "the yellow cross already, orient your up side to the respective "
                            "picture and do the algorithm to get to the yellow cross.");
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
 
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Cross/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
@@ -449,37 +389,26 @@ void MainWindow::drawYellowCrossStep(){
  */
 void MainWindow::drawYellowCornerStep(){
     showStepButtons();
-
+    showAllStepLabels();
     enableLastAndNextStepButtons();
-    ui->img1Label->show();
+
     ui->img2Label->hide();
     ui->img3Label->hide();
-    ui->solvedLabel->show();
-
-
-    ui->step1Label->show();
-    ui->step2Label->hide();
-    ui->step3Label->hide();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-    ui->goalLabel->show();
-
-    ui->case1Label->show();
     ui->case2Label->hide();
     ui->case3Label->hide();
-    ui->case1Label->setText("R U R' U R U2 R'");
+
+    ui->case2AlgorithmLabel->hide();
+    ui->case3AlgorithmLabel->hide();
+
+    ui->case1AlgorithmLabel->setText("R U R' U R U2 R'");
     ui->hintTextLabel->setText("Now that you have the yellow cross, your goal is to get your cube to have "
                            "one yellow corner up, and the rest out (like the image above). Performing "
                            "that algorithm will solve the yellow side. If you have the yellow cross and "
                            "you don't have that case, keep doing that algorithm above until you get that "
                            "case and then you'll solve the yellow side.");
 
-    ui->img1Label->show();
-    ui->solvedLabel->show();
-
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Yellow Corners/2.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
@@ -487,29 +416,13 @@ void MainWindow::drawYellowCornerStep(){
  */
 void MainWindow::drawThirdLayerStep(){
     showStepButtons();
-
+    showAllStepLabels();
     ui->lastButtonStep->setEnabled(true);
     ui->nextStepButton->setEnabled(false);
 
-
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
-
-    ui->step1Label->show();
-    ui->step2Label->show();
-    ui->step3Label->show();
-    ui->hintLabel->show();
-    ui->hintTextLabel->show();
-    ui->goalLabel->show();
-
-    ui->case1Label->show();
-    ui->case2Label->show();
-    ui->case3Label->show();
-    ui->case1Label->setText("U2 R' F R' B2 R F' R' B2 R2");
-    ui->case2Label->setText("F2 U R' L F2 R L' U F2");
-    ui->case3Label->setText("F2 U' R' L F2 R L' U' F2");
+    ui->case1AlgorithmLabel->setText("U2 R' F R' B2 R F' R' B2 R2");
+    ui->case2AlgorithmLabel->setText("F2 U R' L F2 R L' U F2");
+    ui->case3AlgorithmLabel->setText("F2 U' R' L F2 R L' U' F2");
     ui->hintTextLabel->setText("You're almost done! Your goal now is to get \"headlights\", "
                            "or two corners of the same color together. Perform the first "
                            "algorithm above to solve all the corners. If you don't have "
@@ -517,26 +430,33 @@ void MainWindow::drawThirdLayerStep(){
                            "After getting the headlights, allign the corners to be solved and "
                            "find which of the two cases you have above. If you don't have either, "
                            "perform either of the last two above and then you'll have one of the two cases.");
-    ui->img1Label->show();
-    ui->img2Label->show();
-    ui->img3Label->show();
-    ui->solvedLabel->show();
+
     ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
     ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
     ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Third Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
-
 }
 
 /*!
  * \brief MainWindow::showAllStepLables method draws labels that shows "step 1", "step 2", "step 3"
  */
-void MainWindow::showAllStepLables(){
+void MainWindow::showAllStepLabels(){
     ui->img1Label->show();
     ui->img2Label->show();
     ui->img3Label->show();
     ui->stepComboBox->show();
     ui->goalLabel->show();
+    ui->solvedLabel->show();
+
+    ui->case1Label->show();
+    ui->case2Label->show();
+    ui->case3Label->show();
+    ui->hintTextLabel->show();
+    ui->hintLabel->show();
+
+    ui->case1AlgorithmLabel->show();
+    ui->case2AlgorithmLabel->show();
+    ui->case3AlgorithmLabel->show();
 }
 
 /*!
@@ -551,13 +471,13 @@ void MainWindow::hideAllLearningUI(){
     ui->img2Label->hide();
     ui->img3Label->hide();
     ui->solvedLabel->hide();
-    ui->step1Label->hide();
-    ui->step2Label->hide();
-    ui->step3Label->hide();
-    ui->hintLabel->hide();
     ui->case1Label->hide();
     ui->case2Label->hide();
     ui->case3Label->hide();
+    ui->hintLabel->hide();
+    ui->case1AlgorithmLabel->hide();
+    ui->case2AlgorithmLabel->hide();
+    ui->case3AlgorithmLabel->hide();
     ui->stepComboBox->hide();
     ui->goalLabel->hide();
     ui->notationLabel->hide();
@@ -610,7 +530,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->fArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->rButton) {
@@ -623,7 +542,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->rArrowButton->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->uButton) {
@@ -636,7 +554,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->uArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->bButton) {
@@ -649,7 +566,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->bArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->lButton) {
@@ -662,7 +578,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->lArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->dButton) {
@@ -675,7 +590,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->dArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         //counterclockwise face moves
@@ -689,7 +603,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->fArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->rPrimeButton) {
@@ -702,7 +615,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->rArrowButton->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->uPrimeButton) {
@@ -715,7 +627,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->uArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->bPrimeButton) {
@@ -728,7 +639,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->bPrimeArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->lPrimeButton) {
@@ -741,7 +651,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->lArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
 
         if (obj == (QObject*)ui->dPrimeButton) {
@@ -754,10 +663,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             {
                 ui->dArrowLabel->hide();
             }
-            return QWidget::eventFilter(obj, event);
         }
     }
+    return QWidget::eventFilter(obj, event);
 }
-
-
-

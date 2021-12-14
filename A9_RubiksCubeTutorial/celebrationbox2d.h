@@ -1,3 +1,10 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #ifndef CELEBRATIONBOX2D_H
 #define CELEBRATIONBOX2D_H
 #include <QWidget>

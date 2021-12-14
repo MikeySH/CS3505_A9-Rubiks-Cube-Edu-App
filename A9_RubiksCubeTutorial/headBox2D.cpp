@@ -1,12 +1,18 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #include "headBox2D.h"
-#include <QDebug>
+//#include <QDebug>
 
 headBox2D::headBox2D(QWidget *parent) : QWidget(parent),
     world(b2Vec2(0.0f, 10.0f)),
     timer(this),
-    image(":/me.png") // Make a resource file - mac executables are in a hidden folder
+    image(":/me.png")
 {
-
     // Define the ground body.
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, 20.0f);
@@ -57,23 +63,12 @@ void headBox2D::paintEvent(QPaintEvent *) {
     // Create a painter
     QPainter painter(this);
     b2Vec2 position = body->GetPosition();
-    float angle = body->GetAngle();
-
-//    printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-   // QImage img = QImage(1028, 1028, QImage::Format_RGBA64);
-   // QColor blank(0,0,0,255);
-    //image.fill(blank);
-
-     painter.drawImage((int)(position.x * 25), (int)(position.y * 2), image);
-    //painter.drawImage(0,220, image);
-    //painter.drawImage(200, 200, image);
-   // qDebug() << image;
+    painter.drawImage((int)(position.x * 25), (int)(position.y * 2), image);
     painter.end();
    }
 
 void headBox2D::updateWorld() {
     // It is generally best to keep the time step and iterations fixed.
     world.Step(1.0/40.0, 6, 2);
-
     update();
 }

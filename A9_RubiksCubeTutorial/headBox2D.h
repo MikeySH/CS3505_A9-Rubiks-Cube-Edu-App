@@ -1,3 +1,10 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #ifndef HEADBOX2D_H
 #define HEADBOX2D_H
 
@@ -5,7 +12,6 @@
 #include <box2d/include/box2d/box2d.h>
 #include <QTimer>
 #include <QPainter>
-
 
 class headBox2D : public QWidget
 {

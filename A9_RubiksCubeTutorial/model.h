@@ -1,3 +1,10 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #ifndef MODEL_H
 #define MODEL_H
 #include "faces.h"
@@ -8,7 +15,7 @@
 #include <QTime>
 
 /*!
- * \brief The Model class class handles all rubic's cube ui data
+ * \brief The Model class handles all of the rubik's cube logic and sends whatever data the View needs.
  */
 class Model : public QObject
 {
@@ -16,24 +23,31 @@ class Model : public QObject
 public:
     explicit Model(QObject *parent = nullptr);
 
-    Faces front;
-    Faces back;
-    Faces up;
-    Faces down;
-    Faces left;
-    Faces right;
+    Faces front; // front face of the cube
+    Faces back; // back face of the cube
+    Faces up; // up face of the cube
+    Faces down; // down face of the cube
+    Faces left; // left face of the cube
+    Faces right; // right face of the cube
 
-    int currStep;
+    int currStep; // current step in the tutorial
 
 private:
     // method draws grids of all faces
     void makeGrid(Faces);
+    // Checks if the Rubik's Cube is in a solved state.
     bool isSolved();
+    // Resets the time-to-solve timer when reset button is pressed.
     void fixTimerIfResetPressed();
+    // check if the best time is 0.
     bool isBestTimeZero();
+    // boolean for checking if the rubik's cube is solved.
     bool isScrambled = false;
+    // timer for keeping track of the user's best time.
     QTimer* timer = new QTimer();
+    // Time variable to send to view
     QTime time;
+    // Best time so far
     QTime bestTime;
 
 
@@ -80,9 +94,12 @@ public slots:
     // begin tutorial
     void startTutorial();
 
+    // rotates the cube to the right
     void rotateRight();
+    // rotates the cube to the left
     void rotateLeft();
-    void rotateFlip();
+    // flips cube to the opposite faces not being shown
+    void flip();
 
     // updates timer by one second
     void updateCountdown();
@@ -108,6 +125,7 @@ signals:
     void sendImage(QImage);
     // let view know about reset cube
     void resetCube();
+    // signal that starts the celebration screen
     void showAnimation();
     // sends string of current time taken to view
     void sendCurrentTime(QString);

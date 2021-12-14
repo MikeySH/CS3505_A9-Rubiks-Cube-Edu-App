@@ -1,25 +1,22 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #include "model.h"
 #include <QBrush>
-
-
-//remove later
-#include <iostream>
-using namespace std;
-
 
 /*!
  * \brief Model::Model Method constructs model object and initializes paramaeters
  * \param parent
  */
-Model::Model(QObject *parent) : QObject(parent)
-{
+Model::Model(QObject *parent) : QObject(parent){
     resetFaces();
     bestTime.setHMS(0,0,0);
     connect(timer, &QTimer::timeout, this, &Model::updateCountdown);
-
-
 }
-
 
 /*!
  * \brief Model::makeGrid makes the grid for the sprite drawing.
@@ -33,15 +30,14 @@ void Model::makeGrid(Faces face ){
     //painter.setPen(QColor(0, 0, 0, 255));
     painter.setPen(QPen(Qt::black, 3));
 
-
     // draw vertical and horizontal lines
     for(float lineIndex = 0; lineIndex <= pixmap.width(); lineIndex+=pixmap.width()/3){
         //vertical lines
         painter.drawLine(lineIndex, 0, lineIndex, pixmap.height());
         //horizontal lines
         painter.drawLine(0, lineIndex, pixmap.width(), lineIndex);
-
     }
+
     // send grid to view to draw
     if (face.getName() == "front"){
         emit sendFrontGrid(pixmap);
@@ -72,12 +68,10 @@ void Model::updateFaces(){
     if(isScrambled){
         if(isSolved()){
             isScrambled = false;
-            //do some sort of celebration here
+            // show celebration animation
             emit showAnimation();
         }
     }
-
-
     save();
 }
 
@@ -116,7 +110,6 @@ bool Model::isSolved(){
         }
     }
     stopUpdateCountdown();
-
     return true;
 }
 
@@ -124,24 +117,24 @@ bool Model::isSolved(){
  * \brief Model::frontMove makes a single turn, (90°), clockwise, of the front face.
  */
 void Model::frontMove(){
+    // save colors from faces of concern
+    QVector<QColor> leftTemp = left.getCol(2); //sets up to left row
+    QVector<QColor> downTemp = down.getRow(0); //sets up to left row
+    QVector<QColor> rightTemp = right.getCol(0); //sets up to left row
+    QVector<QColor> upTemp = up.getRow(2); //sets up to left row
+    QVector<QColor> rightTempReversed;
+    QVector<QColor> leftTempReversed;
 
-    QVector<QColor> temp = left.getCol(2); //sets up to left row
-    QVector<QColor> temp2 = down.getRow(0); //sets up to left row
-    QVector<QColor> temp3 = right.getCol(0); //sets up to left row
-    QVector<QColor> temp4 = up.getRow(2); //sets up to left row
-    QVector<QColor> temp5;
-    QVector<QColor> temp6;
-
-
+    // reverse the order of the colors
     for(int i =0; i < 3; i++){
-        temp5.push_front(temp3[i]);
-        temp6.push_front(temp[i]);
+        rightTempReversed.push_front(rightTemp[i]);
+        leftTempReversed.push_front(leftTemp[i]);
     }
 
-    up.swapRow(2, temp6);
-    left.swapColumn(2, temp2);
-    down.swapRow(0, temp5);
-    right.swapColumn(0, temp4);
+    up.swapRow(2, leftTempReversed);
+    left.swapColumn(2, downTemp);
+    down.swapRow(0, rightTempReversed);
+    right.swapColumn(0, upTemp);
 
     //rotate front 90 degrees;
     front.rotateClockwise();
@@ -153,25 +146,26 @@ void Model::frontMove(){
  * \brief Model::rightMove makes a single turn, (90°), clockwise, of the right face.
  */
 void Model::rightMove(){
+    // save colors from faces of concern
+    QVector<QColor> upTemp = up.getCol(2); //sets up to left row
+    QVector<QColor> frontTemp = front.getCol(2); //sets up to left row
+    QVector<QColor> downTemp = down.getCol(2); //sets up to left row
+    QVector<QColor> backTemp = back.getCol(0); //sets up to left row
+    QVector<QColor> backTempReversed;
+    QVector<QColor> upTempReversed;
 
-    QVector<QColor> temp = up.getCol(2); //sets up to left row
-    QVector<QColor> temp2 = front.getCol(2); //sets up to left row
-    QVector<QColor> temp3 = down.getCol(2); //sets up to left row
-    QVector<QColor> temp4 = back.getCol(0); //sets up to left row
-    QVector<QColor> temp5;
-    QVector<QColor> temp6;
-
+    //reverse the order of the colors
     for(int i =0; i < 3; i++){
-        temp5.push_front(temp4[i]);
-        temp6.push_front(temp[i]);
+        backTempReversed.push_front(backTemp[i]);
+        upTempReversed.push_front(upTemp[i]);
     }
 
-    up.swapColumn(2, temp2);
-    front.swapColumn(2, temp3);
-    down.swapColumn(2, temp5);
-    back.swapColumn(0, temp6);
+    up.swapColumn(2, frontTemp);
+    front.swapColumn(2, downTemp);
+    down.swapColumn(2, backTempReversed);
+    back.swapColumn(0, upTempReversed);
 
-    //rotate front 90 degrees;
+    //rotate right 90 degrees;
     right.rotateClockwise();
 
     updateFaces();
@@ -181,20 +175,18 @@ void Model::rightMove(){
  * \brief Model::upMove makes a single turn, (90°), clockwise, of the up face.
  */
 void Model::upMove(){
-    //left front right back
+    // save colors from faces of concern
+    QVector<QColor> leftTemp = left.getRow(0);
+    QVector<QColor> frontTemp = front.getRow(0);
+    QVector<QColor> rightTemp = right.getRow(0);
+    QVector<QColor> backTemp = back.getRow(0);
 
-    QVector<QColor> temp = left.getRow(0);
-    QVector<QColor> temp2 = front.getRow(0);
-    QVector<QColor> temp3 = right.getRow(0);
-    QVector<QColor> temp4 = back.getRow(0);
+    left.swapRow(0, frontTemp);
+    front.swapRow(0, rightTemp);
+    right.swapRow(0, backTemp);
+    back.swapRow(0, leftTemp);
 
-
-    left.swapRow(0, temp2);
-    front.swapRow(0, temp3);
-    right.swapRow(0, temp4);
-    back.swapRow(0, temp);
-
-    //rotate front 90 degrees;
+    //rotate up 90 degrees;
     up.rotateClockwise();
 
     updateFaces();
@@ -203,57 +195,56 @@ void Model::upMove(){
 /*!
  * \brief Model::backMove makes a single turn, (90°), clockwise, of the back face.
  */
-void Model::backMove()
-{
-    // QVector<QColor> temp = up.swapRow(2, left.getCol(2)); //sets up to left row
-    QVector<QColor> temp = left.getCol(0); //sets up to left row
-    QVector<QColor> temp2 = down.getRow(2); //sets up to left row
-    QVector<QColor> temp3 = right.getCol(2); //sets up to left row
-    QVector<QColor> temp4 = up.getRow(0); //sets up to left row
-    QVector<QColor> temp5;
-    QVector<QColor> temp6;
+void Model::backMove(){
+    // save colors from faces of concern
+    QVector<QColor> leftTemp = left.getCol(0); //sets up to left row
+    QVector<QColor> downTemp = down.getRow(2); //sets up to left row
+    QVector<QColor> rightTemp = right.getCol(2); //sets up to left row
+    QVector<QColor> upTemp = up.getRow(0); //sets up to left row
+    QVector<QColor> upTempReversed;
+    QVector<QColor> downTempReversed;
 
-
+    // reverse the order of the colors
     for(int i =0; i < 3; i++){
-        temp5.push_front(temp4[i]);
-        temp6.push_front(temp2[i]);
+        upTempReversed.push_front(upTemp[i]);
+        downTempReversed.push_front(downTemp[i]);
     }
 
-    up.swapRow(0, temp3);
-    left.swapColumn(0, temp5);
-    down.swapRow(2, temp);
-    right.swapColumn(2, temp6);
+    up.swapRow(0, rightTemp);
+    left.swapColumn(0, upTempReversed);
+    down.swapRow(2, leftTemp);
+    right.swapColumn(2, downTempReversed);
 
-    //rotate front 90 degrees;
+    //rotate back 90 degrees;
     back.rotateClockwise();
 
     updateFaces();
-
 }
 
 /*!
  * \brief Model::leftMove makes a single turn, (90°), clockwise, of the left face.
  */
 void Model::leftMove(){
+    // save colors from faces of concern
+    QVector<QColor> upTemp = up.getCol(0); //sets up to left row
+    QVector<QColor> frontTemp = front.getCol(0); //sets up to left row
+    QVector<QColor> downTemp = down.getCol(0); //sets up to left row
+    QVector<QColor> backTemp = back.getCol(2); //sets up to left row
+    QVector<QColor> backTempReversed;
+    QVector<QColor> downTempReversed;
 
-    QVector<QColor> temp = up.getCol(0); //sets up to left row
-    QVector<QColor> temp2 = front.getCol(0); //sets up to left row
-    QVector<QColor> temp3 = down.getCol(0); //sets up to left row
-    QVector<QColor> temp4 = back.getCol(2); //sets up to left row
-    QVector<QColor> temp5;
-    QVector<QColor> temp6;
-
+    //reverse the order of the colors
     for(int i =0; i < 3; i++){
-        temp5.push_front(temp4[i]);
-        temp6.push_front(temp3[i]);
+        backTempReversed.push_front(backTemp[i]);
+        downTempReversed.push_front(downTemp[i]);
     }
 
-    up.swapColumn(0, temp5);
-    front.swapColumn(0, temp);
-    down.swapColumn(0, temp2);
-    back.swapColumn(2, temp6);
+    up.swapColumn(0, backTempReversed);
+    front.swapColumn(0, upTemp);
+    down.swapColumn(0, frontTemp);
+    back.swapColumn(2, downTempReversed);
 
-    //rotate front 90 degrees;
+    //rotate left 90 degrees;
     left.rotateClockwise();
 
     updateFaces();
@@ -263,17 +254,18 @@ void Model::leftMove(){
  * \brief Model::downMove makes a single turn, (90°), clockwise, of the down face.
  */
 void Model::downMove(){
+    // save colors from faces of concern
+    QVector<QColor> backTemp = back.getRow(2);
+    QVector<QColor> frontTemp = front.getRow(2);
+    QVector<QColor> leftTemp = left.getRow(2);
+    QVector<QColor> rightTemp = right.getRow(2);
 
-    QVector<QColor> temp = back.getRow(2);
-    QVector<QColor> temp2 = front.getRow(2);
-    QVector<QColor> temp3 = left.getRow(2);
-    QVector<QColor> temp4 = right.getRow(2);
+    left.swapRow(2, backTemp);
+    front.swapRow(2, leftTemp);
+    right.swapRow(2, frontTemp);
+    back.swapRow(2, rightTemp);
 
-    left.swapRow(2, temp);
-    front.swapRow(2, temp3);
-    right.swapRow(2, temp2);
-    back.swapRow(2, temp4);
-    //rotate front 90 degrees;
+    //rotate down 90 degrees;
     down.rotateClockwise();
 
     updateFaces();
@@ -283,7 +275,6 @@ void Model::downMove(){
  * \brief Model::frontMovePrime does F' move to the rubix cube, updating faces accordingly
  */
 void Model::frontMovePrime(){
-
     for(int i =0; i<3;i++)
         frontMove();
 }
@@ -328,16 +319,14 @@ void Model::downMovePrime(){
         downMove();
 }
 
-
-
 /*!
  * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
  */
 void Model::scramble(){
     for(int i=0; i< 1; i++){    //*******************************************scrable is set to 1 for testing purposes while working with celebration screen, change back to 20****************************
+
         // get random number that corresponds to a value
         int v = QRandomGenerator::global()->bounded(1, 7);
-
         switch(v){
         case 1:
             leftMove();
@@ -376,13 +365,15 @@ void Model::resetFaces(){
     emit resetCube();
 }
 
+/*!
+ * \brief Model::save method that saves the Qimages of each face to update the Rubik's Cube in the view.
+ */
 void Model::save(){
     QImage newimg =  QImage(6,9, QImage::Format_RGBA64);
     QImage temp =  QImage(3,3, QImage::Format_RGBA64);
 
     QTransform tempTransform;
     tempTransform.rotate(-270);
-
 
     //top half
     for(int i = 0; i < 3; i++){
@@ -522,9 +513,9 @@ void Model::rotateLeft(){
 /*!
  * \brief Model::rotateFlip flips cube
  */
-void Model::rotateFlip(){
+void Model::flip(){
     Faces frontTemp = front;
-    front  = left;
+    front = left;
     front.rotateClockwise();
     front.rotateClockwise();
     front.setName("front");
@@ -533,7 +524,7 @@ void Model::rotateFlip(){
     left.rotateClockwise();
     left.setName("left");
     Faces backTemp = back;
-    back  = right;
+    back = right;
     back.rotateClockwise();
     back.rotateClockwise();
     back.setName("back");

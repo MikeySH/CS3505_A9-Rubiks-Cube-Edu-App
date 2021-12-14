@@ -1,5 +1,15 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #include "celebrationbox2d.h"
 
+/*!
+ * \brief celebrationBox2D::celebrationBox2D constructor for the celebration Box2D class.
+ */
 celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
     world(b2Vec2(0.0f, 10.0f)),
     timer(this),
@@ -8,7 +18,11 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
 
 }
 
-void celebrationBox2D::startWorld(){
+/*!
+ * \brief celebrationBox2D::startWorld Starts the Box2D celebration screen.
+ */
+void celebrationBox2D::startWorld()
+{
     for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
         world.DestroyBody(body);
     }
@@ -32,7 +46,6 @@ void celebrationBox2D::startWorld(){
 
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
-
 
     //float a = 0.5f;
     float a = 1.0f;
@@ -76,12 +89,17 @@ void celebrationBox2D::startWorld(){
     timer.start(15);
 }
 
-void celebrationBox2D::paintEvent(QPaintEvent *) {
-    // Create a painter
+/*!
+ * \brief celebrationBox2D::paintEvent Paints objects
+ */
+void celebrationBox2D::paintEvent(QPaintEvent *)
+{
+     // Create a painter
      QPainter painter(this);
 
      //goes through all the body and draw them
-     for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
+     for(b2Body *body = world.GetBodyList(); body; body = body->GetNext())
+     {
          b2Vec2 position = body->GetPosition();
                  painter.drawImage((int)(position.x * 25), (int)(position.y*25), image.scaled(130, 130, Qt::KeepAspectRatio));
      }
@@ -89,7 +107,11 @@ void celebrationBox2D::paintEvent(QPaintEvent *) {
      painter.end();
 }
 
-void celebrationBox2D::updateWorld() {
+/*!
+ * \brief celebrationBox2D::updateWorld Updates world
+ */
+void celebrationBox2D::updateWorld()
+{
     // It is generally best to keep the time step and iterations fixed.
     world.Step(1.0/50.0, 6, 2);
 

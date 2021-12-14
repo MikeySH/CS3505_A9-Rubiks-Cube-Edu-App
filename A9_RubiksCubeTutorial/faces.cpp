@@ -1,8 +1,11 @@
-#include "faces.h"
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
 
-//remove later
-#include <iostream>
-using namespace std;
+#include "faces.h"
 
 /*!
  * \brief Faces::Faces Constructs the face object that is used to represent Rubics faces
@@ -16,15 +19,14 @@ Faces::Faces(QColor thisOriginalColor, QString name)
     colorPicture.fill(thisOriginalColor);
 }
 
+/*!
+ * \brief Faces::Faces copy constructor for Faces class.
+ */
 Faces::Faces(const Faces& other)
 {
     this->colorPicture = other.colorPicture;
     this->name = other.name;
 }
-
-//void Faces::setColor(int x, int y, QColor color){
-//    colorPicture.setPixelColor(x,y,color);
-//}
 
 /*!
  * \brief Faces::getColorCorrespondingToInt Returns color at given pixel of face
@@ -87,6 +89,9 @@ QString Faces::getName(){
     return name;
 }
 
+/*!
+ * \brief Faces::setName sets this face's name to the given name
+ */
 void Faces::setName(QString otherName){
     name = otherName;
 }
@@ -102,7 +107,6 @@ QVector<QColor> Faces::getRow(int rowNum){
     for (int i=0; i<3; i++)
         temp.push_back(colorPicture.pixelColor(i,rowNum));
 
-
     return temp;
 }
 
@@ -117,7 +121,6 @@ QVector<QColor> Faces::getCol(int colNum){
     // collect all colors correspond to inquired col
     for (int i=0; i<3; i++)
         temp.push_back(colorPicture.pixelColor(colNum,i));
-
 
     return temp;
 }

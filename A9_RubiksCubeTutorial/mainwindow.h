@@ -1,3 +1,10 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -22,35 +29,46 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
-
-
 private:
     Ui::MainWindow *ui;
     Model modelObj;
     // sends key events to 3d drawer
     void keyPressEvent(QKeyEvent *event);
+    // method for the cube pieces step
     void drawCubePiecesStep();
+    // method for the button moves step
     void drawButtonMovesStep();
+    // method for the white cross step
     void drawWhiteCrossStep();
+    // method for the white cornerstep
     void drawWhiteCornersStep();
+    // method for the second layerstep
     void drawSecondLayerStep();
+    // method for the yellow crossstep
     void drawYellowCrossStep();
+    // method for the yellow corner step
     void drawYellowCornerStep();
+    // method for the third layer step
     void drawThirdLayerStep();
-    void showAllStepLables();
+    // helper for showing all learning / step labels
+    void showAllStepLabels();
+    // helper for hiding all learning / step labels
     void hideAllLearningUI();
+    // enables the next and last buttons in the learning tutorial
     void enableLastAndNextStepButtons();
+    // it's an event filter for buttons
     bool eventFilter(QObject *obj, QEvent *event);
+    // show the step buttons
     void showStepButtons();
 
-
-
 signals:
-    void saveName();
+    // rotates cube right
     void rotateRight();
+    // rotates cube left
     void rotateLeft();
-    void rotateFlip();
+    // flips cube
+    void flip();
+    // starts tutorial
     void initiateTutorial();
 
 private slots:
@@ -60,12 +78,15 @@ private slots:
     void on_moveCubeRight_clicked();
     // evoked when flip button clicked - flips cube
     void on_flipButton_clicked();
+    // changes Rubik's Cube to 2D view
     void on_perspective2DButton_clicked();
+    // changes Rubik's Cube to 3D view
     void on_perspective3DButton_clicked();
-
+    // starts the Rubik's Cube tutorial
     void on_learnButton_clicked();
 
 public slots:
+    // Shows the current tutorial step
     void showCurrentStep(int);
 };
 #endif // MAINWINDOW_H

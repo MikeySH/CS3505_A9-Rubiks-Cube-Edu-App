@@ -48,6 +48,16 @@
 **
 ****************************************************************************/
 
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ *
+ * This class was borrowed from Qt's Examples and modified for use in the
+ * Rubik's Cube tutorial application.
+ */
+
 #ifndef CUBE3DWIDGET_H
 #define CUBE3DWIDGET_H
 

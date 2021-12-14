@@ -1,9 +1,14 @@
+/*
+ * Jimmy Trinh && Jacob Day && Amitoj Singh && Michael Shin
+ * Software Practice II, CS 3505
+ * Fall 2021
+ * A9: An Educational App
+ */
+
 #ifndef FACES_H
 #define FACES_H
 #include <QVector>
-#include <QMatrix3x3>
 #include <QImage>
-
 
 /*!
  * \brief The Faces class Class representing the faces of a rubic's cube
@@ -15,13 +20,10 @@ private:
     QImage colorPicture;
 
 public:
-    //constructor
+    // constructors
     Faces() = default;
     Faces(QColor, QString);
     Faces(const Faces&);
-
-    //void setColor(int, int, QColor);
-
 
     // swap methods
     QVector<QColor> swapRow(int,  QVector<QColor> );
@@ -35,9 +37,9 @@ public:
     QVector<QColor> getRow(int);
     QVector<QColor> getCol(int);
 
+    // rotation methods
     void rotateClockwise();
     void rotateCounterClockwise();
-
 };
 
 #endif // FACES_H
