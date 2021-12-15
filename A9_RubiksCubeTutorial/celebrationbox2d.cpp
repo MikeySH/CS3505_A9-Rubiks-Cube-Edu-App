@@ -23,12 +23,6 @@ celebrationBox2D::celebrationBox2D(QWidget *parent) : QWidget(parent),
  */
 void celebrationBox2D::startWorld()
 {
-    for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
-        world.DestroyBody(body);
-    }
-
-    disconnect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
-
     // Define the ground body.
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f,38.0f);
@@ -87,6 +81,17 @@ void celebrationBox2D::startWorld()
 
     connect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
     timer.start(15);
+}
+
+/*!
+ * \brief celebrationBox2D::clearWorld clears the world in when the user is done with the celebration screen
+ */
+void celebrationBox2D::clearWorld(){
+    for(b2Body *body = world.GetBodyList(); body; body = body->GetNext()) {
+        world.DestroyBody(body);
+    }
+
+    disconnect(&timer, &QTimer::timeout, this, &celebrationBox2D::updateWorld);
 }
 
 /*!

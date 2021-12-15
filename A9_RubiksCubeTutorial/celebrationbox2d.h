@@ -23,6 +23,7 @@ signals:
 public slots:
     void updateWorld();
     void startWorld();
+    void clearWorld();
 
 private:
     b2World world;
