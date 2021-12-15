@@ -49,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
     //View to model -----------------
     connect(ui->resetButton, &QPushButton::clicked, &modelObj, &Model::resetFaces);
     connect(ui->scrambleButton, &QPushButton::clicked, &modelObj, &Model::scramble);
+    connect(ui->devToolsButton, &QPushButton::clicked, &modelObj, &Model::devToolScramble);
     ui->resetButton->click();
     connect(this, &MainWindow::rotateRight, &modelObj, &Model::rotateRight);
     connect(this, &MainWindow::rotateLeft, &modelObj, &Model::rotateLeft);

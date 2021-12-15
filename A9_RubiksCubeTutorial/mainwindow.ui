@@ -120,7 +120,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>50</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -198,7 +198,7 @@
    <widget class="QPushButton" name="uButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>230</x>
       <y>540</y>
       <width>40</width>
       <height>32</height>
@@ -221,7 +221,7 @@
    <widget class="QPushButton" name="bButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>330</x>
       <y>540</y>
       <width>40</width>
       <height>32</height>
@@ -244,7 +244,7 @@
    <widget class="QPushButton" name="lButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>430</x>
       <y>540</y>
       <width>40</width>
       <height>32</height>
@@ -267,7 +267,7 @@
    <widget class="QPushButton" name="dButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>380</x>
       <y>540</y>
       <width>40</width>
       <height>32</height>
@@ -290,7 +290,7 @@
    <widget class="QPushButton" name="dPrimeButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>380</x>
       <y>570</y>
       <width>40</width>
       <height>32</height>
@@ -313,7 +313,7 @@
    <widget class="QPushButton" name="lPrimeButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>430</x>
       <y>570</y>
       <width>40</width>
       <height>32</height>
@@ -382,7 +382,7 @@
    <widget class="QPushButton" name="uPrimeButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>230</x>
       <y>570</y>
       <width>40</width>
       <height>32</height>
@@ -405,7 +405,7 @@
    <widget class="QPushButton" name="bPrimeButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>330</x>
       <y>570</y>
       <width>40</width>
       <height>32</height>
@@ -429,7 +429,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>80</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -1166,6 +1166,28 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="devToolsButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Silom</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="text">
+     <string>Demo Button</string>
+    </property>
+   </widget>
    <zorder>widget</zorder>
    <zorder>case3Label</zorder>
    <zorder>case2Label</zorder>
@@ -1220,6 +1242,7 @@
    <zorder>hintTextLabel</zorder>
    <zorder>currentTimeLabel</zorder>
    <zorder>notationLabel</zorder>
+   <zorder>devToolsButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1227,7 +1250,7 @@
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

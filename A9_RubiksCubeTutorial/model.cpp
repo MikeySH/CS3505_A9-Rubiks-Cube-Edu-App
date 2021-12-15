@@ -323,8 +323,35 @@ void Model::downMovePrime(){
  * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized
  */
 void Model::scramble(){
-    for(int i=0; i< 1; i++){    //*******************************************scrable is set to 1 for testing purposes while working with celebration screen, change back to 20****************************
+    for(int i=0; i< 20; i++){
+        // get random number that corresponds to a value
+        int v = QRandomGenerator::global()->bounded(1, 7);
+        switch(v){
+        case 1:
+            leftMove();
+            break;
+        case 2:  frontMove();
+            break;
+        case 3:  rightMove();
+            break;
+        case 4: upMove();
+            break;
+        case 5: backMove();
+            break;
+        case 6: downMove();
+            break;
+        }
+    }
+    isScrambled = true;
+    timer->start(1000);
+    time.setHMS(0,0,0);
+}
 
+/*!
+ * \brief Model::scramble method scrambles rubix cube faces such that rubix cube is randomized, only does one move to scramble
+ */
+void Model::devToolScramble(){
+    for(int i=0; i< 1; i++){
         // get random number that corresponds to a value
         int v = QRandomGenerator::global()->bounded(1, 7);
         switch(v){

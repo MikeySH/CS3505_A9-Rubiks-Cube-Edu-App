@@ -105,6 +105,8 @@ public slots:
     void updateCountdown();
     // stops the updateing of the timer keeping track of solving time
     void stopUpdateCountdown();
+    // responds to dev tool button, scrambles one way
+   void devToolScramble();
 
 signals:
     // signal that handles sending the front face of cube
