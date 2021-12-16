@@ -295,10 +295,10 @@ void MainWindow::drawWhiteCrossStep(){
     hideAllLearningUI();
     showStepButtons();
     showAllStepLabels();
-    ui->case2AlgorithmLabel->hide();
 
-    ui->case1AlgorithmLabel->setText("R' F'");
-    ui->case3AlgorithmLabel->setText("Line up with color and turn twice on the face");
+    ui->case1AlgorithmLabel->setText("R' U F' U'");
+    ui->case2AlgorithmLabel->setText("R U F' U'");
+    ui->case3AlgorithmLabel->setText("Line up the edge color with the same center piece and turn twice on the face");
     ui->hintTextLabel->setText("The goal of this first step is to get the 'white cross'. One trick is to get all "
                            "the white edges on the same side as the yellow center, then line up the "
                            "other color with its respective center, and turn that side twice. After doing "
@@ -343,21 +343,27 @@ void MainWindow::drawSecondLayerStep(){
     showStepButtons();
     showAllStepLabels();
 
-    ui->case3AlgorithmLabel->hide();
+//    ui->case3AlgorithmLabel->hide();
+    ui->case1AlgorithmLabel->hide();
+    ui->case1Label->hide();
+    ui->case2Label->setText("Case 1:");
+    ui->case3Label->setText("Case 2:");
     //ui->case3Label->hide();
 
-    ui->case1AlgorithmLabel->setText("U R U' R' U' F' U F");
-    ui->case2AlgorithmLabel->setText("U' L' U L U F U' F'");
+    ui->img1Label->move(1060,320);
+
+    ui->case2AlgorithmLabel->setText("U R U' R' U' F' U F");
+    ui->case3AlgorithmLabel->setText("U' L' U L U F U' F'");
     ui->hintTextLabel->setText("Flip the cube so yellow is on top, and find an edge that doesn't contain "
                            "yellow on it. Line it up with one of the cases above and perform that "
                            "algorithm. Do it for all four non-yellow edges. If you don't have a "
                            "non-yellow edge on the top and the second layer isn't solved, do one "
                            "of the two algorithms above to move any yellow edge into that incorrect "
-                           "spot and move the edge to its correct spot.");
+                           "spot and move the edge to its correct spot. The goal matches to the algorithm and case above it");
 
-    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
-    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
-    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
+    ui->img2Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/1.png").scaled(ui->img1Label->width(), ui->img1Label->height(), Qt::KeepAspectRatio)));
+    ui->img3Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/2.png").scaled(ui->img2Label->width(), ui->img2Label->height(), Qt::KeepAspectRatio)));
+    ui->img1Label->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/3.png").scaled(ui->img3Label->width(), ui->img3Label->height(), Qt::KeepAspectRatio)));
     ui->solvedLabel->setPixmap(QPixmap::fromImage(QImage(":/Second Layer/4.png").scaled(ui->solvedLabel->width(), ui->solvedLabel->height(), Qt::KeepAspectRatio)));
 }
 
@@ -446,6 +452,10 @@ void MainWindow::showAllStepLabels(){
     ui->img1Label->show();
     ui->img2Label->show();
     ui->img3Label->show();
+    ui->img1Label->move(640,90);
+    ui->case1Label->setText("Case 1:");
+    ui->case2Label->setText("Case 2:");
+    ui->case3Label->setText("Case 3:");
     ui->stepComboBox->show();
     ui->goalLabel->show();
     ui->solvedLabel->show();
