@@ -54,6 +54,8 @@
  * Fall 2021
  * A9: An Educational App
  *
+ * Video: Video: https://youtu.be/uIMg9xUNVgY
+ *
  * This class was borrowed from Qt's Examples and modified for use in the
  * Rubik's Cube tutorial application.
  */
